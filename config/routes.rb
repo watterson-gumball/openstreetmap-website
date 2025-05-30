@@ -84,6 +84,8 @@ OpenStreetMap::Application.routes.draw do
     post "relation/:relation_id/:version/redact" => "old_relations/redactions#create", :relation_id => /\d+/, :version => /\d+/, :allow_delete => true, :as => nil
 
     resource :map, :only => :show
+    get "history_map/available_years", :to => "history_maps#available_years", :format => false
+    resource :history_map, :only => :show
 
     resources :tracepoints, :path => "trackpoints", :only => :index
 

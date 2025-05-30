@@ -25,3 +25,6 @@ tmp
 
 # docker-compose database directory
 docker-db-data
+
+*.osm
+*.pbf

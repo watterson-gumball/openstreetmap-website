@@ -90,7 +90,32 @@ L.OSM.DataLayer = L.FeatureGroup.extend({
   options: {
     areaTags: ['area', 'building', 'leisure', 'tourism', 'ruins', 'historic', 'landuse', 'military', 'natural', 'sport'],
     uninterestingTags: ['source', 'source_ref', 'source:ref', 'history', 'attribution', 'created_by', 'tiger:county', 'tiger:tlid', 'tiger:upload_uuid'],
-    styles: {},
+    styles: {
+      "2008": {
+        way: { color: '#7FFFD4' },
+        area: { color: '#7FFFD4' },
+      },
+      "2013": {
+        way: { color: '#8A2BE2' },
+        area: { color: '#8A2BE2' },
+      },
+      "2016": {
+        way: { color: '#A52A2A' },
+        area: { color: '#A52A2A' },
+      },
+      "2020": {
+        way: { color: '#5F9EA0' },
+        area: { color: '#5F9EA0' },
+      },
+      "2022": {
+        way: { color: '#DC143C' },
+        area: { color: '#DC143C' },
+      },
+      "2025": {
+        way: { color: '#8FBC8F' },
+        area: { color: '#8FBC8F' },
+      },
+    },
     asynchronous: false,
   },
 
@@ -132,9 +157,9 @@ L.OSM.DataLayer = L.FeatureGroup.extend({
 
         if (this.isWayArea(feature)) {
           latLngs.pop(); // Remove last == first.
-          layer = L.polygon(latLngs, this.options.styles.area);
+          layer = L.polygon(latLngs, this.options.year ? this.options.styles[this.options.year].area : this.options.styles.area);
         } else {
-          layer = L.polyline(latLngs, this.options.styles.way);
+          layer = L.polyline(latLngs, this.options.year ? this.options.styles[this.options.year].way : this.options.styles.way);
         }
       }
 

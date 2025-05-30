@@ -111,7 +111,7 @@ L.OSM.layers = function (options) {
           .prop("checked", checked)
           .appendTo(label);
 
-        label.append(OSM.i18n.t("javascripts.map.layers." + name));
+        label.append(layer.options.year ? `${OSM.i18n.t("javascripts.map.layers.data")} ${layer.options.year}` : OSM.i18n.t("javascripts.map.layers." + name));
 
         input.on("change", function () {
           checked = input.is(":checked");
@@ -153,6 +153,7 @@ L.OSM.layers = function (options) {
       addOverlay(map.noteLayer, "notes", OSM.MAX_NOTE_REQUEST_AREA);
       addOverlay(map.dataLayer, "data", OSM.MAX_REQUEST_AREA);
       addOverlay(map.gpsLayer, "gps", Number.POSITIVE_INFINITY);
+      OSM.availableYears.forEach(year => addOverlay(map[`dataLayer${year}`], `historydata${year}`, OSM.MAX_REQUEST_AREA));
     }
   };
 

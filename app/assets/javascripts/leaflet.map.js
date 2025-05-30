@@ -11,6 +11,7 @@ L.extend(L.LatLngBounds.prototype, {
 
 L.OSM.Map = L.Map.extend({
   initialize: function (id, options) {
+    L.OSM.availableYears = ["2008", "2013", "2016", "2020", "2022", "2025"];
     L.Map.prototype.initialize.call(this, id, options);
 
     this.baseLayers = OSM.LAYER_DEFINITIONS.map((
@@ -35,6 +36,12 @@ L.OSM.Map = L.Map.extend({
 
     this.dataLayer = new L.OSM.DataLayer(null);
     this.dataLayer.options.code = "D";
+
+    L.OSM.availableYears.forEach(year => {
+      this[`dataLayer${year}`] = new L.OSM.DataLayer(null);
+      this[`dataLayer${year}`].options.code = "Z";
+      this[`dataLayer${year}`].options.year = year;
+    });
 
     this.gpsLayer = new L.OSM.GPS({
       pane: "overlayPane",

@@ -4,7 +4,7 @@ class ApiAbility
   include CanCan::Ability
 
   def initialize(user, scopes) # rubocop:disable Metrics/CyclomaticComplexity
-    can :read, [:version, :capability, :permission, :map]
+    can :read, [:version, :capability, :permission, :map, :history_map]
 
     if Settings.status != "database_offline"
       can [:read, :feed, :search], Note

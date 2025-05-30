@@ -12,6 +12,7 @@
 //= require index/contextmenu
 //= require index/search
 //= require index/layers/data
+//= require index/layers/historyData
 //= require index/export
 //= require index/layers/notes
 //= require index/history
@@ -30,6 +31,8 @@ $(function () {
     contextmenu: true,
     worldCopyJump: true
   });
+
+  OSM.availableYears = ["2008", "2013", "2016", "2020", "2022", "2025"];
 
   OSM.loadSidebarContent = function (path, callback) {
     let content_path = path;
@@ -146,6 +149,8 @@ $(function () {
     if (params.layers.indexOf(map.noteLayer.options.code) >= 0) {
       map.addLayer(map.noteLayer);
     }
+
+    OSM.availableYears.forEach( year => OSM.initializeHistoryDataLayer(map, `dataLayer${year}`) );
 
     OSM.initializeDataLayer(map);
     if (params.layers.indexOf(map.dataLayer.options.code) >= 0) {
