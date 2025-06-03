@@ -152,14 +152,14 @@ $(function () {
 
     OSM.availableYears.forEach( year => OSM.initializeHistoryDataLayer(map, `dataLayer${year}`) );
 
-    OSM.initializeDataLayer(map);
-    if (params.layers.indexOf(map.dataLayer.options.code) >= 0) {
-      map.addLayer(map.dataLayer);
-    }
+    // OSM.initializeDataLayer(map);
+    // if (params.layers.indexOf(map.dataLayer.options.code) >= 0) {
+    //   map.addLayer(map.dataLayer);
+    // }
 
-    if (params.layers.indexOf(map.gpsLayer.options.code) >= 0) {
-      map.addLayer(map.gpsLayer);
-    }
+    // if (params.layers.indexOf(map.gpsLayer.options.code) >= 0) {
+    //   map.addLayer(map.gpsLayer);
+    // }
   }
 
   $(".leaflet-control .control-button").tooltip({ placement: "left", container: "body" });

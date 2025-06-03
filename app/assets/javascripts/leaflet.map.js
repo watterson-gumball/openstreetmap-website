@@ -34,8 +34,8 @@ L.OSM.Map = L.Map.extend({
     this.noteLayer = new L.FeatureGroup();
     this.noteLayer.options = { code: "N" };
 
-    this.dataLayer = new L.OSM.DataLayer(null);
-    this.dataLayer.options.code = "D";
+    // this.dataLayer = new L.OSM.DataLayer(null);
+    // this.dataLayer.options.code = "D";
 
     L.OSM.availableYears.forEach(year => {
       this[`dataLayer${year}`] = new L.OSM.DataLayer(null);
@@ -43,15 +43,15 @@ L.OSM.Map = L.Map.extend({
       this[`dataLayer${year}`].options.year = year;
     });
 
-    this.gpsLayer = new L.OSM.GPS({
-      pane: "overlayPane",
-      code: "G"
-    });
-    this.gpsLayer.on("add", () => {
-      this.fire("overlayadd", { layer: this.gpsLayer });
-    }).on("remove", () => {
-      this.fire("overlayremove", { layer: this.gpsLayer });
-    });
+    // this.gpsLayer = new L.OSM.GPS({
+    //   pane: "overlayPane",
+    //   code: "G"
+    // });
+    // this.gpsLayer.on("add", () => {
+    //   this.fire("overlayadd", { layer: this.gpsLayer });
+    // }).on("remove", () => {
+    //   this.fire("overlayremove", { layer: this.gpsLayer });
+    // });
 
 
     this.on("baselayerchange", function (event) {

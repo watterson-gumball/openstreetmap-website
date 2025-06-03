@@ -77,14 +77,14 @@ L.OSM.TracestrackTopo = L.OSM.TileLayer.extend({
   }
 });
 
-L.OSM.GPS = L.OSM.TileLayer.extend({
-  options: {
-    url: 'https://gps.tile.openstreetmap.org/lines/{z}/{x}/{y}.png',
-    maxZoom: 21,
-    maxNativeZoom: 20,
-    subdomains: 'abc'
-  }
-});
+// L.OSM.GPS = L.OSM.TileLayer.extend({
+//   options: {
+//     url: 'https://gps.tile.openstreetmap.org/lines/{z}/{x}/{y}.png',
+//     maxZoom: 21,
+//     maxNativeZoom: 20,
+//     subdomains: 'abc'
+//   }
+// });
 
 L.OSM.DataLayer = L.FeatureGroup.extend({
   options: {
