@@ -15,6 +15,7 @@
 //= require matomo
 //= require richtext
 //= require @simonwep/pickr/dist/pickr.min
+//= require jquery-ui/dist/jquery-ui.min
 
 {
   const application_data = $("head").data();

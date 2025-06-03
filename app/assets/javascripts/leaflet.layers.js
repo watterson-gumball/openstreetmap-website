@@ -86,7 +86,7 @@ L.OSM.layers = function (options) {
         .appendTo(overlaySection);
 
       const overlays = $("<ul class='list-unstyled form-check'>")
-        .appendTo(overlaySection);
+        .appendTo(overlaySection).sortable();
 
       const addOverlay = function (layer, name, maxArea) {
         const item = $("<li>")

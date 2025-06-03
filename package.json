@@ -5,6 +5,7 @@
     "@simonwep/pickr": "^1.9.1",
     "i18n-js": "^4.5.1",
     "jquery-simulate": "^1.0.2",
+    "jquery-ui": "^1.14.1",
     "js-cookie": "^3.0.0",
     "leaflet": "^1.8.0",
     "leaflet.locatecontrol": "^0.84.1",
