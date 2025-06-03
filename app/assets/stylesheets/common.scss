@@ -2,6 +2,9 @@
 @import "parameters";
 @import "bootstrap";
 @import "rails_bootstrap_forms";
+@import "@simonwep/pickr/dist/themes/classic.min.css";
+@import "@simonwep/pickr/dist/themes/nano.min.css";
+@import "@simonwep/pickr/dist/themes/monolith.min.css";
 
 /* Styles common to large and small screens */
 
@@ -417,6 +420,17 @@ body.small-nav {
 
   .overlay-layers {
     li.disabled { color: $darkgrey; }
+    & li {
+      display: flex;
+      justify-content: space-between;
+    }
+    & .pickr {
+      display: inline;
+      > .pcr-button {
+        height: 1.4em;
+        width: 1.4em;
+      }
+    }
   }
 }
 

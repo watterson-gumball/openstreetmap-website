@@ -14,6 +14,7 @@
 //= require make-plural/cardinals
 //= require matomo
 //= require richtext
+//= require @simonwep/pickr/dist/pickr.min
 
 {
   const application_data = $("head").data();

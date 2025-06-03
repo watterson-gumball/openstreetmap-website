@@ -92,28 +92,28 @@ L.OSM.DataLayer = L.FeatureGroup.extend({
     uninterestingTags: ['source', 'source_ref', 'source:ref', 'history', 'attribution', 'created_by', 'tiger:county', 'tiger:tlid', 'tiger:upload_uuid'],
     styles: {
       "2008": {
-        way: { color: '#7FFFD4' },
-        area: { color: '#7FFFD4' },
+        way: { color: '#E91E63F2' },
+        area: { color: '#E91E63F2' },
       },
       "2013": {
-        way: { color: '#8A2BE2' },
-        area: { color: '#8A2BE2' },
+        way: { color: '#9C27B0' },
+        area: { color: '#9C27B0' },
       },
       "2016": {
-        way: { color: '#A52A2A' },
-        area: { color: '#A52A2A' },
+        way: { color: '#673AB7' },
+        area: { color: '#673AB7' },
       },
       "2020": {
-        way: { color: '#5F9EA0' },
-        area: { color: '#5F9EA0' },
+        way: { color: '#3F51B5' },
+        area: { color: '#3F51B5' },
       },
       "2022": {
-        way: { color: '#DC143C' },
-        area: { color: '#DC143C' },
+        way: { color: '#00BCD4' },
+        area: { color: '#00BCD4' },
       },
       "2025": {
-        way: { color: '#8FBC8F' },
-        area: { color: '#8FBC8F' },
+        way: { color: '#747474' },
+        area: { color: '#747474' },
       },
     },
     asynchronous: false,

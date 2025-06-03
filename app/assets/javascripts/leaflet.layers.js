@@ -113,6 +113,65 @@ L.OSM.layers = function (options) {
 
         label.append(layer.options.year ? `${OSM.i18n.t("javascripts.map.layers.data")} ${layer.options.year}` : OSM.i18n.t("javascripts.map.layers." + name));
 
+        if (layer.options.year) {
+          const pickrPlaceholder = $("<div></div>")
+            .prop("id", `layer-${layer.options.year}`)
+            .appendTo(item);
+          
+          const pickr = Pickr.create({
+            el: `#layer-${layer.options.year}`,
+            theme: 'nano', // or 'monolith', or 'nano'
+            default: layer.options.styles[layer.options.year].way.color,
+
+            swatches: [
+                'rgba(244, 67, 54, 1)',
+                'rgba(233, 30, 99, 0.95)',
+                'rgba(156, 39, 176, 0.9)',
+                'rgba(103, 58, 183, 0.85)',
+                'rgba(63, 81, 181, 0.8)',
+                'rgba(33, 150, 243, 0.75)',
+                'rgba(3, 169, 244, 0.7)',
+                'rgba(0, 188, 212, 0.7)',
+                'rgba(0, 150, 136, 0.75)',
+                'rgba(76, 175, 80, 0.8)',
+                'rgba(139, 195, 74, 0.85)',
+                'rgba(205, 220, 57, 0.9)',
+                'rgba(255, 235, 59, 0.95)',
+                'rgba(255, 193, 7, 1)'
+            ],
+
+            components: {
+
+                // Main components
+                preview: true,
+                opacity: true,
+                hue: true,
+
+                // Input / output Options
+                interaction: {
+                    hex: true,
+                    rgba: true,
+                    hsla: true,
+                    hsva: true,
+                    cmyk: true,
+                    input: true,
+                    clear: true,
+                    save: true
+                }
+            }
+          });
+
+          pickr.on('save', (color, instance) => {
+            layer.options.styles[layer.options.year].way.color = color.toHEXA();
+            layer.options.styles[layer.options.year].area.color = color.toHEXA();
+            layer.setStyle({
+              color: color.toHEXA(),
+            });
+            if (!input.is(":checked")) return;
+            input.css("background-color", color.toHEXA())
+          });
+        }
+
         input.on("change", function () {
           checked = input.is(":checked");
           if (layer.cancelLoading) {
@@ -121,8 +180,11 @@ L.OSM.layers = function (options) {
 
           if (checked) {
             map.addLayer(layer);
+            if (!layer.options.year) return;
+            input.css("background-color", layer.options.styles[layer.options.year].way.color);
           } else {
             map.removeLayer(layer);
+            input.css("background-color", "transparent");
             $(`#layers-${name}-loading`).remove();
           }
         });
