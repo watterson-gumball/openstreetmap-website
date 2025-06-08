@@ -4,31 +4,38 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, [:feature_query, :map_key]
-    can :read, [Node, Way, Relation, OldNode, OldWay, OldRelation]
-    can [:show, :create], Note
-    can :read, :directions
-    can [:index, :permalink, :edit, :help, :fixthemap, :offline, :export, :about, :communities, :preview, :copyright, :id], :site
-    can [:finish, :embed], :export
-    can [:create, :read], :search
-
     if Settings.status != "database_offline"
-      can [:read, :feed], Changeset
-      can :read, ChangesetComment
-      can [:confirm, :confirm_resend, :confirm_email], :confirmation
-      can [:read, :rss], DiaryEntry
-      can :read, DiaryComment
-      can [:index], Note
-      can [:create, :update], :password
-      can :read, Redaction
       can [:create, :destroy], :session
-      can [:read, :data], Trace
-      can [:read, :create, :suspended, :auth_success, :auth_failure], User
-      can :read, UserBlock
+      can :create, User
+      can [:confirm, :confirm_resend, :confirm_email], :confirmation
     end
 
     if user&.active?
-      can :welcome, :site
+      can :read, [:feature_query, :map_key]
+      can :read, [Node, Way, Relation, OldNode, OldWay, OldRelation]
+      can [:show, :create], Note
+      can :read, :directions
+      # can [:index, :permalink, :edit, :help, :fixthemap, :offline, :export, :about, :communities, :preview, :copyright, :id], :site
+      can [:index, :permalink, :edit, :help, :fixthemap, :offline, :export, :about, :communities, :preview, :copyright, :id, :welcome], :site
+      can [:finish, :embed], :export
+      can [:create, :read], :search
+
+      if Settings.status != "database_offline"
+        can [:read, :feed], Changeset
+        can :read, ChangesetComment
+        # can [:confirm, :confirm_resend, :confirm_email], :confirmation
+        can [:read, :rss], DiaryEntry
+        can :read, DiaryComment
+        can [:index], Note
+        can [:create, :update], :password
+        can :read, Redaction
+        # can [:create, :destroy], :session
+        can [:read, :data], Trace
+        # can [:read, :create, :suspended, :auth_success, :auth_failure], User
+        can [:read, :suspended, :auth_success, :auth_failure], User
+        can :read, UserBlock
+      end
+      # can :welcome, :site
       can :read, [:deletion, :account_terms, :account_pd_declaration, :account_home]
 
       if Settings.status != "database_offline"
