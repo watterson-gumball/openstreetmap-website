@@ -4,6 +4,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    can [:about, :help, :copyright], :site
+
     if Settings.status != "database_offline"
       can [:create, :destroy], :session
       can :create, User
@@ -16,7 +18,7 @@ class Ability
       can [:show, :create], Note
       can :read, :directions
       # can [:index, :permalink, :edit, :help, :fixthemap, :offline, :export, :about, :communities, :preview, :copyright, :id], :site
-      can [:index, :permalink, :edit, :help, :fixthemap, :offline, :export, :about, :communities, :preview, :copyright, :id, :welcome], :site
+      can [:index, :permalink, :edit, :fixthemap, :offline, :export, :communities, :preview, :id, :welcome], :site
       can [:finish, :embed], :export
       can [:create, :read], :search
 

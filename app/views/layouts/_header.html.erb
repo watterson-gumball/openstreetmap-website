@@ -8,24 +8,27 @@
   <a href="#" id="menu-icon"></a>
   <nav class='primary'>
     <%= content_for :header %>
-    <div id="edit_tab" class="btn-group">
+
+    <%# TODO: Show this block conditionally based on user role  %>
+    <%# <div id="edit_tab" class="btn-group">
       <%= link_to t("layouts.edit"),
                   edit_path,
                   :class => "btn btn-outline-primary geolink editlink",
                   :id => "editanchor",
                   :data => { :editor => preferred_editor } %>
-      <button class='btn btn-outline-primary dropdown-toggle dropdown-toggle-split flex-grow-0' type='button' data-bs-toggle='dropdown'></button>
+      <%# <button class='btn btn-outline-primary dropdown-toggle dropdown-toggle-split flex-grow-0' type='button' data-bs-toggle='dropdown'></button>
       <ul class='dropdown-menu'>
         <% Editors::RECOMMENDED_EDITORS.each do |editor| %>
-          <li>
+          <%# <li>
             <%= link_to t("layouts.edit_with", :editor => t("editor.#{editor}.description")),
                         edit_path(:editor => editor),
                         :data => { :editor => editor },
                         :class => "geolink editlink dropdown-item" %>
-          </li>
+          <%#</li>
         <% end %>
-      </ul>
-    </div>
+      <%# </ul>
+    </div> %>
+
   </nav>
   <nav class='secondary d-flex gap-2 flex-grow-1 align-items-center'>
     <ul id='secondary-nav-menu' class='nav flex-grow-1' data-turbo-permanent>
@@ -43,15 +46,18 @@
       <li class="nav-item">
         <%= link_to t("layouts.export"), export_path, :class => header_nav_link_class(export_path) %>
       </li>
-      <li class="nav-item">
+
+      <%# TODO: Show this block conditionally based on user role  %>
+      <%# <li class="nav-item">
         <%= link_to t("layouts.gps_traces"), traces_path, :class => header_nav_link_class(traces_path) %>
-      </li>
+      <%# </li>
       <li class="nav-item">
         <%= link_to t("layouts.user_diaries"), diary_entries_path, :class => header_nav_link_class(diary_entries_path) %>
-      </li>
+      <%# </li>
       <li class="nav-item">
         <%= link_to t("layouts.communities"), communities_path, :class => header_nav_link_class(communities_path) %>
-      </li>
+      <%# </li> %>
+
       <li class="nav-item">
         <%= link_to t("layouts.copyright"), copyright_path, :class => header_nav_link_class(copyright_path) %>
       </li>
