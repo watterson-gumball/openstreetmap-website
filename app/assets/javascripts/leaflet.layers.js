@@ -60,12 +60,36 @@ L.OSM.layers = function (options) {
       });
 
       input.on("click", function () {
-        for (const other of layers) {
-          if (other !== layer) {
+        const hashParams = OSM.parseHash();
+        const withHistoryLayer = hashParams.layers?.includes("X");
+
+        if (layer.options.code === "X") {
+          for (const other of layers) {
+            if (other === layer || other.options.code !== "X") continue;
+
             map.removeLayer(other);
           }
+
+          map.addLayer(layer);
+          return;
         }
-        map.addLayer(layer);
+
+        if (layer.options.code !== "X") {
+
+          for (const other of layers) {
+            if (withHistoryLayer) {
+              map.removeLayer(other);
+              continue;
+            }
+
+            if (other !== layer) {
+              map.removeLayer(other);
+            }
+          }
+
+          map.addLayer(layer);
+          return;
+        }
       });
 
       item.on("dblclick", toggle);
@@ -117,7 +141,7 @@ L.OSM.layers = function (options) {
           const pickrPlaceholder = $("<div></div>")
             .prop("id", `layer-${layer.options.year}`)
             .appendTo(item);
-          
+
           const pickr = Pickr.create({
             el: `#layer-${layer.options.year}`,
             theme: 'nano', // or 'monolith', or 'nano'

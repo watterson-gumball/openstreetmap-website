@@ -79,3 +79,63 @@
       osm_france_link:
         id: "osm_france"
         href: "https://openstreetmap.fr/"
+
+- leafletOsmId: "History_2003_02"
+  code: "X"
+  year: "2003"
+  layerId: "history_2003_02"
+  nameId: "history"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "History_2011_09"
+  code: "X"
+  year: "2011"
+  layerId: "history_2011_09"
+  nameId: "history"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "History_2021_xx"
+  code: "X"
+  year: "2021"
+  layerId: "history_2021_xx"
+  nameId: "history"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "History_2xxx2_xx"
+  code: "X"
+  year: "xxxx"
+  layerId: "history_2xxx2_xx"
+  nameId: "history"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "History_2xxx_xx"
+  code: "X"
+  year: "xxxx"
+  layerId: "history_2xxx_xx"
+  nameId: "history"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true

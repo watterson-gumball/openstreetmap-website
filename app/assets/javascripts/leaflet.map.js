@@ -18,7 +18,7 @@ L.OSM.Map = L.Map.extend({
       { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
     ) => {
       if (credit) layerOptions.attribution = makeAttribution(credit);
-      if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`);
+      if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
       const layerConstructor =
         (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
         L.OSM[leafletOsmId] ||
