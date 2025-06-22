@@ -26,7 +26,30 @@ L.OSM.Map = L.Map.extend({
 
       const layer = new layerConstructor(layerOptions);
       layer.on("add", () => {
-        this.fire("baselayerchange", { layer: layer });
+        this.fire("baselayeradd", { layer: layer });
+      });
+      layer.on("remove", () => {
+        this.fire("baselayerremove", { layer: layer });
+      });
+      return layer;
+    });
+
+    this.baseTimelineLayers = OSM.TIMELINE_LAYER_DEFINITIONS.map((
+      { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
+    ) => {
+      if (credit) layerOptions.attribution = makeAttribution(credit);
+      if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
+      const layerConstructor =
+        (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
+        L.OSM[leafletOsmId] ||
+        L.OSM.TileLayer;
+
+      const layer = new layerConstructor(layerOptions);
+      layer.on("add", () => {
+        this.fire("baselayeradd", { layer: layer });
+      });
+      layer.on("remove", () => {
+        this.fire("baselayerremove", { layer: layer });
       });
       return layer;
     });
@@ -54,7 +77,7 @@ L.OSM.Map = L.Map.extend({
     // });
 
 
-    this.on("baselayerchange", function (event) {
+    this.on("baselayeradd", function (event) {
       if (this.baseLayers.indexOf(event.layer) >= 0) {
         this.setMaxZoom(event.layer.options.maxZoom);
       }
@@ -105,19 +128,17 @@ L.OSM.Map = L.Map.extend({
   },
 
   updateLayers: function (layerParam) {
-    const oldBaseLayer = this.getMapBaseLayer();
-    let newBaseLayer;
+    const layersCode = this.getLayersCode();
 
-    for (const layer of this.baseLayers) {
-      if (!newBaseLayer || layerParam.includes(layer.options.code)) {
-        newBaseLayer = layer;
-      }
+    if (layersCode.length === layerParam.length && layersCode === layerParam) {
+      return;
     }
 
-    if (newBaseLayer !== oldBaseLayer) {
-      if (oldBaseLayer) this.removeLayer(oldBaseLayer);
-      if (newBaseLayer) this.addLayer(newBaseLayer);
-    }
+    const oldBaseLayers = this.getMapBaseLayers();
+    const newBaseLayers = this.baseLayers.filter(layer => layerParam.includes(layer.options.code));
+
+    oldBaseLayers.forEach(this.removeLayer, this);
+    newBaseLayers.forEach(this.addLayer, this);
   },
 
   getLayersCode: function () {
@@ -139,6 +160,10 @@ L.OSM.Map = L.Map.extend({
     for (const layer of this.baseLayers) {
       if (this.hasLayer(layer)) return layer;
     }
+  },
+
+  getMapBaseLayers: function () {
+    return this.baseLayers.filter(layer => this.hasLayer(layer));
   },
 
   getUrl: function (marker) {
@@ -197,7 +222,8 @@ L.OSM.Map = L.Map.extend({
     }
 
     const params = new URLSearchParams();
-    const layers = this.getLayersCode().replace("M", "");
+    const layers = this.getLayersCode();
+    // const layers = this.getLayersCode().replace("M", "");
 
     if (layers) {
       params.set("layers", layers);

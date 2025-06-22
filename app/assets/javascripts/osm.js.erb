@@ -1,6 +1,7 @@
 //= depend_on settings.yml
 //= depend_on settings.local.yml
 //= depend_on layers.yml
+//= depend_on timeline_layers.yml
 //= depend_on key.yml
 
 OSM = {
@@ -28,6 +29,7 @@ OSM = {
   DEFAULT_LOCALE: <%= I18n.default_locale.to_json %>,
 
   LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/layers.yml", :legends => "config/key.yml").to_json %>,
+  TIMELINE_LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/timeline_layers.yml", :legends => "config/key.yml").to_json %>,
 
   MARKER_BLUE: <%= image_path("marker-blue.png").to_json %>,
   MARKER_GREEN: <%= image_path("marker-green.png").to_json %>,
@@ -198,7 +200,7 @@ OSM = {
       layers = args.layers || "";
     }
 
-    layers = layers.replace("M", "");
+    // layers = layers.replace("M", "");
 
     let hash = "#map=" + [zoom, ...OSM.cropLocation(center, zoom)].join("/");
 

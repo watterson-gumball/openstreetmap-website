@@ -361,6 +361,10 @@ body.small-nav {
         to { opacity: 0 }
       }
     }
+
+    .leaflet-timeline-pane {
+      z-index: 300;
+    }
   }
 
   #map-ui {
@@ -370,6 +374,16 @@ body.small-nav {
     width: 250px;
     height: 100%;
     overflow: auto;
+  }
+
+  #sub-map-ui {
+    display: none;
+    position: absolute;
+    width: 250px;
+    height: 50%;
+    overflow: auto;
+    right: 250px;
+    bottom: 0;
   }
 }
 
@@ -430,6 +444,22 @@ body.small-nav {
         height: 1.4em;
         width: 1.4em;
       }
+    }
+  }
+}
+
+.timeline-layers-ui {
+  .base-timeline-layers > * {
+    height: 3.5rem;
+
+    > .btn {
+      box-sizing: content-box;
+      top: - map.get($border-widths, 4);
+      left: - map.get($border-widths, 4);
+      --bs-btn-border-color: var(--bs-body-bg);
+    }
+    > .btn:hover {
+      --bs-btn-border-color: var(--bs-primary-border-subtle);
     }
   }
 }

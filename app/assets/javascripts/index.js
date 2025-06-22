@@ -1,8 +1,11 @@
 //= require_self
 //= require leaflet.sidebar
 //= require leaflet.sidebar-pane
+//= require leaflet.subSidebar
+//= require leaflet.sub-sidebar-pane
 //= require leaflet.locate
 //= require leaflet.layers
+//= require leaflet.timelineLayers
 //= require leaflet.key
 //= require leaflet.note
 //= require leaflet.share
@@ -31,6 +34,8 @@ $(function () {
     contextmenu: true,
     worldCopyJump: true
   });
+
+  map.createPane("timelinePane");
 
   OSM.availableYears = ["2008", "2013", "2016", "2020", "2022", "2025"];
 
@@ -89,13 +94,16 @@ $(function () {
 
   map.updateLayers(params.layers);
 
-  map.on("baselayerchange", function (e) {
+  map.on("baselayeradd", function (e) {
     if (map.getZoom() > e.layer.options.maxZoom) {
       map.setView(map.getCenter(), e.layer.options.maxZoom, { reset: true });
     }
   });
 
   const sidebar = L.OSM.sidebar("#map-ui")
+    .addTo(map);
+
+  const subSidebar = L.OSM.subSidebar("#sub-map-ui")
     .addTo(map);
 
   const position = $("html").attr("dir") === "rtl" ? "topleft" : "topright";
@@ -121,6 +129,7 @@ $(function () {
     L.OSM.layers({
       position,
       sidebar,
+      subSidebar,
       layers: map.baseLayers
     }),
     L.OSM.key({ position, sidebar }),
@@ -137,6 +146,15 @@ $(function () {
 
   addControlGroup([
     L.OSM.query({ position, sidebar })
+  ]);
+
+  addControlGroup([
+    L.OSM.timelineLayers({
+      position,
+      sidebar,
+      subSidebar,
+      layers: map.baseTimelineLayers
+    })
   ]);
 
   L.control.scale()
@@ -167,7 +185,7 @@ $(function () {
   const expiry = new Date();
   expiry.setYear(expiry.getFullYear() + 10);
 
-  map.on("moveend baselayerchange overlayadd overlayremove", function () {
+  map.on("moveend baselayeradd overlayadd overlayremove", function () {
     updateLinks(
       map.getCenter().wrap(),
       map.getZoom(),
@@ -199,7 +217,7 @@ $(function () {
   });
 
   if (OSM.MATOMO) {
-    map.on("baselayerchange overlayadd", function (e) {
+    map.on("baselayeradd overlayadd", function (e) {
       if (e.layer.options) {
         const goal = OSM.MATOMO.goals[e.layer.options.layerId];
 

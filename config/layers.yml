@@ -9,103 +9,9 @@
     href: "https://supporting.openstreetmap.org"
     donate: true
 
-- leafletOsmId: "CyclOSM"
-  code: "Y"
-  layerId: "cyclosm"
-  nameId: "cyclosm"
-  canEmbed: true
-  credit:
-    id: "cyclosm_credit"
-    children:
-      cyclosm_link:
-        id: "cyclosm_name"
-        href: "https://www.cyclosm.org"
-      osm_france_link:
-        id: "osm_france"
-        href: "https://openstreetmap.fr/"
-
-- leafletOsmId: "CycleMap"
-  code: "C"
-  layerId: "cyclemap"
-  nameId: "cycle_map"
-  apiKeyId: "thunderforest_key"
-  canEmbed: true
-  canDownloadImage: true
-  credit:
-    id: "thunderforest_credit"
-    children:
-      thunderforest_link:
-        id: "andy_allan"
-        href: "https://www.thunderforest.com/"
-
-- leafletOsmId: "TransportMap"
-  leafletOsmDarkId: "TransportDarkMap"
-  code: "T"
-  layerId: "transportmap"
-  nameId: "transport_map"
-  apiKeyId: "thunderforest_key"
-  canEmbed: true
-  canDownloadImage: true
-  credit:
-    id: "thunderforest_credit"
-    children:
-      thunderforest_link:
-        id: "andy_allan"
-        href: "https://www.thunderforest.com/"
-
-- leafletOsmId: "TracestrackTopo"
-  code: "P"
-  layerId: "tracestracktopo"
-  nameId: "tracestracktop_topo"
-  apiKeyId: "tracestrack_key"
-  credit:
-    id: "tracestrack_credit"
-    children:
-      tracestrack_link:
-        id: "tracestrack"
-        href: "https://www.tracestrack.com/"
-
-- leafletOsmId: "HOT"
-  code: "H"
-  layerId: "hot"
-  nameId: "hot"
-  canEmbed: true
-  credit:
-    id: "hotosm_credit"
-    children:
-      hotosm_link:
-        id: "hotosm_name"
-        href: "https://www.hotosm.org/"
-      osm_france_link:
-        id: "osm_france"
-        href: "https://openstreetmap.fr/"
-
-- leafletOsmId: "History_2003_02"
-  code: "X"
-  year: "2003"
-  layerId: "history_2003_02"
-  nameId: "history"
-  canEmbed: true
-  canDownloadImage: true
-  credit:
-    id: "make_a_donation"
-    href: "https://supporting.openstreetmap.org"
-    donate: true
-
-- leafletOsmId: "History_2011_09"
-  code: "X"
-  year: "2011"
-  layerId: "history_2011_09"
-  nameId: "history"
-  canEmbed: true
-  canDownloadImage: true
-  credit:
-    id: "make_a_donation"
-    href: "https://supporting.openstreetmap.org"
-    donate: true
-
 - leafletOsmId: "History_2021_xx"
-  code: "X"
+  pane: "timelinePane"
+  code: "W"
   year: "2021"
   layerId: "history_2021_xx"
   nameId: "history"
@@ -116,26 +22,73 @@
     href: "https://supporting.openstreetmap.org"
     donate: true
 
-- leafletOsmId: "History_2xxx2_xx"
-  code: "X"
-  year: "xxxx"
-  layerId: "history_2xxx2_xx"
-  nameId: "history"
-  canEmbed: true
-  canDownloadImage: true
-  credit:
-    id: "make_a_donation"
-    href: "https://supporting.openstreetmap.org"
-    donate: true
+# - leafletOsmId: "CyclOSM"
+#   code: "Y"
+#   layerId: "cyclosm"
+#   nameId: "cyclosm"
+#   canEmbed: true
+#   credit:
+#     id: "cyclosm_credit"
+#     children:
+#       cyclosm_link:
+#         id: "cyclosm_name"
+#         href: "https://www.cyclosm.org"
+#       osm_france_link:
+#         id: "osm_france"
+#         href: "https://openstreetmap.fr/"
 
-- leafletOsmId: "History_2xxx_xx"
-  code: "X"
-  year: "xxxx"
-  layerId: "history_2xxx_xx"
-  nameId: "history"
-  canEmbed: true
-  canDownloadImage: true
-  credit:
-    id: "make_a_donation"
-    href: "https://supporting.openstreetmap.org"
-    donate: true
+# - leafletOsmId: "CycleMap"
+#   code: "C"
+#   layerId: "cyclemap"
+#   nameId: "cycle_map"
+#   apiKeyId: "thunderforest_key"
+#   canEmbed: true
+#   canDownloadImage: true
+#   credit:
+#     id: "thunderforest_credit"
+#     children:
+#       thunderforest_link:
+#         id: "andy_allan"
+#         href: "https://www.thunderforest.com/"
+
+# - leafletOsmId: "TransportMap"
+#   leafletOsmDarkId: "TransportDarkMap"
+#   code: "T"
+#   layerId: "transportmap"
+#   nameId: "transport_map"
+#   apiKeyId: "thunderforest_key"
+#   canEmbed: true
+#   canDownloadImage: true
+#   credit:
+#     id: "thunderforest_credit"
+#     children:
+#       thunderforest_link:
+#         id: "andy_allan"
+#         href: "https://www.thunderforest.com/"
+
+# - leafletOsmId: "TracestrackTopo"
+#   code: "P"
+#   layerId: "tracestracktopo"
+#   nameId: "tracestracktop_topo"
+#   apiKeyId: "tracestrack_key"
+#   credit:
+#     id: "tracestrack_credit"
+#     children:
+#       tracestrack_link:
+#         id: "tracestrack"
+#         href: "https://www.tracestrack.com/"
+
+# - leafletOsmId: "HOT"
+#   code: "H"
+#   layerId: "hot"
+#   nameId: "hot"
+#   canEmbed: true
+#   credit:
+#     id: "hotosm_credit"
+#     children:
+#       hotosm_link:
+#         id: "hotosm_name"
+#         href: "https://www.hotosm.org/"
+#       osm_france_link:
+#         id: "osm_france"
+#         href: "https://openstreetmap.fr/"

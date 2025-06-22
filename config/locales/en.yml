@@ -3322,6 +3322,9 @@ en:
         gps: Public GPS Traces
         overlays: Enable overlays for troubleshooting the map
         title: "Layers"
+      timeline_layers:
+        title: "History Layers"
+        header: History Map Layers
       copyright_text: "© %{copyright_link}"
       openstreetmap_contributors: "OpenStreetMap contributors"
       make_a_donation: Make a Donation

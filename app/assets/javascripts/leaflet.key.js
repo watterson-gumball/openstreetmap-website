@@ -10,12 +10,12 @@ L.OSM.key = function (options) {
       .on("show", shown)
       .on("hide", hidden);
 
-    map.on("baselayerchange", updateButton);
+    map.on("baselayeradd", updateButton);
 
     updateButton();
 
     function shown() {
-      map.on("zoomend baselayerchange", update);
+      map.on("zoomend baselayeradd", update);
       fetch("/key")
         .then(r => r.text())
         .then(html => { $section.html(html); })
@@ -23,11 +23,11 @@ L.OSM.key = function (options) {
     }
 
     function hidden() {
-      map.off("zoomend baselayerchange", update);
+      map.off("zoomend baselayeradd", update);
     }
 
     function updateButton() {
-      const disabled = !map.getMapBaseLayer().options.hasLegend;
+      const disabled = !map.getMapBaseLayer()?.options.hasLegend;
       button
         .toggleClass("disabled", disabled)
         .attr("data-bs-original-title",

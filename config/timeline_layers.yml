@@ -1,0 +1,51 @@
+- leafletOsmId: "History_2003_02"
+  pane: "timelinePane"
+  code: "X"
+  year: "2003"
+  layerId: "history_2003_02"
+  nameId: "history"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "History_2011_09"
+  pane: "timelinePane"
+  code: "X"
+  year: "2011"
+  layerId: "history_2011_09"
+  nameId: "history"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "History_2xxx2_xx"
+  pane: "timelinePane"
+  code: "X"
+  year: "xxxx"
+  layerId: "history_2xxx2_xx"
+  nameId: "history"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "History_2xxx_xx"
+  pane: "timelinePane"
+  code: "X"
+  year: "xxxx"
+  layerId: "history_2xxx_xx"
+  nameId: "history"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true

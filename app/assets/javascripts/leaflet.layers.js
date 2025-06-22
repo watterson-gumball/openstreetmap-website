@@ -17,7 +17,7 @@ L.OSM.layers = function (options) {
       const mapContainer = $("<div class='position-absolute top-0 start-0 bottom-0 end-0 z-0 bg-body-secondary'>")
         .appendTo(buttonContainer);
 
-      const input = $("<input type='radio' class='btn-check' name='layer'>")
+      const input = $("<input type='checkbox' class='btn-check' name='layer'>")
         .prop("id", id)
         .prop("checked", map.hasLayer(layer))
         .appendTo(buttonContainer);
@@ -28,8 +28,9 @@ L.OSM.layers = function (options) {
         .appendTo(buttonContainer);
 
       map.whenReady(function () {
-        const miniMap = L.map(mapContainer[0], { attributionControl: false, zoomControl: false, keyboard: false })
-          .addLayer(new layer.constructor(layer.options));
+        const miniMap = L.map(mapContainer[0], { attributionControl: false, zoomControl: false, keyboard: false });
+        miniMap.createPane("timelinePane");
+        miniMap.addLayer(new layer.constructor(layer.options));
 
         miniMap.dragging.disable();
         miniMap.touchZoom.disable();
@@ -60,44 +61,24 @@ L.OSM.layers = function (options) {
       });
 
       input.on("click", function () {
-        const hashParams = OSM.parseHash();
-        const withHistoryLayer = hashParams.layers?.includes("X");
-
-        if (layer.options.code === "X") {
-          for (const other of layers) {
-            if (other === layer || other.options.code !== "X") continue;
-
-            map.removeLayer(other);
-          }
-
-          map.addLayer(layer);
+        if (map.hasLayer(layer)) {
+          map.removeLayer(layer);
           return;
         }
 
-        if (layer.options.code !== "X") {
-
-          for (const other of layers) {
-            if (withHistoryLayer) {
-              map.removeLayer(other);
-              continue;
-            }
-
-            if (other !== layer) {
-              map.removeLayer(other);
-            }
-          }
-
-          map.addLayer(layer);
-          return;
-        }
+        map.addLayer(layer);
       });
 
-      item.on("dblclick", toggle);
+      // item.on("dblclick", toggle);
 
-      map.on("baselayerchange", function () {
+      map.on("baselayeradd", function () {
         input.prop("checked", map.hasLayer(layer));
       });
     });
+
+    $ui
+      .on("show", () => options.subSidebar.fire("sidebar:layers-show"))
+      .on("hide", () => options.subSidebar.fire("sidebar:layers-hide"));
 
     if (OSM.STATUS !== "api_offline" && OSM.STATUS !== "database_offline") {
       const overlaySection = $("<div>")
