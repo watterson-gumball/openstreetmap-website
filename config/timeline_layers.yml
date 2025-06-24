@@ -1,9 +1,10 @@
-- leafletOsmId: "History_2003_02"
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/zvartnoc_2003_02/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "X"
   year: "2003"
-  layerId: "history_2003_02"
-  nameId: "history"
+  layerId: "plan_2003_02"
+  nameId: "plan"
   canEmbed: true
   canDownloadImage: true
   credit:
@@ -11,12 +12,13 @@
     href: "https://supporting.openstreetmap.org"
     donate: true
 
-- leafletOsmId: "History_2011_09"
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/zvartnoc_2011_09/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "X"
   year: "2011"
-  layerId: "history_2011_09"
-  nameId: "history"
+  layerId: "plan_2011_09"
+  nameId: "plan"
   canEmbed: true
   canDownloadImage: true
   credit:
@@ -24,12 +26,13 @@
     href: "https://supporting.openstreetmap.org"
     donate: true
 
-- leafletOsmId: "History_2xxx2_xx"
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/zvartnoc_2xxx2_xx/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "X"
-  year: "xxxx"
-  layerId: "history_2xxx2_xx"
-  nameId: "history"
+  year: "__/__"
+  layerId: "plan__/__"
+  nameId: "plan"
   canEmbed: true
   canDownloadImage: true
   credit:
@@ -37,12 +40,13 @@
     href: "https://supporting.openstreetmap.org"
     donate: true
 
-- leafletOsmId: "History_2xxx_xx"
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/zvartnoc_2xxx_xx/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "X"
-  year: "xxxx"
-  layerId: "history_2xxx_xx"
-  nameId: "history"
+  year: "__/__"
+  layerId: "plan__/__2"
+  nameId: "plan"
   canEmbed: true
   canDownloadImage: true
   credit:

@@ -19,43 +19,10 @@ L.OSM.Mapnik = L.OSM.TileLayer.extend({
   }
 });
 
-L.OSM.History_2003_02 = L.OSM.TileLayer.extend({
-  options: {
-    // url: 'http://localhost:8080/services/zvartnoc_2003_02/tiles/{z}/{x}/{y}.png',
-    url: 'http://192.168.1.115:8080/services/zvartnoc_2003_02/tiles/{z}/{x}/{y}.png',
-    maxZoom: 19
-  }
-});
-
-L.OSM.History_2011_09 = L.OSM.TileLayer.extend({
-  options: {
-    // url: 'http://localhost:8080/services/zvartnoc_2011_09/tiles/{z}/{x}/{y}.png',
-    url: 'http://192.168.1.115:8080/services/zvartnoc_2011_09/tiles/{z}/{x}/{y}.png',
-    maxZoom: 19
-  }
-});
-
-L.OSM.History_2021_xx = L.OSM.TileLayer.extend({
-  options: {
-    // url: 'http://localhost:8080/services/zvartnoc_2021_xx/tiles/{z}/{x}/{y}.png',
-    url: 'http://192.168.1.115:8080/services/zvartnoc_2021_xx/tiles/{z}/{x}/{y}.png',
-    maxZoom: 19
-  }
-});
-
-L.OSM.History_2xxx2_xx = L.OSM.TileLayer.extend({
-  options: {
-    // url: 'http://localhost:8080/services/zvartnoc_2xxx2_xx/tiles/{z}/{x}/{y}.png',
-    url: 'http://192.168.1.115:8080/services/zvartnoc_2xxx2_xx/tiles/{z}/{x}/{y}.png',
-    maxZoom: 19
-  }
-});
-
-L.OSM.History_2xxx_xx = L.OSM.TileLayer.extend({
+L.OSM.Orthophoto = L.OSM.TileLayer.extend({
   options: {
     // url: 'http://localhost:8080/services/zvartnoc_2xxx_xx/tiles/{z}/{x}/{y}.png',
-    url: 'http://192.168.1.115:8080/services/zvartnoc_2xxx_xx/tiles/{z}/{x}/{y}.png',
-    maxZoom: 19
+    maxZoom: 23
   }
 });
 

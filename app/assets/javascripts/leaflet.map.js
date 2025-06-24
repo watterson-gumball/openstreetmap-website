@@ -128,6 +128,8 @@ L.OSM.Map = L.Map.extend({
   },
 
   updateLayers: function (layerParam) {
+    if (!layerParam.length) layerParam = "M";
+
     const layersCode = this.getLayersCode();
 
     if (layersCode.length === layerParam.length && layersCode === layerParam) {

@@ -9,12 +9,27 @@
     href: "https://supporting.openstreetmap.org"
     donate: true
 
-- leafletOsmId: "History_2021_xx"
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/zvartnoc_2021_xx/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "W"
   year: "2021"
-  layerId: "history_2021_xx"
-  nameId: "history"
+  layerId: "orthophoto_2021"
+  nameId: "orthophoto"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/aero/tiles/{z}/{x}/{y}.png"
+  pane: "timelinePane"
+  code: "F"
+  year: "2024"
+  layerId: "orthophoto_2024"
+  nameId: "orthophoto"
   canEmbed: true
   canDownloadImage: true
   credit:
