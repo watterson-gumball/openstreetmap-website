@@ -102,6 +102,14 @@ module BrowseHelper
     end
   end
 
+  def filtered_way_tags(tags)
+    whitelist = %w(code from_date ownership use_type area_m2 length_m)
+
+    tags.select do |k, _v|
+      whitelist.include? k.downcase
+    end
+  end
+
   private
 
   def name_locales(object)
