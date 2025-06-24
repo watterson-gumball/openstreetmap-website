@@ -373,6 +373,7 @@ hy:
       area_m2: "Մակերես (մ²)"
       from_date: Ամսաթիվ
       length_m: Երկարություն (մ)
+      code: Ծածկագիր
     timeout:
       sorry: Sorry, the data for the %{type} with the id %{id} took too long to retrieve.
       title: Timeout Error

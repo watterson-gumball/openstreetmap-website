@@ -4,11 +4,12 @@ module BrowseTagsHelper
   SECONDARY_WIKI_PREFIXES = "architect|artist|brand|buried|flag|genus|manufacturer|model|name:etymology|network|operator|species|subject".freeze
 
   def format_key(key)
-    if url = wiki_link("key", key)
-      link_to h(key), url, :title => t("browse.tag_details.wiki_link.key", :key => key)
-    else
-      h(key)
-    end
+    # if url = wiki_link("key", key)
+    #   link_to h(key), url, :title => t("browse.tag_details.wiki_link.key", :key => key)
+    # else
+    #   h(key)
+    # end
+    t("browse.tag_details.#{key.downcase}")
   end
 
   def format_value(key, value)
