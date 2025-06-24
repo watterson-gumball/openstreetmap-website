@@ -207,7 +207,8 @@ class ApplicationController < ActionController::Base
       current_user.save
     end
 
-    I18n.locale = Locale.available.preferred(preferred_languages)
+    I18n.locale = :hy
+    # I18n.locale = Locale.available.preferred(preferred_languages)
 
     response.headers["Vary"] = "Accept-Language"
     response.headers["Content-Language"] = I18n.locale.to_s

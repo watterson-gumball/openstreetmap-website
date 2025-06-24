@@ -17,6 +17,7 @@ data:
   read:
     ## Default:
     - config/locales/en.yml
+    - config/locales/hy.yml
     ## More files:
     # - config/locales/**/*.%{locale}.yml
 
