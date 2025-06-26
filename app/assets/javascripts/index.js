@@ -7,6 +7,7 @@
 //= require leaflet.layers
 //= require leaflet.timelineLayers
 //= require leaflet.key
+//= require leaflet.documents
 //= require leaflet.note
 //= require leaflet.share
 //= require leaflet.polyline
@@ -154,7 +155,8 @@ $(function () {
       sidebar,
       subSidebar,
       layers: map.baseTimelineLayers
-    })
+    }),
+    L.OSM.documents({ position, sidebar })
   ]);
 
   L.control.scale()

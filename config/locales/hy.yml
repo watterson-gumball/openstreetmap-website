@@ -2003,6 +2003,9 @@ hy:
       map_notes_zoom_in_tooltip: Մեծացրեք՝ քարտեզի նշումները տեսնելու համար
       queryfeature_disabled_tooltip: Մեծացրեք՝ հատկություններ հարցնելու համար
       queryfeature_tooltip: Հարցում հատկությունների
+    documents:
+      title: Վկայականներ
+      header: Վկայականներ
   layouts:
     about: Մեր Մասին
     communities: Համայնքներ

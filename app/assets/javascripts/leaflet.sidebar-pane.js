@@ -12,7 +12,7 @@ L.OSM.sidebarPane = function (options, uiClass, buttonTitle, paneTitle) {
 
     $(L.SVG.create("svg"))
       .append($(L.SVG.create("use")).attr("href", "#icon-" + uiClass))
-      .attr("class", "h-100 w-100")
+      .attr("class", "h-100 w-100").attr("viewBox", "0 0 24 24")
       .appendTo(button);
 
     if (buttonTitle) {

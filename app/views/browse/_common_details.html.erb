@@ -38,3 +38,7 @@
 <%# </ul> %>
 
 <%= render :partial => "browse/tag_details", :object => common_details.tags %>
+
+<% if @type == "way" and common_details.visible? %>
+  <%= render :partial => "browse/documents", :object => common_details.documents %>
+<% end %>
