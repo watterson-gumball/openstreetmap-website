@@ -28,3 +28,4 @@ docker-db-data
 
 *.osm
 *.pbf
+db/data
