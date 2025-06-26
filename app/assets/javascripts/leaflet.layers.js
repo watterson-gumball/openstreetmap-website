@@ -119,7 +119,7 @@ L.OSM.layers = function (options) {
         label.append(layer.options.year ? `${OSM.i18n.t("javascripts.map.layers.data")} ${layer.options.year}` : OSM.i18n.t("javascripts.map.layers." + name));
 
         if (layer.options.year) {
-          const pickrPlaceholder = $("<div></div>")
+          $("<div></div>")
             .prop("id", `layer-${layer.options.year}`)
             .appendTo(item);
 
@@ -155,26 +155,23 @@ L.OSM.layers = function (options) {
                 // Input / output Options
                 interaction: {
                     hex: true,
-                    rgba: true,
-                    hsla: true,
-                    hsva: true,
-                    cmyk: true,
                     input: true,
-                    clear: true,
                     save: true
                 }
             }
           });
 
-          pickr.on('save', (color, instance) => {
-            layer.options.styles[layer.options.year].way.color = color.toHEXA();
-            layer.options.styles[layer.options.year].area.color = color.toHEXA();
-            layer.setStyle({
-              color: color.toHEXA(),
-            });
-            if (!input.is(":checked")) return;
-            input.css("background-color", color.toHEXA())
-          });
+          pickr
+            .on("save", (color, instance) => {
+              layer.options.styles[layer.options.year].way.color = color.toHEXA().toString();
+              layer.options.styles[layer.options.year].area.color = color.toHEXA().toString();
+              layer.setStyle({
+                color: color.toHEXA().toString()
+              });
+              instance.hide();
+              if (!input.is(":checked")) return;
+              input.css("background-color", color.toHEXA().toString())
+            })
         }
 
         input.on("change", function () {

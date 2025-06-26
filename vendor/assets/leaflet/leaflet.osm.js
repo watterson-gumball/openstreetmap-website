@@ -99,28 +99,28 @@ L.OSM.DataLayer = L.FeatureGroup.extend({
     uninterestingTags: ['source', 'source_ref', 'source:ref', 'history', 'attribution', 'created_by', 'tiger:county', 'tiger:tlid', 'tiger:upload_uuid'],
     styles: {
       "2008": {
-        way: { color: '#E91E63F2' },
-        area: { color: '#E91E63F2' },
+        way: { color: '#F44336B3' },
+        area: { color: '#F44336B3' },
       },
       "2013": {
-        way: { color: '#9C27B0' },
-        area: { color: '#9C27B0' },
+        way: { color: '#00BCD4B3' },
+        area: { color: '#00BCD4B3' },
       },
       "2016": {
-        way: { color: '#673AB7' },
-        area: { color: '#673AB7' },
+        way: { color: '#673AB7B3' },
+        area: { color: '#673AB7B3' },
       },
       "2020": {
-        way: { color: '#3F51B5' },
-        area: { color: '#3F51B5' },
+        way: { color: '#4CAF50B3' },
+        area: { color: '#4CAF50B3' },
       },
       "2022": {
-        way: { color: '#00BCD4' },
-        area: { color: '#00BCD4' },
+        way: { color: '#FFC107B3' },
+        area: { color: '#FFC107B3' },
       },
       "2025": {
-        way: { color: '#747474' },
-        area: { color: '#747474' },
+        way: { color: '#E91E63B3' },
+        area: { color: '#E91E63B3' },
       },
     },
     asynchronous: false,
