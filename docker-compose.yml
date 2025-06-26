@@ -13,7 +13,7 @@ services:
       # Mount a tmp directory that will persist between runs
       - web-tmp:/app/tmp
       # Mount a storage directory that will persist between runs
-      - web-storage:/app/storage
+      # - web-storage:/app/storage
     tmpfs:
       /tmp/pids/
     ports:

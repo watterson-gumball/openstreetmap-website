@@ -480,6 +480,69 @@ CREATE TABLE public.changesets_subscribers (
 
 
 --
+-- Name: code_documents; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.code_documents (
+    id bigint NOT NULL,
+    code_id bigint NOT NULL,
+    document_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: code_documents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.code_documents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: code_documents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.code_documents_id_seq OWNED BY public.code_documents.id;
+
+
+--
+-- Name: codes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.codes (
+    id bigint NOT NULL,
+    value character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.codes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.codes_id_seq OWNED BY public.codes.id;
+
+
+--
 -- Name: current_node_tags; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -755,6 +818,37 @@ CREATE TABLE public.diary_entry_subscriptions (
     user_id bigint NOT NULL,
     diary_entry_id bigint NOT NULL
 );
+
+
+--
+-- Name: documents; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.documents (
+    id bigint NOT NULL,
+    title character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: documents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.documents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: documents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.documents_id_seq OWNED BY public.documents.id;
 
 
 --
@@ -1656,6 +1750,20 @@ ALTER TABLE ONLY public.changesets ALTER COLUMN id SET DEFAULT nextval('public.c
 
 
 --
+-- Name: code_documents id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.code_documents ALTER COLUMN id SET DEFAULT nextval('public.code_documents_id_seq'::regclass);
+
+
+--
+-- Name: codes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.codes ALTER COLUMN id SET DEFAULT nextval('public.codes_id_seq'::regclass);
+
+
+--
 -- Name: current_nodes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1695,6 +1803,13 @@ ALTER TABLE ONLY public.diary_comments ALTER COLUMN id SET DEFAULT nextval('publ
 --
 
 ALTER TABLE ONLY public.diary_entries ALTER COLUMN id SET DEFAULT nextval('public.diary_entries_id_seq'::regclass);
+
+
+--
+-- Name: documents id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.documents ALTER COLUMN id SET DEFAULT nextval('public.documents_id_seq'::regclass);
 
 
 --
@@ -1895,6 +2010,22 @@ ALTER TABLE ONLY public.changesets
 
 
 --
+-- Name: code_documents code_documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.code_documents
+    ADD CONSTRAINT code_documents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codes codes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.codes
+    ADD CONSTRAINT codes_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: current_node_tags current_node_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1988,6 +2119,14 @@ ALTER TABLE ONLY public.diary_entries
 
 ALTER TABLE ONLY public.diary_entry_subscriptions
     ADD CONSTRAINT diary_entry_subscriptions_pkey PRIMARY KEY (user_id, diary_entry_id);
+
+
+--
+-- Name: documents documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.documents
+    ADD CONSTRAINT documents_pkey PRIMARY KEY (id);
 
 
 --
@@ -2495,6 +2634,34 @@ CREATE INDEX index_changesets_subscribers_on_changeset_id ON public.changesets_s
 --
 
 CREATE UNIQUE INDEX index_changesets_subscribers_on_subscriber_id_and_changeset_id ON public.changesets_subscribers USING btree (subscriber_id, changeset_id);
+
+
+--
+-- Name: index_code_documents_on_code_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_code_documents_on_code_id ON public.code_documents USING btree (code_id);
+
+
+--
+-- Name: index_code_documents_on_code_id_and_document_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_code_documents_on_code_id_and_document_id ON public.code_documents USING btree (code_id, document_id);
+
+
+--
+-- Name: index_code_documents_on_document_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_code_documents_on_document_id ON public.code_documents USING btree (document_id);
+
+
+--
+-- Name: index_codes_on_value; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_codes_on_value ON public.codes USING btree (value);
 
 
 --
@@ -3079,6 +3246,14 @@ ALTER TABLE ONLY public.diary_entry_subscriptions
 
 
 --
+-- Name: code_documents fk_rails_1d14db0421; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.code_documents
+    ADD CONSTRAINT fk_rails_1d14db0421 FOREIGN KEY (code_id) REFERENCES public.codes(id);
+
+
+--
 -- Name: note_subscriptions fk_rails_2c1913f293; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3124,6 +3299,14 @@ ALTER TABLE ONLY public.oauth_access_tokens
 
 ALTER TABLE ONLY public.oauth_openid_requests
     ADD CONSTRAINT fk_rails_77114b3b09 FOREIGN KEY (access_grant_id) REFERENCES public.oauth_access_grants(id) ON DELETE CASCADE;
+
+
+--
+-- Name: code_documents fk_rails_95dc198f3c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.code_documents
+    ADD CONSTRAINT fk_rails_95dc198f3c FOREIGN KEY (document_id) REFERENCES public.documents(id);
 
 
 --
@@ -3513,6 +3696,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('23'),
 ('22'),
 ('21'),
+('20250625015115'),
+('20250625015005'),
+('20250624234312'),
 ('20250304172798'),
 ('20250304172758'),
 ('20250217140049'),
