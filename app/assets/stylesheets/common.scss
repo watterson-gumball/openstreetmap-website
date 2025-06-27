@@ -207,7 +207,7 @@ body.small-nav {
       justify-content: center;
     }
 
-    .user-menu, .login-menu {
+    .user-menu, .login-menu, .locale-menu {
       width: 100%;
     }
   }
@@ -847,7 +847,7 @@ img.user_thumbnail {
   max-height: 50px;
 }
 
-img.user_thumbnail_tiny {
+img.user_thumbnail_tiny, img.hy_flag_thumbnail_tiny {
   width: 25px;
   height: 25px;
   object-fit: contain;

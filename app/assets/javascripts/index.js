@@ -384,7 +384,9 @@ $(function () {
 
   OSM.router.load();
 
-  $(document).on("click", "a", function (e) {
+  $(document).on("click", "a:not(.reload-page)", function (e) {
+    console.log(location)
+
     if (e.isDefaultPrevented() || e.isPropagationStopped() || $(e.target).data("turbo")) {
       return;
     }

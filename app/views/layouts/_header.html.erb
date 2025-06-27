@@ -73,6 +73,24 @@
         </ul>
       </li>
     </ul>
+    <div class='d-inline-flex dropdown locale-menu'>
+      <button class='d-flex gap-1 align-items-center justify-content-center dropdown-toggle btn btn-outline-secondary border-secondary-subtle bg-body text-secondary px-2 py-1 flex-grow-1 mw-100' type='button' data-bs-toggle='dropdown'>
+        <%= image_tag "#{I18n.locale}.svg", :width => 50, :height => 50, :class => "hy_flag_thumbnail_tiny rounded-1 bg-body" %>
+        <span class='username align-middle text-truncate' dir='auto'>
+          <%#= current_user.display_name_was %>
+        </span>
+      </button>
+      <div class='dropdown-menu dropdown-menu-end' data-turbo='false' >
+        <%= link_to url_for(locale: :hy), :class => "dropdown-item reload-page" do %>
+          <%= image_tag "hy.svg", :width => 50, :height => 50, :class => "hy_flag_thumbnail_tiny rounded-1 bg-transparent" %>
+          Հայերեն
+        <% end %>
+        <%= link_to url_for(locale: :en), :class => "dropdown-item reload-page" do %>
+          <%= image_tag "en.svg", :width => 50, :height => 50, :class => "hy_flag_thumbnail_tiny rounded-1 bg-transparent" %>
+          English
+        <% end %>
+      </div>
+    </div>
     <% if current_user && current_user.id %>
       <div class='d-inline-flex dropdown user-menu logged-in'>
         <button class='d-flex gap-1 align-items-center justify-content-center dropdown-toggle btn btn-outline-secondary border-secondary-subtle bg-body text-secondary px-2 py-1 flex-grow-1 mw-100' type='button' data-bs-toggle='dropdown'>
