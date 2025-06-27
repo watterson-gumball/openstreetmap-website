@@ -12,26 +12,29 @@
         <!-- Displaying user's own profile page -->
         <nav class='secondary-actions'>
           <ul>
-            <li>
-              <%= link_to t(".my edits"), :controller => "changesets", :action => "index", :display_name => current_user.display_name %>
-              <span class='badge count-number'><%= number_with_delimiter(current_user.changesets.size) %></span>
-            </li>
+            <%#
+            # Need in future
+            #
+            # <li>
+            #   <%= link_to t(".my edits"), :controller => "changesets", :action => "index", :display_name => current_user.display_name %> <%#
+            #   <span class='badge count-number'><%= number_with_delimiter(current_user.changesets.size) %> <%#</span>
+            # </li> %>
             <li>
               <%= link_to t(".my notes"), user_notes_path(current_user) %>
               <span class='badge count-number'><%= number_with_delimiter(current_user.note_comments.size) %></span>
             </li>
-            <li>
-              <%= link_to t(".my traces"), :controller => "traces", :action => "mine" %>
-              <span class='badge count-number'><%= number_with_delimiter(current_user.traces.size) %></span>
-            </li>
-            <li>
-              <%= link_to t(".my diary"), :controller => "diary_entries", :action => "index", :display_name => current_user.display_name %>
-              <span class='badge count-number'><%= number_with_delimiter(current_user.diary_entries.size) %></span>
-            </li>
-            <li>
-              <%= link_to t(".my comments"), user_diary_comments_path(current_user) %>
-              <span class='badge count-number'><%= number_with_delimiter(current_user.diary_comments.size) %></span>
-            </li>
+            <%# <li>
+              <%= link_to t(".my traces"), :controller => "traces", :action => "mine" %> <%#
+              <span class='badge count-number'><%= number_with_delimiter(current_user.traces.size) %> <%#</span>
+            </li> %>
+            <%# <li>
+              <%= link_to t(".my diary"), :controller => "diary_entries", :action => "index", :display_name => current_user.display_name %> <%#
+              <span class='badge count-number'><%= number_with_delimiter(current_user.diary_entries.size) %> <%#</span>
+            </li> %>
+            <%# <li>
+              <%= link_to t(".my comments"), user_diary_comments_path(current_user) %> <%#
+              <span class='badge count-number'><%= number_with_delimiter(current_user.diary_comments.size) %> <%#</span>
+            </li> %>
             <li>
               <%= link_to t(".my_account"), account_path %>
             </li>
