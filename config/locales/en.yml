@@ -1883,8 +1883,8 @@ en:
     partners_fastly: Fastly
     partners_partners: partners
     project_name:
-      h1: OpenStreetMap
-      title: OpenStreetMap
+      h1: CGT Zvartnots
+      title: CGT Zvartnots
     sign_up: Sign Up
     start_mapping: Start Mapping
     tou: Terms of Use
@@ -2450,6 +2450,14 @@ en:
       preview: Preview
   site:
     about:
+      airport_name: Zvartnots
+      about_1_html: |
+        The map is based on cadastral layers, archival paper maps,
+        as well as property ownership registration certificates. The data has been combined
+        in chronological order to reconstruct the spatial changes and development stages of the area.
+      about_2_html: |
+        The map was built on the OpenStreetMap (OSM) open platform,
+        integrated with the appropriate software tools to enable the display of cartographic data.
       community_driven_1_html: |
         OpenStreetMap's community is diverse, passionate, and growing every day.
         Our contributors include enthusiast mappers, GIS professionals, engineers
@@ -2469,8 +2477,8 @@ en:
       copyright_symbol_html: "&copy;"
       heading_html: "%{copyright}OpenStreetMap %{br} contributors"
       lede_text: |
-        OpenStreetMap is built by a community of mappers that contribute and maintain data
-        about roads, trails, cafés, railway stations, and much more, all over the world.
+        The Center for Geospatial Technologies has developed an interactive web map
+        that presents the historical development of the Zvartnots International Airport area across different time periods.
       legal_1_1_aup: Acceptable Use Policies
       legal_1_1_aup_url: https://wiki.openstreetmap.org/wiki/Acceptable_Use_Policy
       legal_1_1_html: |

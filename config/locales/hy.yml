@@ -53,11 +53,11 @@ hy:
         not_agreed_with_pd: You haven't declared that you consider your edits to be in the Public Domain.
         pd_link_text: declare
         review link text: Please follow this link at your convenience to review and accept the new Contributor Terms.
-      current email address: Current Email Address
-      delete_account: Delete Account...
+      current email address: Email Հասցե
+      delete_account: Ջնջել Հաշիվը...
       external auth: External Authentication
-      my_account: My Account
-      save changes button: Save Changes
+      my_account: Իմ հաշիվը
+      save changes button: Հաստատել փոփոխությունները
       title: Edit account
     terms:
       show:
@@ -149,14 +149,14 @@ hy:
         auth_provider: Authentication Provider
         auth_uid: Authentication UID
         description: Profile Description
-        display_name: Display Name
+        display_name: Օգտանուն
         email: Email
         home_lat: Latitude
         home_lon: Longitude
         languages: Preferred Languages
-        new_email: New Email Address
-        pass_crypt: Password
-        pass_crypt_confirmation: Confirm Password
+        new_email: Նոր Email Հասցե
+        pass_crypt: Գաղտնաբառ
+        pass_crypt_confirmation: Հաստատել Գաղտնաբառը
         preferred_editor: Preferred Editor
     errors:
       messages:
@@ -266,7 +266,7 @@ hy:
     require_cookies:
       cookies_needed: You appear to have cookies disabled - please enable cookies in your browser before continuing.
     settings_menu:
-      account_settings: Account Settings
+      account_settings: Հաշվի Կարգավորումներ
       muted_users: Muted Users
       oauth2_applications: OAuth 2 Applications
       oauth2_authorizations: OAuth 2 Authorizations
@@ -2603,14 +2603,14 @@ hy:
       access_another_page: 'You arrived here while trying to access another page. If you want to access that page using your current account, click the button below:'
       already_logged_in_html: You are already logged in as %{user}. Logging in again will change your current account.
       auth failure: Sorry, could not log in with those details.
-      email or username: Email Address or Username
-      login_button: Log in
+      email or username: Email Հասցե կամ Օգտանուն
+      login_button: Մուտք
       login_to_authorize_html: Log in to OpenStreetMap to access %{client_app_name}.
-      lost password link: Lost your password?
+      lost password link: Գաղտնաբառի վերականգում
       or: or
-      password: Password
-      remember: Remember me
-      tab_title: Log In
+      password: Գաղտնաբառ
+      remember: Հիշել մուտքի տվյալները
+      tab_title: Մուտք
       visit_referring_page: Visit referring page
       with external: or log in with a third party
     suspended_flash:
@@ -2663,6 +2663,7 @@ hy:
       preview: Preview
   site:
     about:
+      airport_name: Զվարթնոց
       about_1_html: |
         Քարտեզի ստեղծման հիմքում ընկած են կադաստրային շերտեր, արխիվային թղթային քարտեզներ,
         ինչպես նաև անշարժ գույքի նկատմամբ իրավունքի գրանցման վկայագրեր։ Տվյալները համադրվել
@@ -3601,7 +3602,7 @@ hy:
         privacy_policy: privacy policy
         privacy_policy_title: OSMF privacy policy including section on email addresses
         privacy_policy_url: https://osmfoundation.org/wiki/Privacy_Policy
-      continue: Sign Up
+      continue: Գրանցում
       display name description: Your publicly displayed username. You can change this later in the preferences.
       duplicate_social_email: If you already have an OpenStreetMap account and wish to use a 3rd party identity provider, please log in using your password and modify the settings of your account.
       email_help:
@@ -3614,7 +3615,7 @@ hy:
       please_contact_support_html: Please contact %{support_link} to arrange for an account to be created - we will try and deal with the request as quickly as possible.
       signup_to_authorize_html: Sign up with OpenStreetMap to access %{client_app_name}.
       support: support
-      tab_title: Sign Up
+      tab_title: Գրանցում
       title: Sign Up
       use external auth: or sign up with a third party
     no_such_user:
@@ -3671,7 +3672,7 @@ hy:
       my diary: My Diary
       my edits: My Edits
       my messages: Նամակներ
-      my notes: My Notes
+      my notes: Իմ Նշումները
       my profile: Իմ էջը
       my traces: My Traces
       my_account: Իմ հաշիվը
