@@ -395,6 +395,10 @@ hy:
       nodes_count:
         one: "%{count} կետ"
         other: "%{count} կետեր"
+      documents: Վկայականներ
+      documents_count:
+        one: "%{count} Վկայական"
+        other: "%{count} Վկայականներ"
       title_html: 'Ուղի: %{name}'
   changeset_comments:
     feeds:

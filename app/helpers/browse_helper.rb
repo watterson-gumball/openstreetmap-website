@@ -30,6 +30,10 @@ module BrowseHelper
     tag.li(tag.div(element_icon(type, object) + tag.div(:class => "align-self-center", &), :class => "d-flex gap-1"))
   end
 
+  def document_list_item(type, object, &)
+    tag.li(tag.div(element_icon(type, object) + tag.div(:class => "align-self-center", &), :class => "d-flex gap-1"))
+  end
+
   def element_list_item_with_strikethrough(type, object, &)
     element_list_item type, object do
       element_strikethrough object, &

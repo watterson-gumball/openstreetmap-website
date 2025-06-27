@@ -20,6 +20,18 @@
       </details>
     <% end %>
 
+    <h4><%= t ".documents" %></h4>
+    <details <%= "open" if way.documents.count < 10 %>>
+      <summary><%= t ".documents_count", :count => way.documents.count %></summary>
+      <ul class="list-unstyled browse-element-list">
+        <% way.documents.each do |document| %>
+          <li>
+            <%= link_to document.title, url_for(document.file), target: "_blank", rel: "noopener" %>
+          </li>
+        <% end %>
+      </ul>
+    </details>
+
     <% unless way.way_nodes.empty? %>
       <h4><%= t ".nodes" %></h4>
       <details <%= "open" if way.way_nodes.count < 10 %>>
