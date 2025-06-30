@@ -195,7 +195,8 @@ class ApplicationController < ActionController::Base
                              elsif current_user
                                current_user.preferred_languages
                              else
-                               Locale.list(http_accept_language.user_preferred_languages)
+                               Locale.list("en")
+                              #  Locale.list(http_accept_language.user_preferred_languages)
                              end
   end
 

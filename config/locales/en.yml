@@ -1777,6 +1777,8 @@ en:
         history: History
         hot: Humanitarian
         standard: Standard
+        plan: Plan
+        orthophoto: Orthophoto
         tracestracktop_topo: Tracestrack Topo
         transport_map: Transport Map
       copyright_text: "© %{copyright_link}"
