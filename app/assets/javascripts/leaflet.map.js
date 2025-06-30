@@ -17,7 +17,7 @@ L.OSM.Map = L.Map.extend({
     this.baseLayers = OSM.LAYER_DEFINITIONS.map((
       { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
     ) => {
-      if (credit) layerOptions.attribution = makeAttribution(credit);
+      // if (credit) layerOptions.attribution = makeAttribution(credit);
       if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
       const layerConstructor =
         (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
@@ -37,7 +37,7 @@ L.OSM.Map = L.Map.extend({
     this.baseTimelineLayers = OSM.TIMELINE_LAYER_DEFINITIONS.map((
       { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
     ) => {
-      if (credit) layerOptions.attribution = makeAttribution(credit);
+      // if (credit) layerOptions.attribution = makeAttribution(credit);
       if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
       const layerConstructor =
         (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
