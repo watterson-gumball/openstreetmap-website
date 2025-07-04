@@ -10,7 +10,21 @@
     donate: true
 
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/zvartnoc_2021_xx/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/2014.ortho/tiles/{z}/{x}/{y}.png"
+  pane: "timelinePane"
+  code: "Q"
+  year: "2014"
+  layerId: "orthophoto_2014"
+  nameId: "orthophoto"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/2021.ortho/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "W"
   year: "2021"
@@ -24,7 +38,7 @@
     donate: true
 
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/aero/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/2024.ortho/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "F"
   year: "2024"
@@ -107,3 +121,64 @@
 #       osm_france_link:
 #         id: "osm_france"
 #         href: "https://openstreetmap.fr/"
+
+
+- leafletOsmId: "Orthophoto"
+  # url: "http://192.168.1.115:8080/services/zvartnoc_2003_02/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/2003.plan/tiles/{z}/{x}/{y}.png"
+  pane: "timelinePane"
+  code: "X"
+  year: "2003"
+  layerId: "plan_2003_02"
+  nameId: "plan"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "Orthophoto"
+  # url: "http://192.168.1.115:8080/services/zvartnoc_2011_09/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/2011.plan/tiles/{z}/{x}/{y}.png"
+  pane: "timelinePane"
+  code: "X"
+  year: "2011"
+  layerId: "plan_2011_09"
+  nameId: "plan"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "Orthophoto"
+  # url: "http://192.168.1.115:8080/services/zvartnoc_2xxx2_xx/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/200x.plan/tiles/{z}/{x}/{y}.png"
+  pane: "timelinePane"
+  code: "X"
+  year: "__/__"
+  layerId: "plan__/__"
+  nameId: "plan"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "Orthophoto"
+  # url: "http://192.168.1.115:8080/services/zvartnoc_2xxx_xx/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/200xx.plan/tiles/{z}/{x}/{y}.png"
+  pane: "timelinePane"
+  code: "X"
+  year: "__/__"
+  layerId: "plan__/__2"
+  nameId: "plan"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true

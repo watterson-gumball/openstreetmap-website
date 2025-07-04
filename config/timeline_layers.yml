@@ -1,5 +1,6 @@
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/zvartnoc_2003_02/tiles/{z}/{x}/{y}.png"
+  # url: "http://192.168.1.115:8080/services/zvartnoc_2003_02/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/2003.plan/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "X"
   year: "2003"
@@ -13,7 +14,8 @@
     donate: true
 
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/zvartnoc_2011_09/tiles/{z}/{x}/{y}.png"
+  # url: "http://192.168.1.115:8080/services/zvartnoc_2011_09/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/2011.plan/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "X"
   year: "2011"
@@ -27,7 +29,8 @@
     donate: true
 
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/zvartnoc_2xxx2_xx/tiles/{z}/{x}/{y}.png"
+  # url: "http://192.168.1.115:8080/services/zvartnoc_2xxx2_xx/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/200x.plan/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "X"
   year: "__/__"
@@ -41,7 +44,8 @@
     donate: true
 
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/zvartnoc_2xxx_xx/tiles/{z}/{x}/{y}.png"
+  # url: "http://192.168.1.115:8080/services/zvartnoc_2xxx_xx/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/200xx.plan/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "X"
   year: "__/__"
