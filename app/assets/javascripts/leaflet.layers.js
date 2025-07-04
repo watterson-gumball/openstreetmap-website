@@ -4,9 +4,16 @@ L.OSM.layers = function (options) {
   control.onAddPane = function (map, button, $ui, toggle) {
     const layers = options.layers;
 
+    const $details = $("<details>").appendTo($ui);
+    const $summary = $("<summary>")
+      .text(OSM.i18n.t("javascripts.map.layers.title") || "Base Layers")
+      .appendTo($details);
+
+    const $baseContent = $("<div>").appendTo($details);
+
     const baseSection = $("<div>")
       .attr("class", "base-layers d-grid gap-3 p-3 border-bottom border-secondary-subtle")
-      .appendTo($ui);
+      .appendTo($baseContent);
 
     layers.forEach(function (layer, i) {
       const id = "map-ui-layer-" + i;
