@@ -385,6 +385,9 @@ en:
       nodes_count:
         one: "%{count} node"
         other: "%{count} nodes"
+      documents_count:
+        one: "%{count} Document"
+        other: "%{count} Documents"
       title_html: 'Way: %{name}'
   changeset_comments:
     feeds:
@@ -2477,7 +2480,8 @@ en:
       community_driven_title: Community Driven
       community_driven_user_diaries: user diaries
       copyright_symbol_html: "&copy;"
-      heading_html: "%{copyright}OpenStreetMap %{br} contributors"
+      # heading_html: "%{copyright}OpenStreetMap %{br} contributors"
+      heading_html: "%{copyright}Center of %{br} Geospatial %{br} Technologies"
       lede_text: |
         The Center for Geospatial Technologies has developed an interactive web map
         that presents the historical development of the Zvartnots International Airport area across different time periods.
