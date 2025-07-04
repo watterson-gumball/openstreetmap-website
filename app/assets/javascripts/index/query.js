@@ -126,6 +126,11 @@ OSM.Query = function (map) {
     if (tags["addr:housenumber"] && tags["addr:street"]) {
       return tags["addr:housenumber"] + " " + tags["addr:street"];
     }
+
+    if (tags["from_date"] && tags["Code"]) {
+      return `#${tags["from_date"]}_${tags["Code"]}`;
+    }
+
     return "#" + feature.id;
   }
 
