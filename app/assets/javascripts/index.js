@@ -1,11 +1,9 @@
 //= require_self
 //= require leaflet.sidebar
 //= require leaflet.sidebar-pane
-//= require leaflet.subSidebar
 //= require leaflet.sub-sidebar-pane
 //= require leaflet.locate
 //= require leaflet.layers
-//= require leaflet.timelineLayers
 //= require leaflet.key
 //= require leaflet.documents
 //= require leaflet.note
@@ -39,6 +37,7 @@ $(function () {
   map.createPane("timelinePane");
 
   OSM.availableYears = ["2008", "2013", "2016", "2020", "2022", "2025"];
+  // OSM.availableYears = ["2013", "2014", "2015", "2016", "2019", "2020", "2025"];
 
   OSM.loadSidebarContent = function (path, callback) {
     let content_path = path;
@@ -104,8 +103,8 @@ $(function () {
   const sidebar = L.OSM.sidebar("#map-ui")
     .addTo(map);
 
-  const subSidebar = L.OSM.subSidebar("#sub-map-ui")
-    .addTo(map);
+  // const subSidebar = L.OSM.subSidebar("#sub-map-ui")
+  //   .addTo(map);
 
   const position = $("html").attr("dir") === "rtl" ? "topleft" : "topright";
 
@@ -130,7 +129,7 @@ $(function () {
     L.OSM.layers({
       position,
       sidebar,
-      subSidebar,
+      // subSidebar,
       layers: map.baseLayers
     }),
     L.OSM.key({ position, sidebar }),
@@ -150,12 +149,12 @@ $(function () {
   ]);
 
   addControlGroup([
-    L.OSM.timelineLayers({
-      position,
-      sidebar,
-      subSidebar,
-      layers: map.baseTimelineLayers
-    }),
+    // L.OSM.timelineLayers({
+    //   position,
+    //   sidebar,
+    //   subSidebar,
+    //   layers: map.baseTimelineLayers
+    // }),
     L.OSM.documents({ position, sidebar })
   ]);
 
@@ -385,8 +384,6 @@ $(function () {
   OSM.router.load();
 
   $(document).on("click", "a:not(.reload-page)", function (e) {
-    console.log(location)
-
     if (e.isDefaultPrevented() || e.isPropagationStopped() || $(e.target).data("turbo")) {
       return;
     }

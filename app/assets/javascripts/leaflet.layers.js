@@ -76,9 +76,9 @@ L.OSM.layers = function (options) {
       });
     });
 
-    $ui
-      .on("show", () => options.subSidebar.fire("sidebar:layers-show"))
-      .on("hide", () => options.subSidebar.fire("sidebar:layers-hide"));
+    // $ui
+    //   .on("show", () => options.subSidebar.fire("sidebar:layers-show"))
+    //   .on("hide", () => options.subSidebar.fire("sidebar:layers-hide"));
 
     if (OSM.STATUS !== "api_offline" && OSM.STATUS !== "database_offline") {
       const overlaySection = $("<div>")

@@ -12,6 +12,8 @@ L.extend(L.LatLngBounds.prototype, {
 L.OSM.Map = L.Map.extend({
   initialize: function (id, options) {
     L.OSM.availableYears = ["2008", "2013", "2016", "2020", "2022", "2025"];
+    // L.OSM.availableYears = ["2013", "2014", "2015", "2016", "2019", "2020", "2025"];
+
     L.Map.prototype.initialize.call(this, id, options);
 
     this.baseLayers = OSM.LAYER_DEFINITIONS.map((
@@ -34,25 +36,25 @@ L.OSM.Map = L.Map.extend({
       return layer;
     });
 
-    this.baseTimelineLayers = OSM.TIMELINE_LAYER_DEFINITIONS.map((
-      { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
-    ) => {
-      // if (credit) layerOptions.attribution = makeAttribution(credit);
-      if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
-      const layerConstructor =
-        (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
-        L.OSM[leafletOsmId] ||
-        L.OSM.TileLayer;
+    // this.baseTimelineLayers = OSM.TIMELINE_LAYER_DEFINITIONS.map((
+    //   { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
+    // ) => {
+    //   // if (credit) layerOptions.attribution = makeAttribution(credit);
+    //   if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
+    //   const layerConstructor =
+    //     (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
+    //     L.OSM[leafletOsmId] ||
+    //     L.OSM.TileLayer;
 
-      const layer = new layerConstructor(layerOptions);
-      layer.on("add", () => {
-        this.fire("baselayeradd", { layer: layer });
-      });
-      layer.on("remove", () => {
-        this.fire("baselayerremove", { layer: layer });
-      });
-      return layer;
-    });
+    //   const layer = new layerConstructor(layerOptions);
+    //   layer.on("add", () => {
+    //     this.fire("baselayeradd", { layer: layer });
+    //   });
+    //   layer.on("remove", () => {
+    //     this.fire("baselayerremove", { layer: layer });
+    //   });
+    //   return layer;
+    // });
 
     this.noteLayer = new L.FeatureGroup();
     this.noteLayer.options = { code: "N" };
