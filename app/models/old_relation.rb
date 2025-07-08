@@ -8,14 +8,17 @@
 #  version      :bigint           not null, primary key
 #  visible      :boolean          default(TRUE), not null
 #  redaction_id :integer
+#  region_id    :bigint
 #
 # Indexes
 #
-#  relations_changeset_id_idx  (changeset_id)
-#  relations_timestamp_idx     (timestamp)
+#  index_relations_on_region_id  (region_id)
+#  relations_changeset_id_idx    (changeset_id)
+#  relations_timestamp_idx       (timestamp)
 #
 # Foreign Keys
 #
+#  fk_rails_...                 (region_id => regions.id) ON DELETE => cascade
 #  relations_changeset_id_fkey  (changeset_id => changesets.id)
 #  relations_redaction_id_fkey  (redaction_id => redactions.id)
 #

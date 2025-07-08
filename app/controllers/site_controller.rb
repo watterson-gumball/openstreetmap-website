@@ -9,6 +9,7 @@ class SiteController < ApplicationController
   before_action :require_oauth, :only => [:index]
   before_action :require_user, :only => [:id]
   before_action :update_totp, :only => [:index]
+  before_action :set_region
 
   authorize_resource :class => false
 

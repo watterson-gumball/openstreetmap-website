@@ -1,0 +1,38 @@
+- leafletOsmId: "Mapnik"
+  code: "M"
+  layerId: "mapnik"
+  nameId: "standard"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/gyumri.aero.ortho.2014/tiles/{z}/{x}/{y}.png"
+  pane: "timelinePane"
+  code: "I"
+  year: "2014"
+  layerId: "orthophoto_2014"
+  nameId: "orthophoto"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/gyumri.aero.ortho.2022/tiles/{z}/{x}/{y}.png"
+  pane: "timelinePane"
+  code: "J"
+  year: "2022"
+  layerId: "orthophoto_2022"
+  nameId: "orthophoto"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true

@@ -1,14 +1,3 @@
-- leafletOsmId: "Mapnik"
-  code: "M"
-  layerId: "mapnik"
-  nameId: "standard"
-  canEmbed: true
-  canDownloadImage: true
-  credit:
-    id: "make_a_donation"
-    href: "https://supporting.openstreetmap.org"
-    donate: true
-
 - leafletOsmId: "Orthophoto"
   url: "http://192.168.1.115:8080/services/yerevan.aero.ortho.2014/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"

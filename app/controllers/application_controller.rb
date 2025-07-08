@@ -214,6 +214,20 @@ class ApplicationController < ActionController::Base
     response.headers["Content-Language"] = I18n.locale.to_s
   end
 
+  helper_method :current_region
+
+  def set_region
+    @region = Region.find_by(name: params[:region]) ||
+              Region.find_by(name: cookies[:_region]) ||
+              Region.default
+
+    cookies[:_region] = @region.name
+  end
+
+  def current_region
+    @current_region ||= Region.find_by(name: cookies[:region]) || Region.default
+  end
+
   ##
   # wrap a web page in a timeout
   def web_timeout(&)

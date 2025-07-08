@@ -7,14 +7,17 @@
 #  timestamp    :datetime         not null
 #  visible      :boolean          not null
 #  version      :bigint           not null
+#  region_id    :bigint
 #
 # Indexes
 #
-#  current_ways_timestamp_idx  (timestamp)
+#  current_ways_timestamp_idx       (timestamp)
+#  index_current_ways_on_region_id  (region_id)
 #
 # Foreign Keys
 #
 #  current_ways_changeset_id_fkey  (changeset_id => changesets.id)
+#  fk_rails_...                    (region_id => regions.id) ON DELETE => cascade
 #
 
 class Way < ApplicationRecord

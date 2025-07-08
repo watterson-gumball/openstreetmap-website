@@ -1858,6 +1858,8 @@ en:
       queryfeature_disabled_tooltip: Zoom in to query features
       queryfeature_tooltip: Query features
   layouts:
+    gyumri: Shirak
+    yerevan: Zvartnots
     about: About
     communities: Communities
     copyright: Copyright

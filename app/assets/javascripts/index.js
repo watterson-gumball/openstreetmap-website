@@ -130,7 +130,8 @@ $(function () {
       position,
       sidebar,
       // subSidebar,
-      layers: map.baseLayers
+      layers: (Cookies.get("_region") === "yerevan" ? map.baseLayers : map.gyumriBaseLayers)
+      // layers: map.baseLayers
     }),
     L.OSM.key({ position, sidebar }),
     L.OSM.share({
@@ -203,6 +204,26 @@ $(function () {
   $(".welcome .btn-close").on("click", function () {
     $(".welcome").hide();
     Cookies.set("_osm_welcome", "hide", { secure: true, expires: expiry, path: "/", samesite: "lax" });
+  });
+
+  const regionSwitchers = $(".region-switcher");
+  regionSwitchers.on("click", function (e) {
+    const $el = $(this);
+    const previousRegion = Cookies.get("_region");
+    const currentRegion = $el.data("region");
+
+    if (currentRegion === previousRegion) {
+      return;
+    }
+
+    Cookies.set("_region", currentRegion, {path: "/"});
+
+    OSM.router.replace(location.pathname);
+    // OSM.router.load();
+    location.reload()
+
+    // regionSwitchers.removeClass("active");
+    // $el.addClass("active");
   });
 
   const bannerExpiry = new Date();

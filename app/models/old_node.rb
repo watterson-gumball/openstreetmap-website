@@ -11,15 +11,18 @@
 #  tile         :bigint           not null
 #  version      :bigint           not null, primary key
 #  redaction_id :integer
+#  region_id    :bigint
 #
 # Indexes
 #
-#  nodes_changeset_id_idx  (changeset_id)
-#  nodes_tile_idx          (tile)
-#  nodes_timestamp_idx     (timestamp)
+#  index_nodes_on_region_id  (region_id)
+#  nodes_changeset_id_idx    (changeset_id)
+#  nodes_tile_idx            (tile)
+#  nodes_timestamp_idx       (timestamp)
 #
 # Foreign Keys
 #
+#  fk_rails_...             (region_id => regions.id) ON DELETE => cascade
 #  nodes_changeset_id_fkey  (changeset_id => changesets.id)
 #  nodes_redaction_id_fkey  (redaction_id => redactions.id)
 #

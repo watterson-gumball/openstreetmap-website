@@ -11,6 +11,7 @@
 #  max_lon     :integer
 #  closed_at   :datetime         not null
 #  num_changes :integer          default(0), not null
+#  region_id   :bigint
 #
 # Indexes
 #
@@ -19,11 +20,13 @@
 #  changesets_created_at_idx                  (created_at)
 #  changesets_user_id_created_at_idx          (user_id,created_at)
 #  changesets_user_id_id_idx                  (user_id,id)
+#  index_changesets_on_region_id              (region_id)
 #  index_changesets_on_user_id_and_closed_at  (user_id,closed_at)
 #
 # Foreign Keys
 #
 #  changesets_user_id_fkey  (user_id => users.id)
+#  fk_rails_...             (region_id => regions.id) ON DELETE => cascade
 #
 
 class Changeset < ApplicationRecord

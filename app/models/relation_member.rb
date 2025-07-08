@@ -7,14 +7,17 @@
 #  member_id   :bigint           not null
 #  member_role :string           not null
 #  sequence_id :integer          default(0), not null, primary key
+#  region_id   :bigint
 #
 # Indexes
 #
-#  current_relation_members_member_idx  (member_type,member_id)
+#  current_relation_members_member_idx          (member_type,member_id)
+#  index_current_relation_members_on_region_id  (region_id)
 #
 # Foreign Keys
 #
 #  current_relation_members_id_fkey  (relation_id => current_relations.id)
+#  fk_rails_...                      (region_id => regions.id) ON DELETE => cascade
 #
 
 class RelationMember < ApplicationRecord

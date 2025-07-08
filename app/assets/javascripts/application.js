@@ -32,6 +32,7 @@
 
   OSM.preferred_editor = application_data.preferredEditor;
   OSM.preferred_languages = application_data.preferredLanguages;
+  OSM.curretn_region = application_data.region;
 
   if (application_data.user) {
     OSM.user = application_data.user;

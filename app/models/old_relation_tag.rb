@@ -6,9 +6,15 @@
 #  k           :string           default(""), not null, primary key
 #  v           :string           default(""), not null
 #  version     :bigint           not null, primary key
+#  region_id   :bigint
+#
+# Indexes
+#
+#  index_relation_tags_on_region_id  (region_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...           (region_id => regions.id) ON DELETE => cascade
 #  relation_tags_id_fkey  ([relation_id, version] => relations[relation_id, version])
 #
 

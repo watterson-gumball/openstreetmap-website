@@ -6,13 +6,16 @@
 #  node_id     :bigint           not null
 #  version     :bigint           not null, primary key
 #  sequence_id :bigint           not null, primary key
+#  region_id   :bigint
 #
 # Indexes
 #
-#  way_nodes_node_idx  (node_id)
+#  index_way_nodes_on_region_id  (region_id)
+#  way_nodes_node_idx            (node_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...       (region_id => regions.id) ON DELETE => cascade
 #  way_nodes_id_fkey  ([way_id, version] => ways[way_id, version])
 #
 

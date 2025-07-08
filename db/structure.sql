@@ -429,7 +429,8 @@ ALTER SEQUENCE public.changeset_comments_id_seq OWNED BY public.changeset_commen
 CREATE TABLE public.changeset_tags (
     changeset_id bigint NOT NULL,
     k character varying DEFAULT ''::character varying NOT NULL,
-    v character varying DEFAULT ''::character varying NOT NULL
+    v character varying DEFAULT ''::character varying NOT NULL,
+    region_id bigint
 );
 
 
@@ -446,7 +447,8 @@ CREATE TABLE public.changesets (
     min_lon integer,
     max_lon integer,
     closed_at timestamp without time zone NOT NULL,
-    num_changes integer DEFAULT 0 NOT NULL
+    num_changes integer DEFAULT 0 NOT NULL,
+    region_id bigint
 );
 
 
@@ -549,7 +551,8 @@ ALTER SEQUENCE public.codes_id_seq OWNED BY public.codes.id;
 CREATE TABLE public.current_node_tags (
     node_id bigint NOT NULL,
     k character varying DEFAULT ''::character varying NOT NULL,
-    v character varying DEFAULT ''::character varying NOT NULL
+    v character varying DEFAULT ''::character varying NOT NULL,
+    region_id bigint
 );
 
 
@@ -565,7 +568,8 @@ CREATE TABLE public.current_nodes (
     visible boolean NOT NULL,
     "timestamp" timestamp without time zone NOT NULL,
     tile bigint NOT NULL,
-    version bigint NOT NULL
+    version bigint NOT NULL,
+    region_id bigint
 );
 
 
@@ -597,7 +601,8 @@ CREATE TABLE public.current_relation_members (
     member_type public.nwr_enum NOT NULL,
     member_id bigint NOT NULL,
     member_role character varying NOT NULL,
-    sequence_id integer DEFAULT 0 NOT NULL
+    sequence_id integer DEFAULT 0 NOT NULL,
+    region_id bigint
 );
 
 
@@ -608,7 +613,8 @@ CREATE TABLE public.current_relation_members (
 CREATE TABLE public.current_relation_tags (
     relation_id bigint NOT NULL,
     k character varying DEFAULT ''::character varying NOT NULL,
-    v character varying DEFAULT ''::character varying NOT NULL
+    v character varying DEFAULT ''::character varying NOT NULL,
+    region_id bigint
 );
 
 
@@ -621,7 +627,8 @@ CREATE TABLE public.current_relations (
     changeset_id bigint NOT NULL,
     "timestamp" timestamp without time zone NOT NULL,
     visible boolean NOT NULL,
-    version bigint NOT NULL
+    version bigint NOT NULL,
+    region_id bigint
 );
 
 
@@ -651,7 +658,8 @@ ALTER SEQUENCE public.current_relations_id_seq OWNED BY public.current_relations
 CREATE TABLE public.current_way_nodes (
     way_id bigint NOT NULL,
     node_id bigint NOT NULL,
-    sequence_id bigint NOT NULL
+    sequence_id bigint NOT NULL,
+    region_id bigint
 );
 
 
@@ -662,7 +670,8 @@ CREATE TABLE public.current_way_nodes (
 CREATE TABLE public.current_way_tags (
     way_id bigint NOT NULL,
     k character varying DEFAULT ''::character varying NOT NULL,
-    v character varying DEFAULT ''::character varying NOT NULL
+    v character varying DEFAULT ''::character varying NOT NULL,
+    region_id bigint
 );
 
 
@@ -675,7 +684,8 @@ CREATE TABLE public.current_ways (
     changeset_id bigint NOT NULL,
     "timestamp" timestamp without time zone NOT NULL,
     visible boolean NOT NULL,
-    version bigint NOT NULL
+    version bigint NOT NULL,
+    region_id bigint
 );
 
 
@@ -1113,7 +1123,8 @@ CREATE TABLE public.nodes (
     "timestamp" timestamp without time zone NOT NULL,
     tile bigint NOT NULL,
     version bigint NOT NULL,
-    redaction_id integer
+    redaction_id integer,
+    region_id bigint
 );
 
 
@@ -1379,6 +1390,37 @@ ALTER SEQUENCE public.redactions_id_seq OWNED BY public.redactions.id;
 
 
 --
+-- Name: regions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.regions (
+    id bigint NOT NULL,
+    name character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.regions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.regions_id_seq OWNED BY public.regions.id;
+
+
+--
 -- Name: relation_members; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1388,7 +1430,8 @@ CREATE TABLE public.relation_members (
     member_id bigint NOT NULL,
     member_role character varying NOT NULL,
     version bigint DEFAULT 0 NOT NULL,
-    sequence_id integer DEFAULT 0 NOT NULL
+    sequence_id integer DEFAULT 0 NOT NULL,
+    region_id bigint
 );
 
 
@@ -1400,7 +1443,8 @@ CREATE TABLE public.relation_tags (
     relation_id bigint NOT NULL,
     k character varying DEFAULT ''::character varying NOT NULL,
     v character varying DEFAULT ''::character varying NOT NULL,
-    version bigint NOT NULL
+    version bigint NOT NULL,
+    region_id bigint
 );
 
 
@@ -1414,7 +1458,8 @@ CREATE TABLE public.relations (
     "timestamp" timestamp without time zone NOT NULL,
     version bigint NOT NULL,
     visible boolean DEFAULT true NOT NULL,
-    redaction_id integer
+    redaction_id integer,
+    region_id bigint
 );
 
 
@@ -1646,7 +1691,8 @@ CREATE TABLE public.users (
     diary_comments_count integer DEFAULT 0,
     note_comments_count integer DEFAULT 0,
     creation_address inet,
-    home_location_name character varying
+    home_location_name character varying,
+    region_id bigint
 );
 
 
@@ -1677,7 +1723,8 @@ CREATE TABLE public.way_nodes (
     way_id bigint NOT NULL,
     node_id bigint NOT NULL,
     version bigint NOT NULL,
-    sequence_id bigint NOT NULL
+    sequence_id bigint NOT NULL,
+    region_id bigint
 );
 
 
@@ -1689,7 +1736,8 @@ CREATE TABLE public.way_tags (
     way_id bigint NOT NULL,
     k character varying NOT NULL,
     v character varying NOT NULL,
-    version bigint NOT NULL
+    version bigint NOT NULL,
+    region_id bigint
 );
 
 
@@ -1703,7 +1751,8 @@ CREATE TABLE public.ways (
     "timestamp" timestamp without time zone NOT NULL,
     version bigint NOT NULL,
     visible boolean DEFAULT true NOT NULL,
-    redaction_id integer
+    redaction_id integer,
+    region_id bigint
 );
 
 
@@ -1901,6 +1950,13 @@ ALTER TABLE ONLY public.oauth_openid_requests ALTER COLUMN id SET DEFAULT nextva
 --
 
 ALTER TABLE ONLY public.redactions ALTER COLUMN id SET DEFAULT nextval('public.redactions_id_seq'::regclass);
+
+
+--
+-- Name: regions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.regions ALTER COLUMN id SET DEFAULT nextval('public.regions_id_seq'::regclass);
 
 
 --
@@ -2266,6 +2322,14 @@ ALTER TABLE ONLY public.redactions
 
 
 --
+-- Name: regions regions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.regions
+    ADD CONSTRAINT regions_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: relation_members relation_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2616,6 +2680,20 @@ CREATE INDEX index_changeset_comments_on_created_at ON public.changeset_comments
 
 
 --
+-- Name: index_changeset_tags_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_changeset_tags_on_region_id ON public.changeset_tags USING btree (region_id);
+
+
+--
+-- Name: index_changesets_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_changesets_on_region_id ON public.changesets USING btree (region_id);
+
+
+--
 -- Name: index_changesets_on_user_id_and_closed_at; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2662,6 +2740,62 @@ CREATE INDEX index_code_documents_on_document_id ON public.code_documents USING 
 --
 
 CREATE INDEX index_codes_on_value ON public.codes USING btree (value);
+
+
+--
+-- Name: index_current_node_tags_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_node_tags_on_region_id ON public.current_node_tags USING btree (region_id);
+
+
+--
+-- Name: index_current_nodes_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_nodes_on_region_id ON public.current_nodes USING btree (region_id);
+
+
+--
+-- Name: index_current_relation_members_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_relation_members_on_region_id ON public.current_relation_members USING btree (region_id);
+
+
+--
+-- Name: index_current_relation_tags_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_relation_tags_on_region_id ON public.current_relation_tags USING btree (region_id);
+
+
+--
+-- Name: index_current_relations_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_relations_on_region_id ON public.current_relations USING btree (region_id);
+
+
+--
+-- Name: index_current_way_nodes_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_way_nodes_on_region_id ON public.current_way_nodes USING btree (region_id);
+
+
+--
+-- Name: index_current_way_tags_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_way_tags_on_region_id ON public.current_way_tags USING btree (region_id);
+
+
+--
+-- Name: index_current_ways_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_ways_on_region_id ON public.current_ways USING btree (region_id);
 
 
 --
@@ -2739,6 +2873,13 @@ CREATE INDEX index_issues_on_status ON public.issues USING btree (status);
 --
 
 CREATE INDEX index_issues_on_updated_by ON public.issues USING btree (updated_by);
+
+
+--
+-- Name: index_nodes_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_nodes_on_region_id ON public.nodes USING btree (region_id);
 
 
 --
@@ -2854,6 +2995,34 @@ CREATE INDEX index_oauth_openid_requests_on_access_grant_id ON public.oauth_open
 
 
 --
+-- Name: index_regions_on_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_regions_on_name ON public.regions USING btree (name);
+
+
+--
+-- Name: index_relation_members_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_relation_members_on_region_id ON public.relation_members USING btree (region_id);
+
+
+--
+-- Name: index_relation_tags_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_relation_tags_on_region_id ON public.relation_tags USING btree (region_id);
+
+
+--
+-- Name: index_relations_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_relations_on_region_id ON public.relations USING btree (region_id);
+
+
+--
 -- Name: index_reports_on_issue_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2900,6 +3069,34 @@ CREATE UNIQUE INDEX index_user_mutes_on_owner_id_and_subject_id ON public.user_m
 --
 
 CREATE INDEX index_users_on_creation_address ON public.users USING gist (creation_address inet_ops);
+
+
+--
+-- Name: index_users_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_region_id ON public.users USING btree (region_id);
+
+
+--
+-- Name: index_way_nodes_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_way_nodes_on_region_id ON public.way_nodes USING btree (region_id);
+
+
+--
+-- Name: index_way_tags_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_way_tags_on_region_id ON public.way_tags USING btree (region_id);
+
+
+--
+-- Name: index_ways_on_region_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_ways_on_region_id ON public.ways USING btree (region_id);
 
 
 --
@@ -3246,11 +3443,51 @@ ALTER TABLE ONLY public.diary_entry_subscriptions
 
 
 --
+-- Name: current_way_nodes fk_rails_1a3e239539; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.current_way_nodes
+    ADD CONSTRAINT fk_rails_1a3e239539 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
 -- Name: code_documents fk_rails_1d14db0421; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.code_documents
     ADD CONSTRAINT fk_rails_1d14db0421 FOREIGN KEY (code_id) REFERENCES public.codes(id);
+
+
+--
+-- Name: relation_members fk_rails_1d164c1ff0; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.relation_members
+    ADD CONSTRAINT fk_rails_1d164c1ff0 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
+-- Name: current_way_tags fk_rails_2797792616; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.current_way_tags
+    ADD CONSTRAINT fk_rails_2797792616 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
+-- Name: ways fk_rails_2a30a88a57; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ways
+    ADD CONSTRAINT fk_rails_2a30a88a57 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
+-- Name: relations fk_rails_2ad824245b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.relations
+    ADD CONSTRAINT fk_rails_2ad824245b FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
 
 
 --
@@ -3270,6 +3507,14 @@ ALTER TABLE ONLY public.oauth_access_grants
 
 
 --
+-- Name: current_node_tags fk_rails_3560bb3519; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.current_node_tags
+    ADD CONSTRAINT fk_rails_3560bb3519 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
 -- Name: user_mutes fk_rails_591dad3359; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3278,11 +3523,27 @@ ALTER TABLE ONLY public.user_mutes
 
 
 --
+-- Name: relation_tags fk_rails_59ad34ed9e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.relation_tags
+    ADD CONSTRAINT fk_rails_59ad34ed9e FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
 -- Name: social_links fk_rails_6034fd4f62; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.social_links
     ADD CONSTRAINT fk_rails_6034fd4f62 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: current_relation_tags fk_rails_6cf4e9ef89; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.current_relation_tags
+    ADD CONSTRAINT fk_rails_6cf4e9ef89 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
 
 
 --
@@ -3302,11 +3563,51 @@ ALTER TABLE ONLY public.oauth_openid_requests
 
 
 --
+-- Name: way_nodes fk_rails_7a0ea32f18; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.way_nodes
+    ADD CONSTRAINT fk_rails_7a0ea32f18 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
+-- Name: current_relation_members fk_rails_7fa25c45b8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.current_relation_members
+    ADD CONSTRAINT fk_rails_7fa25c45b8 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
+-- Name: current_ways fk_rails_8848289630; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.current_ways
+    ADD CONSTRAINT fk_rails_8848289630 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
+-- Name: current_relations fk_rails_92433371fb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.current_relations
+    ADD CONSTRAINT fk_rails_92433371fb FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
 -- Name: code_documents fk_rails_95dc198f3c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.code_documents
     ADD CONSTRAINT fk_rails_95dc198f3c FOREIGN KEY (document_id) REFERENCES public.documents(id);
+
+
+--
+-- Name: changeset_tags fk_rails_96841d0719; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.changeset_tags
+    ADD CONSTRAINT fk_rails_96841d0719 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
 
 
 --
@@ -3326,11 +3627,27 @@ ALTER TABLE ONLY public.note_subscriptions
 
 
 --
+-- Name: users fk_rails_b3a8faedd1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT fk_rails_b3a8faedd1 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
 -- Name: oauth_access_grants fk_rails_b4b53e07b8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.oauth_access_grants
     ADD CONSTRAINT fk_rails_b4b53e07b8 FOREIGN KEY (application_id) REFERENCES public.oauth_applications(id) NOT VALID;
+
+
+--
+-- Name: changesets fk_rails_c08df31796; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.changesets
+    ADD CONSTRAINT fk_rails_c08df31796 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
 
 
 --
@@ -3350,6 +3667,14 @@ ALTER TABLE ONLY public.oauth_applications
 
 
 --
+-- Name: way_tags fk_rails_d66e7da478; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.way_tags
+    ADD CONSTRAINT fk_rails_d66e7da478 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
 -- Name: user_mutes fk_rails_e9dd4fb6c3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3363,6 +3688,22 @@ ALTER TABLE ONLY public.user_mutes
 
 ALTER TABLE ONLY public.oauth_access_tokens
     ADD CONSTRAINT fk_rails_ee63f25419 FOREIGN KEY (resource_owner_id) REFERENCES public.users(id) NOT VALID;
+
+
+--
+-- Name: nodes fk_rails_eec705d343; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.nodes
+    ADD CONSTRAINT fk_rails_eec705d343 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
+
+
+--
+-- Name: current_nodes fk_rails_fbacf6d5d5; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.current_nodes
+    ADD CONSTRAINT fk_rails_fbacf6d5d5 FOREIGN KEY (region_id) REFERENCES public.regions(id) ON DELETE CASCADE NOT VALID;
 
 
 --
@@ -3696,6 +4037,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('23'),
 ('22'),
 ('21'),
+('20250706225734'),
+('20250706084327'),
 ('20250625015115'),
 ('20250625015005'),
 ('20250624234312'),

@@ -10,15 +10,18 @@
 #  timestamp    :datetime         not null
 #  tile         :bigint           not null
 #  version      :bigint           not null
+#  region_id    :bigint
 #
 # Indexes
 #
-#  current_nodes_tile_idx       (tile)
-#  current_nodes_timestamp_idx  (timestamp)
+#  current_nodes_tile_idx            (tile)
+#  current_nodes_timestamp_idx       (timestamp)
+#  index_current_nodes_on_region_id  (region_id)
 #
 # Foreign Keys
 #
 #  current_nodes_changeset_id_fkey  (changeset_id => changesets.id)
+#  fk_rails_...                     (region_id => regions.id) ON DELETE => cascade
 #
 
 class Node < ApplicationRecord

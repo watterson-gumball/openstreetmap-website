@@ -2,13 +2,19 @@
 #
 # Table name: way_tags
 #
-#  way_id  :bigint           not null, primary key
-#  k       :string           not null, primary key
-#  v       :string           not null
-#  version :bigint           not null, primary key
+#  way_id    :bigint           not null, primary key
+#  k         :string           not null, primary key
+#  v         :string           not null
+#  version   :bigint           not null, primary key
+#  region_id :bigint
+#
+# Indexes
+#
+#  index_way_tags_on_region_id  (region_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...      (region_id => regions.id) ON DELETE => cascade
 #  way_tags_id_fkey  ([way_id, version] => ways[way_id, version])
 #
 

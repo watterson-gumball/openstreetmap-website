@@ -36,25 +36,25 @@ L.OSM.Map = L.Map.extend({
       return layer;
     });
 
-    // this.baseTimelineLayers = OSM.TIMELINE_LAYER_DEFINITIONS.map((
-    //   { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
-    // ) => {
-    //   // if (credit) layerOptions.attribution = makeAttribution(credit);
-    //   if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
-    //   const layerConstructor =
-    //     (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
-    //     L.OSM[leafletOsmId] ||
-    //     L.OSM.TileLayer;
+    this.gyumriBaseLayers = OSM.GYUMRI_LAYER_DEFINITIONS.map((
+      { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
+    ) => {
+      // if (credit) layerOptions.attribution = makeAttribution(credit);
+      if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
+      const layerConstructor =
+        (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
+        L.OSM[leafletOsmId] ||
+        L.OSM.TileLayer;
 
-    //   const layer = new layerConstructor(layerOptions);
-    //   layer.on("add", () => {
-    //     this.fire("baselayeradd", { layer: layer });
-    //   });
-    //   layer.on("remove", () => {
-    //     this.fire("baselayerremove", { layer: layer });
-    //   });
-    //   return layer;
-    // });
+      const layer = new layerConstructor(layerOptions);
+      layer.on("add", () => {
+        this.fire("baselayeradd", { layer: layer });
+      });
+      layer.on("remove", () => {
+        this.fire("baselayerremove", { layer: layer });
+      });
+      return layer;
+    });
 
     this.noteLayer = new L.FeatureGroup();
     this.noteLayer.options = { code: "N" };

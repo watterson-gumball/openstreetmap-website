@@ -8,13 +8,16 @@
 #  member_role :string           not null
 #  version     :bigint           default(0), not null, primary key
 #  sequence_id :integer          default(0), not null, primary key
+#  region_id   :bigint
 #
 # Indexes
 #
-#  relation_members_member_idx  (member_type,member_id)
+#  index_relation_members_on_region_id  (region_id)
+#  relation_members_member_idx          (member_type,member_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...              (region_id => regions.id) ON DELETE => cascade
 #  relation_members_id_fkey  ([relation_id, version] => relations[relation_id, version])
 #
 

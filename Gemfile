@@ -139,6 +139,8 @@ gem "image_processing"
 # Used to validate widths
 gem "unicode-display_width"
 
+# gem "activerecord-multi-tenant"
+
 # Gems useful for development
 group :development do
   gem "better_errors"

@@ -12,7 +12,6 @@
 #  home_lat             :float
 #  home_lon             :float
 #  home_zoom            :integer          default(3)
-#  home_location_name   :string
 #  pass_salt            :string
 #  email_valid          :boolean          default(FALSE), not null
 #  new_email            :string
@@ -34,16 +33,23 @@
 #  diary_comments_count :integer          default(0)
 #  note_comments_count  :integer          default(0)
 #  creation_address     :inet
+#  home_location_name   :string
+#  region_id            :bigint
 #
 # Indexes
 #
 #  index_users_on_creation_address   (creation_address) USING gist
+#  index_users_on_region_id          (region_id)
 #  users_auth_idx                    (auth_provider,auth_uid) UNIQUE
 #  users_display_name_canonical_idx  (lower(NORMALIZE(display_name, NFKC)))
 #  users_display_name_idx            (display_name) UNIQUE
 #  users_email_idx                   (email) UNIQUE
 #  users_email_lower_idx             (lower((email)::text))
 #  users_home_idx                    (home_tile)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (region_id => regions.id) ON DELETE => cascade
 #
 
 class User < ApplicationRecord

@@ -67,6 +67,8 @@ GEM
       timeout (>= 0.4.0)
     activerecord-import (2.1.0)
       activerecord (>= 4.2)
+    activerecord-multi-tenant (2.4.0)
+      rails (>= 6)
     activestorage (8.0.2)
       actionpack (= 8.0.2)
       activejob (= 8.0.2)
@@ -691,6 +693,7 @@ DEPENDENCIES
   actionpack-page_caching (>= 1.2.0)
   active_record_union!
   activerecord-import
+  activerecord-multi-tenant
   addressable (~> 2.8)
   annotaterb
   argon2

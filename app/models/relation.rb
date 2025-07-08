@@ -7,14 +7,17 @@
 #  timestamp    :datetime         not null
 #  visible      :boolean          not null
 #  version      :bigint           not null
+#  region_id    :bigint
 #
 # Indexes
 #
-#  current_relations_timestamp_idx  (timestamp)
+#  current_relations_timestamp_idx       (timestamp)
+#  index_current_relations_on_region_id  (region_id)
 #
 # Foreign Keys
 #
 #  current_relations_changeset_id_fkey  (changeset_id => changesets.id)
+#  fk_rails_...                         (region_id => regions.id) ON DELETE => cascade
 #
 
 class Relation < ApplicationRecord
