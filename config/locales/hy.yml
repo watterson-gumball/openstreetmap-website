@@ -3137,7 +3137,7 @@ hy:
         fossgis_valhalla: Valhalla
         graphhopper: GraphHopper
       reverse_directions_text: Reverse Directions
-      search: Search
+      search: Որոնում
       submit_text: Go
       to: To
       where_am_i: Where is this?

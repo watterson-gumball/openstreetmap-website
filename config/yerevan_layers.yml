@@ -1,9 +1,9 @@
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/yerevan.aero.ortho.2014/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/yerevan.aero.ortho.2024/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "A"
-  year: "2014"
-  layerId: "orthophoto_2014"
+  year: "2024"
+  layerId: "orthophoto_2024"
   nameId: "orthophoto"
   canEmbed: true
   canDownloadImage: true
@@ -27,11 +27,11 @@
     donate: true
 
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/yerevan.aero.ortho.2024/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/yerevan.aero.ortho.2014/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "C"
-  year: "2024"
-  layerId: "orthophoto_2024"
+  year: "2014"
+  layerId: "orthophoto_2014"
   nameId: "orthophoto"
   canEmbed: true
   canDownloadImage: true
@@ -41,25 +41,11 @@
     donate: true
 
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/yerevan.aero.plan.2003/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/yerevan.aero.plan.2011/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
   code: "E"
-  year: "2003/02"
-  layerId: "plan_2003_02"
-  nameId: "plan"
-  canEmbed: true
-  canDownloadImage: true
-  credit:
-    id: "make_a_donation"
-    href: "https://supporting.openstreetmap.org"
-    donate: true
-
-- leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/yerevan.aero.plan.TBD.0/tiles/{z}/{x}/{y}.png"
-  pane: "timelinePane"
-  code: "F"
-  year: "2003/03"
-  layerId: "plan_2003/03"
+  year: "2011"
+  layerId: "plan_2011_09"
   nameId: "plan"
   canEmbed: true
   canDownloadImage: true
@@ -71,7 +57,7 @@
 - leafletOsmId: "Orthophoto"
   url: "http://192.168.1.115:8080/services/yerevan.aero.plan.TBD.1/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
-  code: "G"
+  code: "F"
   year: "2010/09"
   layerId: "plan_2010/09"
   nameId: "plan"
@@ -83,11 +69,11 @@
     donate: true
 
 - leafletOsmId: "Orthophoto"
-  url: "http://192.168.1.115:8080/services/yerevan.aero.plan.2011/tiles/{z}/{x}/{y}.png"
+  url: "http://192.168.1.115:8080/services/yerevan.aero.plan.TBD.0/tiles/{z}/{x}/{y}.png"
   pane: "timelinePane"
-  code: "H"
-  year: "2011"
-  layerId: "plan_2011_09"
+  code: "G"
+  year: "2003/03"
+  layerId: "plan_2003/03"
   nameId: "plan"
   canEmbed: true
   canDownloadImage: true
@@ -95,3 +81,18 @@
     id: "make_a_donation"
     href: "https://supporting.openstreetmap.org"
     donate: true
+
+- leafletOsmId: "Orthophoto"
+  url: "http://192.168.1.115:8080/services/yerevan.aero.plan.2003/tiles/{z}/{x}/{y}.png"
+  pane: "timelinePane"
+  code: "H"
+  year: "2003/02"
+  layerId: "plan_2003_02"
+  nameId: "plan"
+  canEmbed: true
+  canDownloadImage: true
+  credit:
+    id: "make_a_donation"
+    href: "https://supporting.openstreetmap.org"
+    donate: true
+
