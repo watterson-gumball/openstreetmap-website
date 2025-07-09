@@ -85,7 +85,7 @@
       font-weight: 600;
     }
     .footer-body {
-      display: flex;
+      # display: flex;
       justify-content: space-between;
       align-items: flex-start;
     }
@@ -153,7 +153,7 @@
 
 <div class="container">
   <div class="form-section">
-    <h2>Sign in</h2>
+    <h2> <%= t(".login_header") %></h2>
 
     <%= bootstrap_form_tag(:action => "login", :html => { :id => "login_form" }) do |f| %>
       <%= hidden_field_tag("referer", h(params[:referer]), :autocomplete => "off") %>
@@ -175,10 +175,6 @@
         <%= f.primary t(".login_button"), :tabindex => 4, :class => "sign-in-btn" %>
       </div>
     <% end %>
-
-    <div class="signup-link">
-      Don’t have an account? <a href="#">Sign up</a>
-    </div>
   </div>
   <div class="new-user-form-image"></div>
 </div>
@@ -190,12 +186,12 @@
 
 <footer class="footer">
   <div class="footer-content">
-    <h2 style="color: #f57c00;">Centre of Geospatial Technologies</h2>
+    <h2 style="color: #f57c00;"><%= t(".company_name") %></h2>
     <div class="footer-body">
       <ul class="contact-list">
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="white"/></svg>
-          <span style="color: white;"> 24/12 Azatutyan Ave․, Yerevan, Armenia</span>
+          <span style="color: white;"><%= t(".address") %></span>
         </li>
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.48 2.53.73 3.89.73a1 1 0 011 1V20a1 1 0 01-1 1c-9.39 0-17-7.61-17-17a1 1 0 011-1h3.5a1 1 0 011 1c0 1.36.25 2.68.73 3.89a1 1 0 01-.21 1.11l-2.2 2.2z" fill="white"/></svg>
@@ -207,7 +203,7 @@
         </li>
       </ul>
       <div class="footer-icons">
-        <!-- Email -->
+
         <a href="mailto:info@etk.am" aria-label="Email">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="12" fill="white"/>
@@ -215,14 +211,14 @@
             <path fill="#1f1f1f" d="M20 8v8c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V8l8 5 8-5zM4 6l8 5 8-5"/>
           </svg>
         </a>
-        <!-- LinkedIn -->
+
         <a href="https://www.linkedin.com/company/centre-of-geospatial-technologies/posts/?feedView=all" target="_blank">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="12" fill="white"/>
             <path fill="#1f1f1f" d="M17 17h-2.5v-3.25c0-1.1-.9-2-2-2s-2 .9-2 2V17H8V10.75h2.5V12c.6-.9 1.6-1.25 2.5-1.25 2 0 3 1.33 3 3.25V17zM9.25 9.5c-.7 0-1.25-.57-1.25-1.25s.57-1.25 1.25-1.25 1.25.57 1.25 1.25-.56 1.25-1.25 1.25z"/>
           </svg>
         </a>
-        <!-- Facebook -->
+
         <a href="https://www.facebook.com/p/Երկրատարածական-տեխնոլոգիաների-կենտրոնCentre-of-geospatial-technologies-100066510862559/" target="_blank">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="12" fill="white"/>

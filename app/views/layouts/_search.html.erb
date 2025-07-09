@@ -10,7 +10,7 @@
       <div class="input-group flex-nowrap">
         <%= text_field_tag "query", search_query, :placeholder => t("site.search.search"), :autofocus => autofocus, :autocomplete => "on", :class => "form-control z-0 py-1 px-2", :dir => "auto" %>
         <div class="input-group-text border-start-0 p-0 position-relative">
-          <%= button_tag t("site.search.where_am_i"), :type => "button", :class => "describe_location position-absolute end-0 m-1 btn btn-outline-primary border-0 p-1 text-primary link-body-emphasis link-opacity-100-hover", :title => t("site.search.where_am_i_title") %>
+          <%#= button_tag t("site.search.where_am_i"), :type => "button", :class => "describe_location position-absolute end-0 m-1 btn btn-outline-primary border-0 p-1 text-primary link-body-emphasis link-opacity-100-hover", :title => t("site.search.where_am_i_title") %>
         </div>
         <%= button_tag :class => "btn btn-primary p-1", :title => t("site.search.submit_text") do %>
           <svg width="24" height="20">
@@ -23,7 +23,7 @@
           </svg>
         <% end %>
       </div>
-      <%= link_to directions_path, :class => "btn btn-primary p-1 switch_link", :title => t("site.search.get_directions_title") do %>
+      <%#= link_to directions_path, :class => "btn btn-primary p-1 switch_link", :title => t("site.search.get_directions_title") do %><%#
         <svg width="28" height="24" class="align-bottom">
           <path d="M11.5 11.5v-3h3v-1l-5-5-5 5v1h3v6" fill="none" stroke="#fff8" />
           <path d="M7.5 21.5h4v-5a1 1 0 0 1 1-1h5v3h1l5-5-5-5h-1v3h-6a4 4 0 0 0-4 4z" fill="#fff8" stroke="#fff" />

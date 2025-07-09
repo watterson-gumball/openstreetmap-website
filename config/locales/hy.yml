@@ -1827,7 +1827,7 @@ hy:
       centre_map: Կենտրոնացնել քարտեզը այստեղ
       directions_from: Ուղեցույց այստեղից
       directions_to: Ուղեցույց այստեղ
-      query_features: Հարցում հատկությունների
+      query_features: Հարցում
       scroll_to_changeset: Գլորել փոփոխությունների հավաքին
       show_address: Ցույց տալ հասցեն
     directions:
@@ -1920,9 +1920,9 @@ hy:
       marker_title: Իմ տնային դիրքը
       not_set: Ձեր հաշվում տնային դիրքը դեռ սահմանված չէ
     key:
-      title: Քարտեզի բանալին
-      tooltip: Քարտեզի բանալին
-      tooltip_disabled: Այս շերտի համար քարտեզի բանալին հասանելի չէ
+      title: Պայմանական նշաններ
+      tooltip: Պայմանական նշաններ
+      tooltip_disabled: Այս շերտի համար պայմանական նշանները հասանելի չէ
     map:
       andy_allan: Էնդի Ալան
       base:
@@ -1996,7 +1996,7 @@ hy:
       scale: Մասշտաբ՝
       short_link: Կարճ հղում
       short_url: Կարճ URL
-      title: Ընկերակցել
+      title: Կիսվել
       view_larger_map: Ցույց տալ մեծ քարտեզ
     site:
       createnote_disabled_tooltip: Մեծացրեք՝ քարտեզին նշում ավելացնելու համար
@@ -2007,7 +2007,7 @@ hy:
       map_data_zoom_in_tooltip: Մեծացրեք՝ քարտեզի տվյալները տեսնելու համար
       map_notes_zoom_in_tooltip: Մեծացրեք՝ քարտեզի նշումները տեսնելու համար
       queryfeature_disabled_tooltip: Մեծացրեք՝ հատկություններ հարցնելու համար
-      queryfeature_tooltip: Հարցում հատկությունների
+      queryfeature_tooltip: Հարցում
     documents:
       title: Վկայականներ
       header: Վկայականներ
@@ -2603,13 +2603,17 @@ hy:
       logout_button: Logout
       title: Logout
     new:
+      login_header: Մուտք
+      company_name: Երկրատարածական տեխնոլոգիաների կենտրոն
+      address: Ազատության պողոտա 24/12,Երևան, Հայաստան
       access_another_page: 'You arrived here while trying to access another page. If you want to access that page using your current account, click the button below:'
       already_logged_in_html: You are already logged in as %{user}. Logging in again will change your current account.
       auth failure: Sorry, could not log in with those details.
-      email or username: Email Հասցե կամ Օգտանուն
+      email or username: Էլ․ հասցե
       login_button: Մուտք
       login_to_authorize_html: Log in to OpenStreetMap to access %{client_app_name}.
       lost password link: Գաղտնաբառի վերականգում
+      forgot password link: Վերականգնել գաղտնաբառը
       or: or
       password: Գաղտնաբառ
       remember: Հիշել մուտքի տվյալները

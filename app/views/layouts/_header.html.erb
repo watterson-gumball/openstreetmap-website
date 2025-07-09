@@ -36,14 +36,16 @@
       <%= link_to t("layouts.copyright"), copyright_path, :class => header_nav_link_class(copyright_path) %>
       <%= link_to t("layouts.help"), help_path, :class => header_nav_link_class(help_path) %>
     </div>
-    <div class="d-inline-flex btn-group" role="">
-      <% Region.all.each do |region| %>
-        <%= link_to t("layouts.#{region.name}"),
-                    "#",
-                    :class => "region-switcher btn btn-outline-secondary #{'active' if region.name == cookies[:_region]}",
-                    :data => { region: region.name } %>
-      <% end %>
-    </div>
+    <% if current_user && current_user.id %>
+      <div class="d-inline-flex btn-group" role="">
+        <% Region.all.each do |region| %>
+          <%= link_to t("layouts.#{region.name}"),
+                      "#",
+                      :class => "region-switcher btn btn-outline-secondary #{'active' if region.name == cookies[:_region]}",
+                      :data => { region: region.name } %>
+        <% end %>
+      </div>
+    <% end %>
     <ul id='secondary-nav-menu' class='nav flex-grow-1' data-turbo-permanent>
       <% if Settings.status != "database_offline" && can?(:index, Issue) %>
         <li class="nav-item">
