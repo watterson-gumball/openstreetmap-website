@@ -1,6 +1,7 @@
 //= depend_on settings.yml
 //= depend_on settings.local.yml
 //= depend_on layers.yml
+//= depend_on yerevan_layers.yml
 //= depend_on gyumri_layers.yml
 //= depend_on key.yml
 
@@ -29,6 +30,7 @@ OSM = {
   DEFAULT_LOCALE: <%= I18n.default_locale.to_json %>,
 
   LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/layers.yml", :legends => "config/key.yml").to_json %>,
+  YEREVAN_LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/yerevan_layers.yml", :legends => "config/key.yml").to_json %>,
   GYUMRI_LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/gyumri_layers.yml", :legends => "config/key.yml").to_json %>,
 
   MARKER_BLUE: <%= image_path("marker-blue.png").to_json %>,
@@ -42,6 +44,11 @@ OSM = {
   NEW_NOTE_MARKER: <%= image_path("new_note_marker.svg").to_json %>,
   OPEN_NOTE_MARKER: <%= image_path("open_note_marker.svg").to_json %>,
   CLOSED_NOTE_MARKER: <%= image_path("closed_note_marker.svg").to_json %>,
+
+  availableDataYears: {
+    yerevan: ["2008", "2013", "2016", "2020", "2022", "2025"],
+    gyumri: ["2013", "2014", "2015", "2016", "2019", "2020", "2025"]
+  },
 
   apiUrl: function (object) {
     const apiType = object.type === "note" ? "notes" : object.type;
@@ -180,11 +187,16 @@ OSM = {
       args.layers = hashParams.get("layers");
     }
 
+    if (hashParams.has("region")) {
+      args.region = hashParams.get("region");
+    }
+
     return args;
   },
 
   formatHash: function (args) {
     let center, zoom, layers;
+    const region = Cookies.get("_region");
 
     if (args instanceof L.Map) {
       center = args.getCenter();
@@ -206,6 +218,10 @@ OSM = {
 
     if (layers) {
       hash += "&layers=" + layers;
+    }
+
+    if (region) {
+      hash += "&region=" + region;
     }
 
     return hash;

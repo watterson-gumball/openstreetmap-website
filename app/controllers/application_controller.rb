@@ -190,7 +190,10 @@ class ApplicationController < ActionController::Base
   end
 
   def preferred_languages
-    @preferred_languages ||= if params[:locale]
+    @preferred_languages ||= if cookies[:_locale]
+                               Locale.list(cookies[:_locale])
+                             elsif params[:locale]
+                               cookies[:_locale] = params[:locale]
                                Locale.list(params[:locale])
                              elsif current_user
                                current_user.preferred_languages
@@ -222,10 +225,6 @@ class ApplicationController < ActionController::Base
               Region.default
 
     cookies[:_region] = @region.name
-  end
-
-  def current_region
-    @current_region ||= Region.find_by(name: cookies[:region]) || Region.default
   end
 
   ##
@@ -290,6 +289,7 @@ class ApplicationController < ActionController::Base
   end
 
   def preferred_color_scheme(subject)
+    return "light"
     if current_user
       current_user.preferences.find_by(:k => "#{subject}.color_scheme")&.v || "auto"
     else
@@ -362,7 +362,7 @@ class ApplicationController < ActionController::Base
     referer&.to_s
   end
 
-  def default_url_options
-    { locale: I18n.locale }
-  end
+  # def default_url_options
+  #   { locale: I18n.locale }
+  # end
 end

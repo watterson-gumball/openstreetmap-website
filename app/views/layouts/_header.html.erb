@@ -39,7 +39,7 @@
     <div class="d-inline-flex btn-group" role="">
       <% Region.all.each do |region| %>
         <%= link_to t("layouts.#{region.name}"),
-                    root_path(region: region.name),
+                    "#",
                     :class => "region-switcher btn btn-outline-secondary #{'active' if region.name == cookies[:_region]}",
                     :data => { region: region.name } %>
       <% end %>
@@ -93,12 +93,12 @@
           <%#= current_user.display_name_was %>
         </span>
       </button>
-      <div class='dropdown-menu dropdown-menu-end' data-turbo='false' >
-        <%= link_to url_for(locale: :hy), :class => "dropdown-item reload-page" do %>
+      <div class='dropdown-menu dropdown-menu-end' >
+        <%= link_to "#", :class => "dropdown-item locale-switcher", :data => { locale: "hy" } do %>
           <%= image_tag "hy.svg", :width => 50, :height => 50, :class => "hy_flag_thumbnail_tiny rounded-1 bg-transparent" %>
           Հայերեն
         <% end %>
-        <%= link_to url_for(locale: :en), :class => "dropdown-item reload-page" do %>
+        <%= link_to "#", :class => "dropdown-item locale-switcher", :data => { locale: "en" } do %>
           <%= image_tag "en.svg", :width => 50, :height => 50, :class => "hy_flag_thumbnail_tiny rounded-1 bg-transparent" %>
           English
         <% end %>

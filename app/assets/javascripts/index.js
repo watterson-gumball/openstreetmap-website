@@ -36,8 +36,7 @@ $(function () {
 
   map.createPane("timelinePane");
 
-  OSM.availableYears = ["2008", "2013", "2016", "2020", "2022", "2025"];
-  // OSM.availableYears = ["2013", "2014", "2015", "2016", "2019", "2020", "2025"];
+  const region = Cookies.get("_region");
 
   OSM.loadSidebarContent = function (path, callback) {
     let content_path = path;
@@ -94,10 +93,14 @@ $(function () {
 
   map.updateLayers(params.layers);
 
-  map.on("baselayeradd", function (e) {
+  map.on("baselayerchange", function (e) {
     if (map.getZoom() > e.layer.options.maxZoom) {
       map.setView(map.getCenter(), e.layer.options.maxZoom, { reset: true });
     }
+  });
+
+  map.on("regionchange", function (e) {
+    e.region === "yerevan" ? map.setView([40.15114, 44.40090], 15) : map.setView([40.75137, 43.85592], 15);
   });
 
   const sidebar = L.OSM.sidebar("#map-ui")
@@ -128,9 +131,14 @@ $(function () {
   addControlGroup([
     L.OSM.layers({
       position,
+      region,
       sidebar,
       // subSidebar,
-      layers: (Cookies.get("_region") === "yerevan" ? map.baseLayers : map.gyumriBaseLayers)
+      layers: {
+        default: map.baseLayers,
+        yerevan: map.baseYerevanLayers,
+        gyumri: map.baseGyumriLayers,
+      }
       // layers: map.baseLayers
     }),
     L.OSM.key({ position, sidebar }),
@@ -170,7 +178,9 @@ $(function () {
       map.addLayer(map.noteLayer);
     }
 
-    OSM.availableYears.forEach( year => OSM.initializeHistoryDataLayer(map, `dataLayer${year}`) );
+    Object.entries(OSM.availableDataYears).forEach(([region, years]) => {
+      years.forEach( year => OSM.initializeHistoryDataLayer(map, `dataLayer${year}${region}`) );
+    });
 
     // OSM.initializeDataLayer(map);
     // if (params.layers.indexOf(map.dataLayer.options.code) >= 0) {
@@ -187,7 +197,7 @@ $(function () {
   const expiry = new Date();
   expiry.setYear(expiry.getFullYear() + 10);
 
-  map.on("moveend baselayeradd overlayadd overlayremove", function () {
+  map.on("moveend baselayerchange overlayadd overlayremove", function () {
     updateLinks(
       map.getCenter().wrap(),
       map.getZoom(),
@@ -208,6 +218,8 @@ $(function () {
 
   const regionSwitchers = $(".region-switcher");
   regionSwitchers.on("click", function (e) {
+    e.preventDefault();
+
     const $el = $(this);
     const previousRegion = Cookies.get("_region");
     const currentRegion = $el.data("region");
@@ -217,13 +229,31 @@ $(function () {
     }
 
     Cookies.set("_region", currentRegion, {path: "/"});
+    map.fire("regionchange", { region: currentRegion });
 
-    OSM.router.replace(location.pathname);
-    // OSM.router.load();
-    location.reload()
+    regionSwitchers.removeClass("active");
+    $el.addClass("active");
+  });
+
+  const localeSwitchers = $(".locale-switcher");
+  localeSwitchers.on("click", function (e) {
+    e.preventDefault();
+
+    const $el = $(this);
+    const previousLocale = Cookies.get("_locale");
+    const currentLocale = $el.data("locale");
+
+    if (currentLocale === previousLocale) {
+      return;
+    }
+
+    Cookies.set("_locale", currentLocale, {path: "/"});
+    // map.fire("regionchange", { region: currentRegion });
 
     // regionSwitchers.removeClass("active");
     // $el.addClass("active");
+
+    location.reload();
   });
 
   const bannerExpiry = new Date();
@@ -239,7 +269,7 @@ $(function () {
   });
 
   if (OSM.MATOMO) {
-    map.on("baselayeradd overlayadd", function (e) {
+    map.on("baselayerchange overlayadd", function (e) {
       if (e.layer.options) {
         const goal = OSM.MATOMO.goals[e.layer.options.layerId];
 

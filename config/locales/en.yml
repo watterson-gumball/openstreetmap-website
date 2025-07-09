@@ -2398,9 +2398,10 @@ en:
       already_logged_in_html: You are already logged in as %{user}. Logging in again will change your current account.
       auth failure: Sorry, could not log in with those details.
       email or username: Email Address or Username
-      login_button: Log in
+      login_button: Sign in
       login_to_authorize_html: Log in to OpenStreetMap to access %{client_app_name}.
       lost password link: Lost your password?
+      forgot password link: Forgot password?
       or: or
       password: Password
       remember: Remember me

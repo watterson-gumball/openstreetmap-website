@@ -1,6 +1,9 @@
-<% content_for :head do %>
-  <%= javascript_include_tag "login" %>
-  <%= javascript_include_tag "auth_providers" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login – ETK x Zvartnots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -65,13 +68,15 @@
       color: #f57c00; font-weight: bold;
       text-decoration: none;
     }
+    .image-section {
+      flex: 2;
+      background: url("image/zvartnoc.jpg") center/cover no-repeat;
+    }
 
     .footer {
-      margin: 80px auto; display: flex;
-      width: 880px;
       background: #1f1f1f; color: #fff;
       padding: 32px;
-      overflow: hidden;
+      width: 500px;
     }
     .footer-content {
       max-width: 880px; margin: 0 auto;
@@ -121,73 +126,39 @@
 
     @media (max-width: 768px) {
       .container { flex-direction: column; height: auto; }
-      .footer { flex-direction: column; height: auto; }
       .image-section { height: 200px; }
       .footer-body { flex-direction: column; gap: 24px; }
     }
   </style>
-<% end %>
+</head>
+<body>
 
-<% content_for :heading_class, "pb-0" %>
-
-<% if @preferred_auth_provider %>
-  <%= render :partial => "auth_providers" %>
-  <%= render :partial => "shared/section_divider", :locals => { :text => t(".or") } %>
-<% end %>
-
-<% if current_user %>
-  <div class="alert alert-warning pb-0">
-    <p>
-      <%= t ".already_logged_in_html", :user => tag.strong(current_user.display_name) %>
-    </p>
-    <% if @safe_referer %>
-      <p>
-        <%= t ".access_another_page" %>
-      </p>
-      <p class="text-center">
-        <%= link_to t(".visit_referring_page"), @safe_referer, :id => "referer_link", :class => "btn btn-warning" %>
-      </p>
-    <% end %>
-  </div>
-<% end %>
-
+<!-- Login Box -->
 <div class="container">
   <div class="form-section">
     <h2>Sign in</h2>
-
-    <%= bootstrap_form_tag(:action => "login", :html => { :id => "login_form" }) do |f| %>
-      <%= hidden_field_tag("referer", h(params[:referer]), :autocomplete => "off") %>
-
-      <%= f.text_field :username, :label => t(".email or username"), :autofocus => true, :tabindex => 1, :value => params[:username] %>
-
-      <div class="d-flex flex-wrap column-gap-3 justify-content-between align-items-baseline mb-2">
-        <%= f.label :password, t(".password") %>
-        <small><%= link_to(t(".forgot password link"), user_forgot_password_path) %></small>
+    <form>
+      <div class="form-group">
+        <label for="email">Your email</label>
+        <input type="email" id="email" placeholder="you@etk.am" required>
       </div>
-
-      <%= f.password_field :password, :autocomplete => "on", :tabindex => 2, :value => "", :skip_label => true %>
-
-      <%= f.form_group do %>
-        <%= f.check_box :remember_me, { :label => t(".remember"), :tabindex => 3, :checked => (params[:remember_me] == "true") }, "yes" %>
-      <% end %>
-
-      <div class="mb-3">
-        <%= f.primary t(".login_button"), :tabindex => 4, :class => "sign-in-btn" %>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required>
       </div>
-    <% end %>
-
+      <div class="forgot-password">
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit" class="sign-in-btn">Sign in</button>
+    </form>
     <div class="signup-link">
       Don’t have an account? <a href="#">Sign up</a>
     </div>
   </div>
-  <div class="new-user-form-image"></div>
+  <div class="image-section"></div>
 </div>
 
-<% unless @preferred_auth_provider or Auth.providers.empty? %>
-  <%= render :partial => "shared/section_divider", :locals => { :text => t(".with external") } %>
-  <%= render :partial => "auth_providers" %>
-<% end %>
-
+<!-- Footer -->
 <footer class="footer">
   <div class="footer-content">
     <h2 style="color: #f57c00;">Centre of Geospatial Technologies</h2>
@@ -233,4 +204,5 @@
     </div>
   </div>
 </footer>
+
 

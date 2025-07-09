@@ -10,12 +10,12 @@ L.OSM.key = function (options) {
       .on("show", shown)
       .on("hide", hidden);
 
-    map.on("baselayeradd", updateButton);
+    map.on("baselayerchange", updateButton);
 
     updateButton();
 
     function shown() {
-      map.on("zoomend baselayeradd", update);
+      map.on("zoomend baselayerchange", update);
       fetch("/key")
         .then(r => r.text())
         .then(html => { $section.html(html); })
@@ -23,7 +23,7 @@ L.OSM.key = function (options) {
     }
 
     function hidden() {
-      map.off("zoomend baselayeradd", update);
+      map.off("zoomend baselayerchange", update);
     }
 
     function updateButton() {

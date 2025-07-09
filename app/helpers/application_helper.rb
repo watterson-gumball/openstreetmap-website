@@ -64,13 +64,6 @@ module ApplicationHelper
     data[:location] = session[:location] if session[:location]
     data[:oauth_token] = oauth_token.token if oauth_token
 
-    if defined?(current_region) && current_region.present?
-      data[:region] = {
-        id: current_region.id,
-        name: current_region.name
-      }
-    end
-
     data
   end
 

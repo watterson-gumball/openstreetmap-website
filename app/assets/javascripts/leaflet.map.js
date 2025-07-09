@@ -11,10 +11,18 @@ L.extend(L.LatLngBounds.prototype, {
 
 L.OSM.Map = L.Map.extend({
   initialize: function (id, options) {
-    L.OSM.availableYears = ["2008", "2013", "2016", "2020", "2022", "2025"];
-    // L.OSM.availableYears = ["2013", "2014", "2015", "2016", "2019", "2020", "2025"];
+    const defaultGroups = {
+      yerevan: L.layerGroup(),
+      gyumri: L.layerGroup()
+    };
+
+    options = L.Util.extend({ groups: defaultGroups }, options);
 
     L.Map.prototype.initialize.call(this, id, options);
+
+    Object.values(options.groups).forEach(g => g.addTo(this));
+
+    const region = Cookies.get("_region");
 
     this.baseLayers = OSM.LAYER_DEFINITIONS.map((
       { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
@@ -28,7 +36,7 @@ L.OSM.Map = L.Map.extend({
 
       const layer = new layerConstructor(layerOptions);
       layer.on("add", () => {
-        this.fire("baselayeradd", { layer: layer });
+        this.fire("baselayerchange", { layer: layer });
       });
       layer.on("remove", () => {
         this.fire("baselayerremove", { layer: layer });
@@ -36,7 +44,7 @@ L.OSM.Map = L.Map.extend({
       return layer;
     });
 
-    this.gyumriBaseLayers = OSM.GYUMRI_LAYER_DEFINITIONS.map((
+    this.baseGyumriLayers = OSM.GYUMRI_LAYER_DEFINITIONS.map((
       { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
     ) => {
       // if (credit) layerOptions.attribution = makeAttribution(credit);
@@ -48,7 +56,27 @@ L.OSM.Map = L.Map.extend({
 
       const layer = new layerConstructor(layerOptions);
       layer.on("add", () => {
-        this.fire("baselayeradd", { layer: layer });
+        this.fire("baselayerchange", { layer: layer });
+      });
+      layer.on("remove", () => {
+        this.fire("baselayerremove", { layer: layer });
+      });
+      return layer;
+    });
+
+    this.baseYerevanLayers = OSM.YEREVAN_LAYER_DEFINITIONS.map((
+      { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
+    ) => {
+      // if (credit) layerOptions.attribution = makeAttribution(credit);
+      if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
+      const layerConstructor =
+        (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
+        L.OSM[leafletOsmId] ||
+        L.OSM.TileLayer;
+
+      const layer = new layerConstructor(layerOptions);
+      layer.on("add", () => {
+        this.fire("baselayerchange", { layer: layer });
       });
       layer.on("remove", () => {
         this.fire("baselayerremove", { layer: layer });
@@ -62,10 +90,13 @@ L.OSM.Map = L.Map.extend({
     // this.dataLayer = new L.OSM.DataLayer(null);
     // this.dataLayer.options.code = "D";
 
-    L.OSM.availableYears.forEach(year => {
-      this[`dataLayer${year}`] = new L.OSM.DataLayer(null);
-      this[`dataLayer${year}`].options.code = "Z";
-      this[`dataLayer${year}`].options.year = year;
+    Object.entries(OSM.availableDataYears).forEach(([region, years]) => {
+      years.forEach(year => {
+        this[`dataLayer${year}${region}`] = new L.OSM.DataLayer(null);
+        this[`dataLayer${year}${region}`].options.code = "Z";
+        this[`dataLayer${year}${region}`].options.year = year;
+        this[`dataLayer${year}${region}`].options.region = region;
+      })
     });
 
     // this.gpsLayer = new L.OSM.GPS({
@@ -79,9 +110,20 @@ L.OSM.Map = L.Map.extend({
     // });
 
 
-    this.on("baselayeradd", function (event) {
+    this.on("baselayerchange", function (event) {
       if (this.baseLayers.indexOf(event.layer) >= 0) {
         this.setMaxZoom(event.layer.options.maxZoom);
+        return;
+      }
+
+      if (this.baseYerevanLayers.indexOf(event.layer) >= 0) {
+        this.setMaxZoom(event.layer.options.maxZoom);
+        return;
+      }
+
+      if (this.baseGyumriLayers.indexOf(event.layer) >= 0) {
+        this.setMaxZoom(event.layer.options.maxZoom);
+        return;
       }
     });
 

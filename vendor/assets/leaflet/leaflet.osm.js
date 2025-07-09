@@ -106,9 +106,21 @@ L.OSM.DataLayer = L.FeatureGroup.extend({
         way: { color: '#00BCD4B3' },
         area: { color: '#00BCD4B3' },
       },
+      "2014": {
+        way: { color: '#00BCD4B3' },
+        area: { color: '#00BCD4B3' },
+      },
+      "2015": {
+        way: { color: '#00BCD4B3' },
+        area: { color: '#00BCD4B3' },
+      },
       "2016": {
         way: { color: '#673AB7B3' },
         area: { color: '#673AB7B3' },
+      },
+      "2019": {
+        way: { color: '#00BCD4B3' },
+        area: { color: '#00BCD4B3' },
       },
       "2020": {
         way: { color: '#4CAF50B3' },

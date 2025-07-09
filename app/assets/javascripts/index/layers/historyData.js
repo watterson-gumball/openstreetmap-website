@@ -77,11 +77,11 @@ OSM.initializeHistoryDataLayer = function (map, layerKey) {
     $(`#layers-data-${dataLayer.options.year}-loading`).remove();
 
     const spanLoading = $("<span>")
-      .attr("id", `#layers-data-${dataLayer.options.year}-loading`)
+      .attr("id", `#layers-data-${dataLayer.options.year}${dataLayer.options.region}-loading`)
       .attr("class", "spinner-border spinner-border-sm ms-1")
       .attr("role", "status")
       .html("<span class='visually-hidden'>" + OSM.i18n.t("browse.start_rjs.loading") + "</span>")
-      .appendTo($(`#label-layers-historydata${dataLayer.options.year}`));
+      .appendTo($(`#label-layers-historydata${dataLayer.options.year}${dataLayer.options.region}`));
 
     dataLoader = new AbortController();
     fetch(url, { signal: dataLoader.signal })

@@ -753,6 +753,11 @@ tr.turn {
   }
 }
 
+.new-user-form-image {
+  flex: 2;
+  background: image-url("zvartnoc.jpg") center/cover no-repeat;
+}
+
 [dir=rtl] .header-illustration {
   transform: scaleX(-1);
 

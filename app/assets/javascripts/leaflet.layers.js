@@ -4,88 +4,115 @@ L.OSM.layers = function (options) {
   control.onAddPane = function (map, button, $ui, toggle) {
     const layers = options.layers;
 
-    const $details = $("<details>").appendTo($ui);
-    const $summary = $("<summary>")
-      .text(OSM.i18n.t("javascripts.map.layers.title") || "Base Layers")
-      .appendTo($details);
-
-    const $baseContent = $("<div>").appendTo($details);
+    const $baseContent = $("<div>").appendTo($ui);
 
     const baseSection = $("<div>")
       .attr("class", "base-layers d-grid gap-3 p-3 border-bottom border-secondary-subtle")
       .appendTo($baseContent);
 
-    layers.forEach(function (layer, i) {
-      const id = "map-ui-layer-" + i;
+    const $orthoDetails = $("<details>").appendTo($ui);
+    const $summary = $("<summary>")
+      .text(OSM.i18n.t("javascripts.map.layers.ortho") || "Base Layers")
+      .appendTo($orthoDetails);
 
-      const buttonContainer = $("<div class='position-relative'>")
-        .appendTo(baseSection);
+    const $orthoSubContent = $("<div>").appendTo($orthoDetails);
 
-      const mapContainer = $("<div class='position-absolute top-0 start-0 bottom-0 end-0 z-0 bg-body-secondary'>")
-        .appendTo(buttonContainer);
+    const $orthoSubSection = $("<div>")
+      .attr("class", "base-layers d-grid gap-3 p-3 border-bottom border-secondary-subtle")
+      .appendTo($orthoSubContent);
 
-      const input = $("<input type='checkbox' class='btn-check' name='layer'>")
-        .prop("id", id)
-        .prop("checked", map.hasLayer(layer))
-        .appendTo(buttonContainer);
+    addLayerButtons(layers.default, baseSection, null);
+    addLayerButtons(layers[options.region], $orthoSubSection, options.region);
 
-      const item = $("<label class='btn btn-outline-primary border-4 rounded-3 bg-transparent position-absolute p-0 h-100 w-100 overflow-hidden'>")
-        .prop("for", id)
-        .append($("<span class='badge position-absolute top-0 start-0 rounded-top-0 rounded-start-0 py-1 px-2 bg-body bg-opacity-75 text-body text-wrap text-start fs-6 lh-base'>").append(layer.options.name))
-        .appendTo(buttonContainer);
+    map.on("regionchange", function (e) {
+      let regionalLayers = e.region === "yerevan" ? layers.yerevan : layers.gyumri;
 
-      map.whenReady(function () {
-        const miniMap = L.map(mapContainer[0], { attributionControl: false, zoomControl: false, keyboard: false });
-        miniMap.createPane("timelinePane");
-        miniMap.addLayer(new layer.constructor(layer.options));
+      if (e.region === "yerevan") {
+        map.options.groups.gyumri.eachLayer(l => map.options.groups.gyumri.removeLayer(l));
+      }
 
-        miniMap.dragging.disable();
-        miniMap.touchZoom.disable();
-        miniMap.doubleClickZoom.disable();
-        miniMap.scrollWheelZoom.disable();
+      if (e.region === "gyumri") {
+        map.options.groups.yerevan.eachLayer(l => map.options.groups.yerevan.removeLayer(l));
+      }
 
-        $ui
-          .on("show", shown)
-          .on("hide", hide);
+      $orthoSubSection.empty();
 
-        function shown() {
-          miniMap.invalidateSize();
-          setView({ animate: false });
-          map.on("moveend", moved);
-        }
-
-        function hide() {
-          map.off("moveend", moved);
-        }
-
-        function moved() {
-          setView();
-        }
-
-        function setView(options) {
-          miniMap.setView(map.getCenter(), Math.max(map.getZoom() - 2, 0), options);
-        }
-      });
-
-      input.on("click", function () {
-        if (map.hasLayer(layer)) {
-          map.removeLayer(layer);
-          return;
-        }
-
-        map.addLayer(layer);
-      });
-
-      // item.on("dblclick", toggle);
-
-      map.on("baselayeradd", function () {
-        input.prop("checked", map.hasLayer(layer));
-      });
+      addLayerButtons(regionalLayers, $orthoSubSection, e.region);
     });
 
-    // $ui
-    //   .on("show", () => options.subSidebar.fire("sidebar:layers-show"))
-    //   .on("hide", () => options.subSidebar.fire("sidebar:layers-hide"));
+    function addLayerButtons(layers, $target, groupName) {
+      layers.forEach(function (layer, i) {
+        const id = `map-ui-layer-${groupName}` + i;
+
+        const buttonContainer = $("<div class='position-relative'>")
+          .appendTo($target);
+
+        const mapContainer = $("<div class='position-absolute top-0 start-0 bottom-0 end-0 z-0 bg-body-secondary'>")
+          .appendTo(buttonContainer);
+
+        const input = $("<input type='checkbox' class='btn-check' name='layer'>")
+          .prop("id", id)
+          .prop("checked", map.hasLayer(layer))
+          .appendTo(buttonContainer);
+
+        const item = $("<label class='btn btn-outline-primary border-4 rounded-3 bg-transparent position-absolute p-0 h-100 w-100 overflow-hidden'>")
+          .prop("for", id)
+          .append($("<span class='badge position-absolute top-0 start-0 rounded-top-0 rounded-start-0 py-1 px-2 bg-body bg-opacity-75 text-body text-wrap text-start fs-6 lh-base'>").append(layer.options.name))
+          .appendTo(buttonContainer);
+
+        map.whenReady(function () {
+          const miniMap = L.map(mapContainer[0], { attributionControl: false, zoomControl: false, keyboard: false });
+          miniMap.createPane("timelinePane");
+          miniMap.addLayer(new layer.constructor(layer.options));
+
+          miniMap.dragging.disable();
+          miniMap.touchZoom.disable();
+          miniMap.doubleClickZoom.disable();
+          miniMap.scrollWheelZoom.disable();
+
+          $ui
+            .on("show", shown)
+            .on("hide", hide);
+
+          function shown() {
+            miniMap.invalidateSize();
+            setView({ animate: false });
+            map.on("moveend", moved);
+          }
+
+          function hide() {
+            map.off("moveend", moved);
+          }
+
+          function moved() {
+            setView();
+          }
+
+          function setView(options) {
+            miniMap.setView(map.getCenter(), Math.max(map.getZoom() - 2, 0), options);
+          }
+        });
+
+        input.on("click", function () {
+          if (map.hasLayer(layer)) {
+            map.removeLayer(layer);
+            return;
+          }
+
+          if (groupName) {
+            return map.options.groups[groupName].addLayer(layer);
+          }
+
+          map.addLayer(layer);
+        });
+
+        // item.on("dblclick", toggle);
+
+        map.on("baselayerchange", function () {
+          input.prop("checked", map.hasLayer(layer));
+        });
+      });
+    }
 
     if (OSM.STATUS !== "api_offline" && OSM.STATUS !== "database_offline") {
       const overlaySection = $("<div>")
@@ -221,10 +248,23 @@ L.OSM.layers = function (options) {
         });
       };
 
+      map.on("regionchange", function(e) {
+        map.eachLayer(function (layer) {
+          if (layer instanceof L.FeatureGroup) {
+            map.removeLayer(layer);
+          }
+        });
+
+        overlays.empty();
+
+        addOverlay(map.noteLayer, "notes", OSM.MAX_NOTE_REQUEST_AREA);
+        OSM.availableDataYears[e.region].forEach(year => addOverlay(map[`dataLayer${year}${e.region}`], `historydata${year}${e.region}`, OSM.MAX_REQUEST_AREA));
+      });
+
       addOverlay(map.noteLayer, "notes", OSM.MAX_NOTE_REQUEST_AREA);
       // addOverlay(map.dataLayer, "data", OSM.MAX_REQUEST_AREA);
       // addOverlay(map.gpsLayer, "gps", Number.POSITIVE_INFINITY);
-      OSM.availableYears.forEach(year => addOverlay(map[`dataLayer${year}`], `historydata${year}`, OSM.MAX_REQUEST_AREA));
+      OSM.availableDataYears[options.region].forEach(year => addOverlay(map[`dataLayer${year}${options.region}`], `historydata${year}${options.region}`, OSM.MAX_REQUEST_AREA));
     }
   };
 
