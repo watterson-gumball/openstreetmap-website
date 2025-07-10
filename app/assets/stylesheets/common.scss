@@ -924,7 +924,10 @@ div.secondary-actions {
 
 .site-about #content {
   .content-inner {
-    max-width: 760px;
+    max-width: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 
   .attr {

@@ -1,32 +1,83 @@
-<% content_for(:content_class) { "bg-body-secondary" } %>
-<% I18n.with_locale @locale do %>
-  <%= tag.div :lang => @locale, :dir => t("html.dir") do %>
-    <div class="container-lg attr">
-      <div class='row'>
-        <div class='col-sm-7 user-image'></div>
-        <div class='col-sm-5 px-5 py-3 byosm'>
-          <p class='h5 text-white text-nowrap'>
-            <%= t ".heading_html", :copyright => tag.span(t(".copyright_symbol_html")),
-                                   :br => tag.br %>
-          </p>
-        </div>
-      </div>
-      <div class='row'>
-        <div class="px-5 py-4 bg-black bg-opacity-75">
-          <h1 class="text-white fw-light"><%= t ".used_by_html", :name => tag.span(t".airport_name", :class => "user-name") %></h1>
-        </div>
-      </div>
-    </div>
+<% content_for :tmp_styles do %>
+  <style>
+    .main-wrapper {
+      display: flex;
+      gap: 40px;
+      max-width: 1500px;
+      width: 95%;
+      align-items: center;
+      justify-content: center;
+    }
 
-    <div class='bg-body px-5 py-4'>
-      <p class="lead"><%= t ".lede_text" %></p>
+    .image-container {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
 
-      <section>
-        <p><%= t ".about_1_html" %></p>
-      </section>
-      <section>
-        <p><%= t ".about_2_html" %></p>
-      </section>
-    </div>
-  <% end %>
+    .image-container img {
+      width: **680px**;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .text-box {
+      flex: 1.2;
+      background-color: white;
+      padding: 45px 50px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+    }
+
+    .text-box h1 {
+      font-size: 24px;
+      color: #E68946;
+      margin-bottom: 20px;
+    }
+
+    .text-box p {
+      font-size: 1.05em;
+      line-height: 1.8;
+      color: #333;
+      text-align: justify;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 1000px) {
+      .main-wrapper {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .image-container {
+        justify-content: center;
+      }
+
+      .image-container img {
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .text-box {
+        padding: 30px;
+      }
+    }
+  </style>
 <% end %>
+
+<div class="main-wrapper">
+  <div class="image-container">
+    <%= image_tag "airport.png", :alt => "Օդանավակայան" %>
+  </div>
+  <div class="text-box">
+    <h1>«Զվարթնոց» և «Շիրակ» օդանավակայանների վեբ ինտերակտիվ քարտեզ</h1>
+
+    <p>«Երկրատարածական տեխնոլոգիաների կենտրոն» ՍՊԸ-ի կողմից մշակված ինտերակտիվ վեբ-քարտեզը ներկայացնում է Զվարթնոց և Շիրակ միջազգային օդանավակայանների տարածքային և իրավական զարգացման ընթացքը 2003 – 2025թթ․ ընթացքում։</p>
+    <p>Աշխատանքն իրականացվել է «Արմենիա» Միջազգային Օդանավակայաններ» ՓԲԸ-ի կողմից տրված տեխնիկական առաջադրանքի համաձայն, որի շրջանակում ստեղծվել է վեբ (ինտերակտիվ) քարտեզ, որում ներառված են 2003–2025 թթ․ ժամանակահատվածում Զվարթնոց և Գյումրի միջազգային օդանավակայանների անշարժ գույքի գրանցման վկայականներ, կադաստրային քարտեզներ, օրթոֆոտոհատակագծեր, արխիվային փաստաթղթեր և այլ տեղեկատվական աղբյուրներ։</p>
+    <p>Այս տվյալների համադրմամբ հնարավոր է վերլուծել տարածքային փոփոխությունների դինամիկան, գույքի հատակագծի փոփոխությունը և իրավական ժամանակագրությունը։</p>
+    <p>Քարտեզագրական հարթակում տվյալները համակարգվել և համադրվել են ժամանակագրական հաջորդականությամբ՝ վերարտադրելու տարածքի տարածական զարգացումն ու իրավական փուլերը։</p>
+    <p>«Երկրատարածական տեխնոլոգիաների կենտրոն» ՍՊԸ-ն մասնագիտացած է գեոդեզիայի, քարտեզագրության, լազերային սկանավորման, օդալուսանկարահանման, տարածական տվյալների ենթակառուցվածքների մշակման և հարակից ոլորտներում։</p>
+  </div>
+</div>

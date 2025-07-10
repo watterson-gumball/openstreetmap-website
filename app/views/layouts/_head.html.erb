@@ -15,4 +15,5 @@
   <%= csrf_meta_tag %>
   <%= csp_meta_tag %>
   <title><%= "#{@title} | " if @title %><%= t "layouts.project_name.title" %></title>
+  <%= yield :tmp_styles %>
 <% end %>
