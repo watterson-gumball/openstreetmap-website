@@ -4,7 +4,6 @@ namespace :storage do
   desc "Populate storage with documents from CSV and files (PDF or JPG) using streaming"
   task populate: :environment do
     region_name = ENV['REGION_NAME']
-    document_type = ENV['DOCUMENT_TYPE']
 
     working_dir_path = Rails.root.join("db", "data", region_name)
     csv_path = working_dir_path.join("documents_list.csv")
@@ -69,7 +68,9 @@ namespace :storage do
           code_record
         end
 
-        document = Document.create!(title: "#{number}#{extension}")
+        type = (File.basename(file_path)).split(".")[1]
+
+        document = Document.create!(title: "#{number}#{extension}", document_type: type)
         puts "  Created document record: #{document.title}"
 
         document.file.attach(

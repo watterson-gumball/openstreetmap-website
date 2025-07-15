@@ -837,6 +837,7 @@ CREATE TABLE public.diary_entry_subscriptions (
 CREATE TABLE public.documents (
     id bigint NOT NULL,
     title character varying,
+    document_type character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
