@@ -10,7 +10,7 @@ L.OSM.documents = function (options) {
       .on("show", shown);
 
     function shown() {
-      fetch("/documents")
+      fetch("/app/documents")
         .then(r => r.text())
         .then(html => { $section.html(html); });
     }

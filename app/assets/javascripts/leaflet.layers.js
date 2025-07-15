@@ -21,8 +21,23 @@ L.OSM.layers = function (options) {
       .attr("class", "base-layers d-grid gap-3 p-3 border-bottom border-secondary-subtle")
       .appendTo($orthoSubContent);
 
-    addLayerButtons(layers.default, baseSection, null);
-    addLayerButtons(layers[options.region], $orthoSubSection, options.region);
+    //=============
+
+    const $planDetails = $("<details>").appendTo($ui);
+    const $planSummary = $("<summary>")
+      .text(OSM.i18n.t("javascripts.map.layers.plan") || "Base Layers")
+      .appendTo($planDetails);
+
+    const $planSubContent = $("<div>").appendTo($planDetails);
+
+    const $planSubSection = $("<div>")
+      .attr("class", "base-layers d-grid gap-3 p-3 border-bottom border-secondary-subtle")
+      .appendTo($planSubContent);
+
+    //=============
+
+    addLayerButtons(layers.default, baseSection, null, null);
+    addLayerButtons(layers[options.region], $orthoSubSection, $planSubSection, options.region);
 
     map.on("regionchange", function (e) {
       let regionalLayers = e.region === "yerevan" ? layers.yerevan : layers.gyumri;
@@ -36,16 +51,18 @@ L.OSM.layers = function (options) {
       }
 
       $orthoSubSection.empty();
+      $planSubSection.empty();
 
-      addLayerButtons(regionalLayers, $orthoSubSection, e.region);
+      addLayerButtons(regionalLayers, $orthoSubSection, $planSubSection, e.region);
     });
 
-    function addLayerButtons(layers, $target, groupName) {
+    function addLayerButtons(layers, $orthoTarget, $planTarget, groupName) {
       layers.forEach(function (layer, i) {
+        console.log('layer', layer)
         const id = `map-ui-layer-${groupName}` + i;
 
         const buttonContainer = $("<div class='position-relative'>")
-          .appendTo($target);
+          .appendTo(layer.options.layerId.startsWith("plan") ? $planTarget : $orthoTarget);
 
         const mapContainer = $("<div class='position-absolute top-0 start-0 bottom-0 end-0 z-0 bg-body-secondary'>")
           .appendTo(buttonContainer);

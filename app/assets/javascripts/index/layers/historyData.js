@@ -64,7 +64,7 @@ OSM.initializeHistoryDataLayer = function (map, layerKey) {
 
   function getData() {
     const bounds = map.getBounds();
-    const url = `/api/${OSM.API_VERSION}/history_map.json?year=${dataLayer.options.year}&bbox=${bounds.toBBoxString()}`;
+    const url = `/app/api/${OSM.API_VERSION}/history_map.json?year=${dataLayer.options.year}&bbox=${bounds.toBBoxString()}`;
 
     /*
      * Modern browsers are quite happy showing far more than 100 features in

@@ -13,6 +13,9 @@ module BrowseTagsHelper
   end
 
   def format_value(key, value)
+    if (key.downcase == "area_m2" || key.downcase == "length_m")
+      value = '%.2f' % value.to_f
+    end
     if wp = wikipedia_link(key, value)
       link_to h(wp[:title]), wp[:url], :title => t("browse.tag_details.wikipedia_link", :page => wp[:title])
     elsif wdt = wikidata_links(key, value)

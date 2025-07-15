@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    unless current_user
+        unless current_user
       if request.get?
         redirect_to login_path(:referer => request.fullpath)
       else

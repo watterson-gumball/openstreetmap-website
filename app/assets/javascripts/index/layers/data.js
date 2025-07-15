@@ -64,7 +64,7 @@ OSM.initializeDataLayer = function (map) {
 
   function getData() {
     const bounds = map.getBounds();
-    const url = "/api/" + OSM.API_VERSION + "/map.json?bbox=" + bounds.toBBoxString();
+    const url = "/app/api/" + OSM.API_VERSION + "/map.json?bbox=" + bounds.toBBoxString();
 
     /*
      * Modern browsers are quite happy showing far more than 100 features in

@@ -2,5 +2,8 @@
 
 require_relative "config/environment"
 
-run Rails.application
+# map '/app' do
+  run Rails.application
+# end
+
 Rails.application.load_server

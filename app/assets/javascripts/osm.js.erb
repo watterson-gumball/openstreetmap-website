@@ -30,8 +30,8 @@ OSM = {
   DEFAULT_LOCALE: <%= I18n.default_locale.to_json %>,
 
   LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/layers.yml", :legends => "config/key.yml").to_json %>,
-  YEREVAN_LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/yerevan_layers.yml", :legends => "config/key.yml").to_json %>,
-  GYUMRI_LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/gyumri_layers.yml", :legends => "config/key.yml").to_json %>,
+  YEREVAN_LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/yerevan_layers.yml.erb", :legends => "config/key.yml").to_json %>,
+  GYUMRI_LAYER_DEFINITIONS: <%= MapLayers::full_definitions("config/gyumri_layers.yml.erb", :legends => "config/key.yml").to_json %>,
 
   MARKER_BLUE: <%= image_path("marker-blue.png").to_json %>,
   MARKER_GREEN: <%= image_path("marker-green.png").to_json %>,

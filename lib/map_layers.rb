@@ -1,7 +1,7 @@
 module MapLayers
   def self.full_definitions(layers_filename, legends: nil)
     legended_layers = YAML.load_file(Rails.root.join(legends)).keys if legends
-    YAML.load_file(Rails.root.join(layers_filename))
+    YAML.load(ERB.new(File.read(Rails.root.join(layers_filename))).result)
         .reject { |layer| layer["apiKeyId"] && !Settings[layer["apiKeyId"]] }
         .map do |layer|
           if layer["apiKeyId"]

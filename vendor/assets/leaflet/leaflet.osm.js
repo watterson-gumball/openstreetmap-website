@@ -21,7 +21,12 @@ L.OSM.Mapnik = L.OSM.TileLayer.extend({
 
 L.OSM.Orthophoto = L.OSM.TileLayer.extend({
   options: {
-    // url: 'http://localhost:8080/services/zvartnoc_2xxx_xx/tiles/{z}/{x}/{y}.png',
+    maxZoom: 23
+  }
+});
+
+L.OSM.Plan = L.OSM.TileLayer.extend({
+  options: {
     maxZoom: 23
   }
 });

@@ -1796,6 +1796,8 @@ en:
         notes: Map Notes
         overlays: Enable overlays for troubleshooting the map
         title: Layers
+        ortho: Orthophoto
+        plan: Plan
       locate:
         feetPopup:
           one: You are within %{count} foot of this point
@@ -1857,6 +1859,9 @@ en:
       map_notes_zoom_in_tooltip: Zoom in to see map notes
       queryfeature_disabled_tooltip: Zoom in to query features
       queryfeature_tooltip: Query features
+    documents:
+      title: Documents
+      header: Documetns
   layouts:
     gyumri: Shirak
     yerevan: Zvartnots
