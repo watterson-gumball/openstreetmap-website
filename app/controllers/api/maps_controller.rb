@@ -28,7 +28,7 @@ module Api
         return
       end
 
-      nodes = Node.bbox(@bounds).where(:visible => true).includes(:node_tags, :changeset).limit(Settings.max_number_of_nodes + 1)
+      nodes = Node.bbox(@bounds).where("timeline_date LIKE ?", "#{params[:year]}%").where(:visible => true).includes(:node_tags, :changeset).limit(Settings.max_number_of_nodes + 1)
 
       node_ids = nodes.collect(&:id)
       if node_ids.length > Settings.max_number_of_nodes

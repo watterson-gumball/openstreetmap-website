@@ -2,14 +2,16 @@
 #
 # Table name: current_node_tags
 #
-#  node_id   :bigint           not null, primary key
-#  k         :string           default(""), not null, primary key
-#  v         :string           default(""), not null
-#  region_id :bigint
+#  node_id       :bigint           not null, primary key
+#  k             :string           default(""), not null, primary key
+#  v             :string           default(""), not null
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
-#  index_current_node_tags_on_region_id  (region_id)
+#  index_current_node_tags_on_region_id      (region_id)
+#  index_current_node_tags_on_timeline_date  (timeline_date)
 #
 # Foreign Keys
 #

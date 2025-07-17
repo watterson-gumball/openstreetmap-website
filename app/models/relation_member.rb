@@ -2,17 +2,19 @@
 #
 # Table name: current_relation_members
 #
-#  relation_id :bigint           not null, primary key
-#  member_type :enum             not null
-#  member_id   :bigint           not null
-#  member_role :string           not null
-#  sequence_id :integer          default(0), not null, primary key
-#  region_id   :bigint
+#  relation_id   :bigint           not null, primary key
+#  member_type   :enum             not null
+#  member_id     :bigint           not null
+#  member_role   :string           not null
+#  sequence_id   :integer          default(0), not null, primary key
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
-#  current_relation_members_member_idx          (member_type,member_id)
-#  index_current_relation_members_on_region_id  (region_id)
+#  current_relation_members_member_idx              (member_type,member_id)
+#  index_current_relation_members_on_region_id      (region_id)
+#  index_current_relation_members_on_timeline_date  (timeline_date)
 #
 # Foreign Keys
 #

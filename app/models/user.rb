@@ -35,11 +35,13 @@
 #  creation_address     :inet
 #  home_location_name   :string
 #  region_id            :bigint
+#  timeline_date        :string
 #
 # Indexes
 #
 #  index_users_on_creation_address   (creation_address) USING gist
 #  index_users_on_region_id          (region_id)
+#  index_users_on_timeline_date      (timeline_date)
 #  users_auth_idx                    (auth_provider,auth_uid) UNIQUE
 #  users_display_name_canonical_idx  (lower(NORMALIZE(display_name, NFKC)))
 #  users_display_name_idx            (display_name) UNIQUE

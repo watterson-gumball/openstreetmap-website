@@ -1327,13 +1327,13 @@ hy:
           outdoor_seating: Outdoor Seating
           park: Park
           picnic_table: Picnic Table
-          pitch: Sports Pitch
+          pitch: Սպորտային դաշտ
           playground: Playground
           recreation_ground: Recreation Ground
           resort: Resort
           sauna: Sauna
           slipway: Slipway
-          sports_centre: Sports Centre
+          sports_centre: Սպորտային կենտրոն
           stadium: Stadium
           swimming_pool: Swimming Pool
           track: Running Track
@@ -2060,93 +2060,93 @@ hy:
   map_keys:
     show:
       entries:
-        admin: Administrative boundary
-        allotments: Allotments
-        apron: Airport apron
-        bare_rock: Bare rock
+        admin: Վարչական սահման
+        allotments: Տնամերձ հողամասեր
+        apron: Օդանավակայանի կայանատեղի
+        bare_rock: Քարքարոտ հողատեսք
         beach: Beach
         bicycle_parking: Bicycle parking
         bicycle_parking_small: Small bicycle parking
         bicycle_rental: Bicycle rental
         bicycle_shop: Bicycle shop
-        bridge: Black casing = bridge
-        bridleway: Bridleway
-        brownfield: Brownfield site
-        building: Significant building
+        bridge: Կամուրջ
+        bridleway: Ձիավարության ճանապարհ
+        brownfield: Աղտոտված/չօգտագործվող հողերով տարածք
+        building: կարևոր շինություն
         built_up: Built-up area
         bus: Bus
-        bus_stop: Bus stop
-        cable_car: Cable car
+        bus_stop: Ավտոբուսի կանգառ
+        cable_car: Ճոպանուղի
         capital: Capital
-        cemetery: Cemetery
+        cemetery: Գերեզմանոց
         centre: Sports centre
-        chair_lift: Chair lift
+        chair_lift: Ճոպանուղի
         city: City
-        commercial: Commercial area
+        commercial: Առևտրային տարածք
         common: Common
-        construction: Roads under construction
-        cycleway: Cycleway
-        destination: Destination access
-        farm: Farm
-        farmland: Farmland
+        construction: Կառուցվող ճանապարհներ
+        cycleway: Հեծանվային ճանապարհ
+        destination: Մուտք
+        farm: Ֆերմա / Տնտեսություն
+        farmland: Գյուղատնտեսական հողատեսք
         ferry: Ferry
-        footway: Footway
-        forest: Forest
-        glacier: Glacier
-        golf: Golf course
-        grass: Grass
-        heathland: Heathland
-        hospital: Hospital
-        industrial: Industrial area
-        intermittent_water: Intermittent waterbody
+        footway: Հետիոտնային ճանապարհ
+        forest: Անտառ
+        glacier: Սառցադաշտ
+        golf: Գոլֆի դաշտ
+        grass: Խոտածածկ / մարգագետին
+        heathland: Չոր խոտածածկ
+        hospital: Հիվանդանոց
+        industrial: Արդյունաբերական տարածք
+        intermittent_water: Ջրամբար
         international_bike_route: International bike route
-        lake: Lake
-        light_rail: Light rail
+        lake: Լիճ
+        light_rail: Երկաթուղի
         local_bike_route: Local bike route
-        main_road: Main road
-        meadow: Meadow
-        military: Military area
-        motorway: Motorway
+        main_road: Հիմնական ճանապարհ
+        meadow: Խոտածածկ / մարգագետին
+        military: Ռազմական գոտի
+        motorway: Մայրուղի
         mountain_bike_route: Mountain bike route
         national_bike_route: National bike route
-        orchard: Orchard
-        park: Park
-        peak: Peak
+        orchard: Բերքատու այգի
+        park: Այգի
+        peak: Բարձր կետ
         pedestrian: Pedestrian way
         pitch: Sports pitch
         primary: Primary road
-        private: Private access
-        rail: Railway
-        railway_halt: Railway halt
-        reef: Reef
+        private: Մասնավոր մուտք
+        rail: Երկաթուղի
+        railway_halt: Կանգառ
+        reef: Խութ
         regional_bike_route: Regional bike route
-        reserve: Nature reserve
-        reservoir: Reservoir
-        resident: Residential area
-        retail: Retail area
-        runway: Airport Runway
-        sand: Sand
-        school: School
-        scrubland: Scrubland
+        reserve: Բնական արգելոց
+        reservoir: Լիճ
+        resident: Բնակելի տարածք
+        retail: Վաճառքի / մանրածախ տարածք
+        runway: Օդանավակայանի թռիչքուղի
+        sand: Ավազ
+        school: Դպրոց
+        scrubland: Թփուտ
         secondary: Secondary road
-        station: Railway station
-        subway: Subway
-        subway_station: Subway station
-        summit: Summit
-        taxiway: Taxiway
+        station: Երկաթուղային կայարան
+        subway: Մետրո
+        subway_station: Մետրոյի կայարան
+        summit: Բարձր կետ
+        taxiway: Օդանավակայանի թռիչքուղի
         toilets: Toilets
-        track: Track
+        track: Արահետ
         train: Train
-        tram: Tram
-        tram_stop: Tram stop
+        tram: Տրամվայ
+        tram_stop: Տրամվայի կանգառ
         trolleybus: Trolleybus
         trunk: Trunk road
-        tunnel: Dashed casing = tunnel
+        tunnel: Թունել
         unclassified: Unclassified road
-        university: University
-        vineyard: Vineyard
-        wetland: Wetland
-        wood: Wood
+        university: Համալսարան
+        vineyard: Բերքատու այգի
+        wetland: Ճահիճ
+        wood: Անտառ
       see_external_legend: See external map legend
   messages:
     create:

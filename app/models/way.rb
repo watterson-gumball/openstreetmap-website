@@ -2,17 +2,19 @@
 #
 # Table name: current_ways
 #
-#  id           :bigint           not null, primary key
-#  changeset_id :bigint           not null
-#  timestamp    :datetime         not null
-#  visible      :boolean          not null
-#  version      :bigint           not null
-#  region_id    :bigint
+#  id            :bigint           not null, primary key
+#  changeset_id  :bigint           not null
+#  timestamp     :datetime         not null
+#  visible       :boolean          not null
+#  version       :bigint           not null
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
-#  current_ways_timestamp_idx       (timestamp)
-#  index_current_ways_on_region_id  (region_id)
+#  current_ways_timestamp_idx           (timestamp)
+#  index_current_ways_on_region_id      (region_id)
+#  index_current_ways_on_timeline_date  (timeline_date)
 #
 # Foreign Keys
 #

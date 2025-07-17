@@ -2,15 +2,17 @@
 #
 # Table name: way_tags
 #
-#  way_id    :bigint           not null, primary key
-#  k         :string           not null, primary key
-#  v         :string           not null
-#  version   :bigint           not null, primary key
-#  region_id :bigint
+#  way_id        :bigint           not null, primary key
+#  k             :string           not null, primary key
+#  v             :string           not null
+#  version       :bigint           not null, primary key
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
-#  index_way_tags_on_region_id  (region_id)
+#  index_way_tags_on_region_id      (region_id)
+#  index_way_tags_on_timeline_date  (timeline_date)
 #
 # Foreign Keys
 #

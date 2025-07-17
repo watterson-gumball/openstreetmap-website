@@ -2,14 +2,16 @@
 #
 # Table name: current_relation_tags
 #
-#  relation_id :bigint           not null, primary key
-#  k           :string           default(""), not null, primary key
-#  v           :string           default(""), not null
-#  region_id   :bigint
+#  relation_id   :bigint           not null, primary key
+#  k             :string           default(""), not null, primary key
+#  v             :string           default(""), not null
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
-#  index_current_relation_tags_on_region_id  (region_id)
+#  index_current_relation_tags_on_region_id      (region_id)
+#  index_current_relation_tags_on_timeline_date  (timeline_date)
 #
 # Foreign Keys
 #

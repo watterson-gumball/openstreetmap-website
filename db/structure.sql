@@ -430,7 +430,8 @@ CREATE TABLE public.changeset_tags (
     changeset_id bigint NOT NULL,
     k character varying DEFAULT ''::character varying NOT NULL,
     v character varying DEFAULT ''::character varying NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -448,7 +449,8 @@ CREATE TABLE public.changesets (
     max_lon integer,
     closed_at timestamp without time zone NOT NULL,
     num_changes integer DEFAULT 0 NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -521,7 +523,8 @@ CREATE TABLE public.codes (
     id bigint NOT NULL,
     value character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    parent_id bigint
 );
 
 
@@ -552,7 +555,8 @@ CREATE TABLE public.current_node_tags (
     node_id bigint NOT NULL,
     k character varying DEFAULT ''::character varying NOT NULL,
     v character varying DEFAULT ''::character varying NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -569,7 +573,8 @@ CREATE TABLE public.current_nodes (
     "timestamp" timestamp without time zone NOT NULL,
     tile bigint NOT NULL,
     version bigint NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -602,7 +607,8 @@ CREATE TABLE public.current_relation_members (
     member_id bigint NOT NULL,
     member_role character varying NOT NULL,
     sequence_id integer DEFAULT 0 NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -614,7 +620,8 @@ CREATE TABLE public.current_relation_tags (
     relation_id bigint NOT NULL,
     k character varying DEFAULT ''::character varying NOT NULL,
     v character varying DEFAULT ''::character varying NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -628,7 +635,8 @@ CREATE TABLE public.current_relations (
     "timestamp" timestamp without time zone NOT NULL,
     visible boolean NOT NULL,
     version bigint NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -659,7 +667,8 @@ CREATE TABLE public.current_way_nodes (
     way_id bigint NOT NULL,
     node_id bigint NOT NULL,
     sequence_id bigint NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -671,7 +680,8 @@ CREATE TABLE public.current_way_tags (
     way_id bigint NOT NULL,
     k character varying DEFAULT ''::character varying NOT NULL,
     v character varying DEFAULT ''::character varying NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -685,7 +695,8 @@ CREATE TABLE public.current_ways (
     "timestamp" timestamp without time zone NOT NULL,
     visible boolean NOT NULL,
     version bigint NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -1126,7 +1137,8 @@ CREATE TABLE public.nodes (
     tile bigint NOT NULL,
     version bigint NOT NULL,
     redaction_id integer,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -1433,7 +1445,8 @@ CREATE TABLE public.relation_members (
     member_role character varying NOT NULL,
     version bigint DEFAULT 0 NOT NULL,
     sequence_id integer DEFAULT 0 NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -1446,7 +1459,8 @@ CREATE TABLE public.relation_tags (
     k character varying DEFAULT ''::character varying NOT NULL,
     v character varying DEFAULT ''::character varying NOT NULL,
     version bigint NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -1461,7 +1475,8 @@ CREATE TABLE public.relations (
     version bigint NOT NULL,
     visible boolean DEFAULT true NOT NULL,
     redaction_id integer,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -1694,7 +1709,8 @@ CREATE TABLE public.users (
     note_comments_count integer DEFAULT 0,
     creation_address inet,
     home_location_name character varying,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -1726,7 +1742,8 @@ CREATE TABLE public.way_nodes (
     node_id bigint NOT NULL,
     version bigint NOT NULL,
     sequence_id bigint NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -1739,7 +1756,8 @@ CREATE TABLE public.way_tags (
     k character varying NOT NULL,
     v character varying NOT NULL,
     version bigint NOT NULL,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -1754,7 +1772,8 @@ CREATE TABLE public.ways (
     version bigint NOT NULL,
     visible boolean DEFAULT true NOT NULL,
     redaction_id integer,
-    region_id bigint
+    region_id bigint,
+    timeline_date character varying
 );
 
 
@@ -2689,10 +2708,24 @@ CREATE INDEX index_changeset_tags_on_region_id ON public.changeset_tags USING bt
 
 
 --
+-- Name: index_changeset_tags_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_changeset_tags_on_timeline_date ON public.changeset_tags USING btree (timeline_date);
+
+
+--
 -- Name: index_changesets_on_region_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_changesets_on_region_id ON public.changesets USING btree (region_id);
+
+
+--
+-- Name: index_changesets_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_changesets_on_timeline_date ON public.changesets USING btree (timeline_date);
 
 
 --
@@ -2752,10 +2785,24 @@ CREATE INDEX index_current_node_tags_on_region_id ON public.current_node_tags US
 
 
 --
+-- Name: index_current_node_tags_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_node_tags_on_timeline_date ON public.current_node_tags USING btree (timeline_date);
+
+
+--
 -- Name: index_current_nodes_on_region_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_current_nodes_on_region_id ON public.current_nodes USING btree (region_id);
+
+
+--
+-- Name: index_current_nodes_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_nodes_on_timeline_date ON public.current_nodes USING btree (timeline_date);
 
 
 --
@@ -2766,10 +2813,24 @@ CREATE INDEX index_current_relation_members_on_region_id ON public.current_relat
 
 
 --
+-- Name: index_current_relation_members_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_relation_members_on_timeline_date ON public.current_relation_members USING btree (timeline_date);
+
+
+--
 -- Name: index_current_relation_tags_on_region_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_current_relation_tags_on_region_id ON public.current_relation_tags USING btree (region_id);
+
+
+--
+-- Name: index_current_relation_tags_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_relation_tags_on_timeline_date ON public.current_relation_tags USING btree (timeline_date);
 
 
 --
@@ -2780,10 +2841,24 @@ CREATE INDEX index_current_relations_on_region_id ON public.current_relations US
 
 
 --
+-- Name: index_current_relations_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_relations_on_timeline_date ON public.current_relations USING btree (timeline_date);
+
+
+--
 -- Name: index_current_way_nodes_on_region_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_current_way_nodes_on_region_id ON public.current_way_nodes USING btree (region_id);
+
+
+--
+-- Name: index_current_way_nodes_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_way_nodes_on_timeline_date ON public.current_way_nodes USING btree (timeline_date);
 
 
 --
@@ -2794,10 +2869,24 @@ CREATE INDEX index_current_way_tags_on_region_id ON public.current_way_tags USIN
 
 
 --
+-- Name: index_current_way_tags_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_way_tags_on_timeline_date ON public.current_way_tags USING btree (timeline_date);
+
+
+--
 -- Name: index_current_ways_on_region_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_current_ways_on_region_id ON public.current_ways USING btree (region_id);
+
+
+--
+-- Name: index_current_ways_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_current_ways_on_timeline_date ON public.current_ways USING btree (timeline_date);
 
 
 --
@@ -2882,6 +2971,13 @@ CREATE INDEX index_issues_on_updated_by ON public.issues USING btree (updated_by
 --
 
 CREATE INDEX index_nodes_on_region_id ON public.nodes USING btree (region_id);
+
+
+--
+-- Name: index_nodes_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_nodes_on_timeline_date ON public.nodes USING btree (timeline_date);
 
 
 --
@@ -3011,6 +3107,13 @@ CREATE INDEX index_relation_members_on_region_id ON public.relation_members USIN
 
 
 --
+-- Name: index_relation_members_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_relation_members_on_timeline_date ON public.relation_members USING btree (timeline_date);
+
+
+--
 -- Name: index_relation_tags_on_region_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -3018,10 +3121,24 @@ CREATE INDEX index_relation_tags_on_region_id ON public.relation_tags USING btre
 
 
 --
+-- Name: index_relation_tags_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_relation_tags_on_timeline_date ON public.relation_tags USING btree (timeline_date);
+
+
+--
 -- Name: index_relations_on_region_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_relations_on_region_id ON public.relations USING btree (region_id);
+
+
+--
+-- Name: index_relations_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_relations_on_timeline_date ON public.relations USING btree (timeline_date);
 
 
 --
@@ -3081,10 +3198,24 @@ CREATE INDEX index_users_on_region_id ON public.users USING btree (region_id);
 
 
 --
+-- Name: index_users_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_timeline_date ON public.users USING btree (timeline_date);
+
+
+--
 -- Name: index_way_nodes_on_region_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_way_nodes_on_region_id ON public.way_nodes USING btree (region_id);
+
+
+--
+-- Name: index_way_nodes_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_way_nodes_on_timeline_date ON public.way_nodes USING btree (timeline_date);
 
 
 --
@@ -3095,10 +3226,24 @@ CREATE INDEX index_way_tags_on_region_id ON public.way_tags USING btree (region_
 
 
 --
+-- Name: index_way_tags_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_way_tags_on_timeline_date ON public.way_tags USING btree (timeline_date);
+
+
+--
 -- Name: index_ways_on_region_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_ways_on_region_id ON public.ways USING btree (region_id);
+
+
+--
+-- Name: index_ways_on_timeline_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_ways_on_timeline_date ON public.ways USING btree (timeline_date);
 
 
 --
@@ -3442,6 +3587,14 @@ ALTER TABLE ONLY public.diary_entry_subscriptions
 
 ALTER TABLE ONLY public.diary_entry_subscriptions
     ADD CONSTRAINT diary_entry_subscriptions_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: codes fk_rails_0abdec88a2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.codes
+    ADD CONSTRAINT fk_rails_0abdec88a2 FOREIGN KEY (parent_id) REFERENCES public.codes(id) NOT VALID;
 
 
 --
@@ -4039,6 +4192,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('23'),
 ('22'),
 ('21'),
+('20250717100001'),
+('20250717010758'),
 ('20250706225734'),
 ('20250706084327'),
 ('20250625015115'),

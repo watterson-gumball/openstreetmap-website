@@ -2,16 +2,17 @@
 #
 # Table name: changesets
 #
-#  id          :bigint           not null, primary key
-#  user_id     :bigint           not null
-#  created_at  :datetime         not null
-#  min_lat     :integer
-#  max_lat     :integer
-#  min_lon     :integer
-#  max_lon     :integer
-#  closed_at   :datetime         not null
-#  num_changes :integer          default(0), not null
-#  region_id   :bigint
+#  id            :bigint           not null, primary key
+#  user_id       :bigint           not null
+#  created_at    :datetime         not null
+#  min_lat       :integer
+#  max_lat       :integer
+#  min_lon       :integer
+#  max_lon       :integer
+#  closed_at     :datetime         not null
+#  num_changes   :integer          default(0), not null
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
@@ -21,6 +22,7 @@
 #  changesets_user_id_created_at_idx          (user_id,created_at)
 #  changesets_user_id_id_idx                  (user_id,id)
 #  index_changesets_on_region_id              (region_id)
+#  index_changesets_on_timeline_date          (timeline_date)
 #  index_changesets_on_user_id_and_closed_at  (user_id,closed_at)
 #
 # Foreign Keys

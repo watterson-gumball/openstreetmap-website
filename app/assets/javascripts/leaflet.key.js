@@ -16,7 +16,7 @@ L.OSM.key = function (options) {
 
     function shown() {
       map.on("zoomend baselayerchange", update);
-      fetch("/key")
+      fetch("/app/key")
         .then(r => r.text())
         .then(html => { $section.html(html); })
         .then(update);

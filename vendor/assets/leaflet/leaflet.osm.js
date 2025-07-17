@@ -104,6 +104,10 @@ L.OSM.DataLayer = L.FeatureGroup.extend({
     uninterestingTags: ['source', 'source_ref', 'source:ref', 'history', 'attribution', 'created_by', 'tiger:county', 'tiger:tlid', 'tiger:upload_uuid'],
     styles: {
       "2008": {
+        way: { color: '#009688B3' },
+        area: { color: '#009688B3' },
+      },
+      "2011": {
         way: { color: '#F44336B3' },
         area: { color: '#F44336B3' },
       },
@@ -112,20 +116,20 @@ L.OSM.DataLayer = L.FeatureGroup.extend({
         area: { color: '#00BCD4B3' },
       },
       "2014": {
-        way: { color: '#00BCD4B3' },
-        area: { color: '#00BCD4B3' },
+        way: { color: '#F44336B3' },
+        area: { color: '#F44336B3' },
       },
       "2015": {
-        way: { color: '#00BCD4B3' },
-        area: { color: '#00BCD4B3' },
+        way: { color: '#FFEB3BB3' },
+        area: { color: '#FFEB3BB3' },
       },
       "2016": {
         way: { color: '#673AB7B3' },
         area: { color: '#673AB7B3' },
       },
       "2019": {
-        way: { color: '#00BCD4B3' },
-        area: { color: '#00BCD4B3' },
+        way: { color: '#9C27B0B3' },
+        area: { color: '#9C27B0B3' },
       },
       "2020": {
         way: { color: '#4CAF50B3' },

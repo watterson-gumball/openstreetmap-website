@@ -189,6 +189,27 @@ $(function () {
     $(document).on("turbo:render", updateHeader);
   }, 0);
 
+  const localeSwitchers = $(".locale-switcher");
+  localeSwitchers.on("click", function (e) {
+    e.preventDefault();
+
+    const $el = $(this);
+    const previousLocale = Cookies.get("_locale");
+    const currentLocale = $el.data("locale");
+
+    if (currentLocale === previousLocale) {
+      return;
+    }
+
+    Cookies.set("_locale", currentLocale, {path: "/"});
+    // map.fire("regionchange", { region: currentRegion });
+
+    // regionSwitchers.removeClass("active");
+    // $el.addClass("active");
+
+    location.reload();
+  });
+
   $("#menu-icon").on("click", function (e) {
     e.preventDefault();
     $("header").toggleClass("closed");

@@ -2,21 +2,23 @@
 #
 # Table name: current_nodes
 #
-#  id           :bigint           not null, primary key
-#  latitude     :integer          not null
-#  longitude    :integer          not null
-#  changeset_id :bigint           not null
-#  visible      :boolean          not null
-#  timestamp    :datetime         not null
-#  tile         :bigint           not null
-#  version      :bigint           not null
-#  region_id    :bigint
+#  id            :bigint           not null, primary key
+#  latitude      :integer          not null
+#  longitude     :integer          not null
+#  changeset_id  :bigint           not null
+#  visible       :boolean          not null
+#  timestamp     :datetime         not null
+#  tile          :bigint           not null
+#  version       :bigint           not null
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
-#  current_nodes_tile_idx            (tile)
-#  current_nodes_timestamp_idx       (timestamp)
-#  index_current_nodes_on_region_id  (region_id)
+#  current_nodes_tile_idx                (tile)
+#  current_nodes_timestamp_idx           (timestamp)
+#  index_current_nodes_on_region_id      (region_id)
+#  index_current_nodes_on_timeline_date  (timeline_date)
 #
 # Foreign Keys
 #

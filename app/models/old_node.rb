@@ -2,23 +2,25 @@
 #
 # Table name: nodes
 #
-#  node_id      :bigint           not null, primary key
-#  latitude     :integer          not null
-#  longitude    :integer          not null
-#  changeset_id :bigint           not null
-#  visible      :boolean          not null
-#  timestamp    :datetime         not null
-#  tile         :bigint           not null
-#  version      :bigint           not null, primary key
-#  redaction_id :integer
-#  region_id    :bigint
+#  node_id       :bigint           not null, primary key
+#  latitude      :integer          not null
+#  longitude     :integer          not null
+#  changeset_id  :bigint           not null
+#  visible       :boolean          not null
+#  timestamp     :datetime         not null
+#  tile          :bigint           not null
+#  version       :bigint           not null, primary key
+#  redaction_id  :integer
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
-#  index_nodes_on_region_id  (region_id)
-#  nodes_changeset_id_idx    (changeset_id)
-#  nodes_tile_idx            (tile)
-#  nodes_timestamp_idx       (timestamp)
+#  index_nodes_on_region_id      (region_id)
+#  index_nodes_on_timeline_date  (timeline_date)
+#  nodes_changeset_id_idx        (changeset_id)
+#  nodes_tile_idx                (tile)
+#  nodes_timestamp_idx           (timestamp)
 #
 # Foreign Keys
 #

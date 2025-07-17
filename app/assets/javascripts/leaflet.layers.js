@@ -58,7 +58,6 @@ L.OSM.layers = function (options) {
 
     function addLayerButtons(layers, $orthoTarget, $planTarget, groupName) {
       layers.forEach(function (layer, i) {
-        console.log('layer', layer)
         const id = `map-ui-layer-${groupName}` + i;
 
         const buttonContainer = $("<div class='position-relative'>")

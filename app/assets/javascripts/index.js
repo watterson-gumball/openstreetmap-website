@@ -235,27 +235,6 @@ $(function () {
     $el.addClass("active");
   });
 
-  const localeSwitchers = $(".locale-switcher");
-  localeSwitchers.on("click", function (e) {
-    e.preventDefault();
-
-    const $el = $(this);
-    const previousLocale = Cookies.get("_locale");
-    const currentLocale = $el.data("locale");
-
-    if (currentLocale === previousLocale) {
-      return;
-    }
-
-    Cookies.set("_locale", currentLocale, {path: "/"});
-    // map.fire("regionchange", { region: currentRegion });
-
-    // regionSwitchers.removeClass("active");
-    // $el.addClass("active");
-
-    location.reload();
-  });
-
   const bannerExpiry = new Date();
   bannerExpiry.setYear(bannerExpiry.getFullYear() + 1);
 

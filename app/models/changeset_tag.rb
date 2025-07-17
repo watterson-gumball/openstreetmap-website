@@ -2,14 +2,16 @@
 #
 # Table name: changeset_tags
 #
-#  changeset_id :bigint           not null, primary key
-#  k            :string           default(""), not null, primary key
-#  v            :string           default(""), not null
-#  region_id    :bigint
+#  changeset_id  :bigint           not null, primary key
+#  k             :string           default(""), not null, primary key
+#  v             :string           default(""), not null
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
-#  index_changeset_tags_on_region_id  (region_id)
+#  index_changeset_tags_on_region_id      (region_id)
+#  index_changeset_tags_on_timeline_date  (timeline_date)
 #
 # Foreign Keys
 #

@@ -2,19 +2,21 @@
 #
 # Table name: relations
 #
-#  relation_id  :bigint           not null, primary key
-#  changeset_id :bigint           not null
-#  timestamp    :datetime         not null
-#  version      :bigint           not null, primary key
-#  visible      :boolean          default(TRUE), not null
-#  redaction_id :integer
-#  region_id    :bigint
+#  relation_id   :bigint           not null, primary key
+#  changeset_id  :bigint           not null
+#  timestamp     :datetime         not null
+#  version       :bigint           not null, primary key
+#  visible       :boolean          default(TRUE), not null
+#  redaction_id  :integer
+#  region_id     :bigint
+#  timeline_date :string
 #
 # Indexes
 #
-#  index_relations_on_region_id  (region_id)
-#  relations_changeset_id_idx    (changeset_id)
-#  relations_timestamp_idx       (timestamp)
+#  index_relations_on_region_id      (region_id)
+#  index_relations_on_timeline_date  (timeline_date)
+#  relations_changeset_id_idx        (changeset_id)
+#  relations_timestamp_idx           (timestamp)
 #
 # Foreign Keys
 #
