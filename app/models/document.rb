@@ -5,6 +5,7 @@
 #  id            :bigint           not null, primary key
 #  title         :string
 #  document_type :string
+#  region_name   :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

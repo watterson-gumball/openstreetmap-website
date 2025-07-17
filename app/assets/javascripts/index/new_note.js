@@ -17,7 +17,7 @@ OSM.NewNote = function (map) {
   });
 
   function createNote(location, text, callback) {
-    fetch("/api/0.6/notes.json", {
+    fetch("/app/api/0.6/notes.json", {
       method: "POST",
       headers: { ...OSM.oauth },
       body: new URLSearchParams({

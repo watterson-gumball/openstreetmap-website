@@ -93,9 +93,17 @@ OSM.Router = function (map, rts) {
     }
   };
 
-  let currentPath = location.pathname.replace(/(.)\/$/, "$1") + location.search,
+  function normalizePath(path) {
+    return path.replace(/^\/app/, "").replace(/(.)\/$/, "$1");
+  }
+
+  let currentPath = normalizePath(location.pathname) + location.search,
       currentRoute = routes.recognize(currentPath),
       currentHash = location.hash || OSM.formatHash(map);
+
+  // let currentPath = location.pathname.replace(/(.)\/$/, "$1") + location.search,
+      // currentRoute = routes.recognize(currentPath),
+      // currentHash = location.hash || OSM.formatHash(map);
 
   const router = {};
 
@@ -111,8 +119,10 @@ OSM.Router = function (map, rts) {
 
   $(window).on("popstate", function (e) {
     if (!e.originalEvent.state) return; // Is it a real popstate event or just a hash change?
-    const path = location.pathname + location.search,
+    const path = normalizePath(location.pathname) + location.search,
           route = routes.recognize(path);
+    // const path = location.pathname + location.search,
+    //       route = routes.recognize(path);
     if (path === currentPath) return;
     currentRoute.run("unload", null, route === currentRoute);
     currentPath = path;
@@ -123,7 +133,9 @@ OSM.Router = function (map, rts) {
   });
 
   router.route = function (url) {
-    const path = url.replace(/#.*/, ""),
+    // const path = url.replace(/#.*/, ""),
+    //       route = routes.recognize(path);
+    const path = normalizePath(url.replace(/#.*/, "")),
           route = routes.recognize(path);
     if (!route) return false;
     currentRoute.run("unload", null, route === currentRoute);

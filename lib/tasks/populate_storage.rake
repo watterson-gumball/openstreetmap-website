@@ -70,7 +70,7 @@ namespace :storage do
 
         type = (File.basename(file_path)).split(".")[1]
 
-        document = Document.create!(title: "#{number}#{extension}", document_type: type)
+        document = Document.create!(title: "#{number}#{extension}", document_type: type, region_name: region_name)
         puts "  Created document record: #{document.title}"
 
         document.file.attach(

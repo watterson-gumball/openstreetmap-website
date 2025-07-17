@@ -17,4 +17,9 @@ class DocumentsController < ApplicationController
     @total_pages = (total_count.to_f / PER_PAGE).ceil
     @current_page = page
   end
+
+  def by_type
+    @documents = Document.where(document_type: params[:type], region_name: cookies[:_region])
+    render partial: "documents/list", locals: { documents: @documents }
+  end
 end

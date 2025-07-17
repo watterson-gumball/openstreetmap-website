@@ -56,7 +56,7 @@ $(function () {
     $("#sidebar_content")
       .empty();
 
-    fetch(content_path, { headers: { "accept": "text/html", "x-requested-with": "XMLHttpRequest" } })
+    fetch(`/app${content_path}`, { headers: { "accept": "text/html", "x-requested-with": "XMLHttpRequest" } })
       .then(response => {
         $("#flash").empty();
         $("#sidebar_loader").removeClass("delayed-fade-in").prop("hidden", true);

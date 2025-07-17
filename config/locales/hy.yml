@@ -771,6 +771,12 @@ hy:
       filename: route
       time: Time
       title: Directions
+  documents:
+    index:
+      mortage: Գրավ
+      property: Սեփականություն
+      use: Օգտագործում
+      rent: Վարձակալություն
   doorkeeper:
     errors:
       messages:
@@ -1975,10 +1981,10 @@ hy:
     query:
       error: 'Սխալ է կապվելիս %{server}: %{error}'
       node: Կետ
-      nothing_found: Հատկություններ չեն գտնվել
+      nothing_found: Մանրամասներ չեն գտնվել
       relation: Հարաբերություն
       timeout: Կապի ժամկետը լրացել է %{server}-ի հետ
-      way: Ճանապարհ
+      way: Ուղի
     share:
       cancel: Հրաժարվել
       center_marker: Կենտրոնացնել նշիչը
@@ -2007,8 +2013,8 @@ hy:
       embed_html_disabled: HTML կցումը հնարավոր չէ այս շերտի համար
       map_data_zoom_in_tooltip: Մեծացրեք՝ քարտեզի տվյալները տեսնելու համար
       map_notes_zoom_in_tooltip: Մեծացրեք՝ քարտեզի նշումները տեսնելու համար
-      queryfeature_disabled_tooltip: Մեծացրեք՝ հատկություններ հարցնելու համար
-      queryfeature_tooltip: Հարցում
+      queryfeature_disabled_tooltip: Մեծացրեք՝ մանրամասներ հարցնելու համար
+      queryfeature_tooltip: Մանրամասներ
     documents:
       title: Վկայականներ
       header: Վկայականներ

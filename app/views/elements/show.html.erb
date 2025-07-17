@@ -4,11 +4,6 @@
 
 <%= render :partial => "browse/#{@type}", :object => @feature %>
 
-<% if @feature.visible? %>
-  <div class='secondary-actions'>
-    <%= link_to(t("browse.download_xml"), :controller => "api/#{@type.pluralize}", :action => :show) %>
-  </div>
-<% end %>
 <div class='secondary-actions'>
   <% if @feature.version > 1 %>
     <%= link_to({ :controller => "old_#{@type.pluralize}", :action => :show, :version => 1 }, :class => "icon-link") do %>

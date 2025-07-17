@@ -43,6 +43,7 @@ WORKDIR /app
 
 # Install Ruby packages
 COPY Gemfile Gemfile.lock /app/
+RUN gem install bundler -v 2.6.2
 RUN bundle install
 
 # Install NodeJS packages using yarn
