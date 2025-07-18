@@ -442,6 +442,6 @@ $(function () {
   });
 
   $(document).on("click", "#sidebar .sidebar-close-controls button", function () {
-    OSM.router.route("/" + OSM.formatHash(map));
+    OSM.router.route("/app/" + OSM.formatHash(map));
   });
 });

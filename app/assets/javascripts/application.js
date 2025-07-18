@@ -201,7 +201,7 @@ $(function () {
       return;
     }
 
-    Cookies.set("_locale", currentLocale, {path: "/"});
+    Cookies.set("_locale", currentLocale, {path: "/app"});
     // map.fire("regionchange", { region: currentRegion });
 
     // regionSwitchers.removeClass("active");

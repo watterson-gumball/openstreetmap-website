@@ -300,7 +300,7 @@ OSM.Query = function (map) {
     }).addTo(map);
 
     runQuery(latlng, radius, nearby, $("#query-nearby"), false);
-    runQuery(latlng, radius, isin, $("#query-isin"), true, compareSize);
+    // runQuery(latlng, radius, isin, $("#query-isin"), true, compareSize);
   }
 
   function clickHandler(e) {
