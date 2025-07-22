@@ -140,7 +140,7 @@ L.OSM.share = function (options) {
 
     $form = $("<form>")
       .attr("id", "export-image")
-      .attr("action", "/export/finish")
+      .attr("action", "/app/export/finish")
       .attr("method", "post")
       .appendTo($imageSection);
 

@@ -135,6 +135,7 @@ OSM.initializeDataLayer = function (map) {
   }
 
   function onSelect(layer) {
+    console.log("/app/" + layer.feature.type + "/" + layer.feature.id)
     OSM.router.route("/app/" + layer.feature.type + "/" + layer.feature.id);
   }
 };
