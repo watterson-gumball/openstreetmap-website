@@ -140,4 +140,7 @@
       </div>
     <% end %>
   </nav>
+  <% if current_page?(about_path) || current_page?(copyright_path) %>
+    <%= link_to "Վերադառնալ Գլխավոր էջ", root_path, :class => "btn btn-danger to-main-page" %>
+  <% end %>
 </header>

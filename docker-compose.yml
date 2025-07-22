@@ -23,6 +23,7 @@ services:
       - db
     env_file:
       - app.env
+      # - serv.env
 
   db:
     build:

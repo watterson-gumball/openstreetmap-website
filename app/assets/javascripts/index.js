@@ -204,7 +204,7 @@ $(function () {
       map.getLayersCode(),
       map._object);
 
-    Cookies.set("_osm_location", OSM.locationCookie(map), { secure: true, expires: expiry, path: "/", samesite: "lax" });
+    Cookies.set("_osm_location", OSM.locationCookie(map), { secure: true, expires: expiry, path: "/app", samesite: "lax" });
   });
 
   if (Cookies.get("_osm_welcome") !== "hide") {

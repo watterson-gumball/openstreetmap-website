@@ -21,4 +21,8 @@ class Code < ApplicationRecord
   has_one :on_row,  class_name: "Code", foreign_key: :parent_id, dependent: :destroy
   has_many :code_documents
   has_many :documents, through: :code_documents
+
+  def child_code_present?
+    on_row.present? && on_row.value.present?
+  end
 end

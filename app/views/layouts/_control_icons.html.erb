@@ -10,6 +10,9 @@
    }
 
    icons.each do |icon| %>
+      <% if icon == "key" %>
+        <g id="icon-key" fill="currentColor" ><path d="M12.792 9.156c0-1.55.992-2.418 2.325-2.418c1.333 0 2.325.868 2.325 2.418V24.72h5.52c1.58 0 2.263 1.179 2.232 2.232c-.061 1.025-.868 2.048-2.231 2.048H15.21c-1.519 0-2.418-.992-2.418-2.543V9.156z"></path></g>
+      <% end %>
      <% if paths[icon] %>
        <path id="icon-<%= icon %>" fill="currentColor" <%= tag.attributes(paths[icon]) %> />
      <% end %>

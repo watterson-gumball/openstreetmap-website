@@ -1,0 +1,25 @@
+- name: yerevan
+  shp_dir: db/data/yerevan/shp.d
+  osm_dir: db/data/yerevan/osm.d
+  id_file: db/data/id.txt
+  dates_available:
+    - "2008.12"
+    - "2011.09"
+    - "2013.04"
+    - "2016.__"
+    - "2020.10"
+    - "2022.03"
+    - "2025.03"
+
+- name: gyumri
+  shp_dir: db/data/gyumri/shp.d
+  osm_dir: db/data/gyumri/osm.d
+  id_file: db/data/id.txt
+  dates_available:
+    - "2013.12"
+    - "2014.04"
+    - "2015.07"
+    - "2016.02"
+    - "2019.07"
+    - "2020.07"
+    - "2025.05"

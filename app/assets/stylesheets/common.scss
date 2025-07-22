@@ -43,6 +43,22 @@ time[title] {
   }
 }
 
+.to-main-page {
+  position: absolute;
+  text-align: center;
+  white-space: normal;
+
+  left: 60px;
+  top: 200px;
+  z-index: 999;
+  width: 156px;
+  height: 60px;
+}
+
+svg:has(use[href="#icon-key"]) {
+  width: 80% !important;
+  margin-left: -6px;
+}
 /* Utility for delayed loading spinner */
 
 .delayed-fade-in {

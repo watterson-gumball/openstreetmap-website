@@ -42,22 +42,19 @@
   </style>
 <% end %>
 
-<div class="copyright-container">
-  <%= image_tag "logoETK.png", :class => "logo" %>
+<% I18n.with_locale @locale do %>
 
-  <h1>Հեղինակային իրավունք</h1>
-  <p>
-    Սույն ինտերակտիվ քարտեզագրական մոդուլի հեղինակային իրավունքները պատկանում են
-    <strong>«Երկրատարածական տեխնոլոգիաների կենտրոն» ՍՊԸ-ին</strong>։
-  </p>
-  <p>
-    Քարտեզագրական հարթակում ներառվել են 2003 – 2025 թ․ <strong>Զվարթնոց</strong> և <strong>Գյումրի</strong> օդանավակայանների անշարժ գույքի գրանցման վկայականներ, կադաստրային քարտեզներ, օրթոֆոտոհատակագծեր, արխիվային փաստաթղթեր և այլն։
-  </p>
-  <p>
-    Քարտեզի կառուցվածքը և օգտագործված նյութերը հանդիսանում են <strong>«Երկրատարածական տեխնոլոգիաների կենտրոն» ՍՊԸ-ի</strong> մտավոր սեփականությունը, և առանց համապատասխան գրավոր թույլտվության ամբողջական կամ մասնակի տարածումը արգելվում է։
-  </p>
+  <div class="copyright-container">
+    <%= image_tag "logoETK.png", :class => "logo" %>
 
-  <div class="footer-note">
-    © <script>document.write(new Date().getFullYear());</script> «Երկրատարածական տեխնոլոգիաների կենտրոն» ՍՊԸ
+    <h1><%= t ".heading" %></h1>
+    <p><%= t ".copyright_1_html" %></p>
+    <p><%= t ".copyright_2_html" %></p>
+    <p><%= t ".copyright_3_html" %></p>
+
+    <div class="footer-note">
+      © <script>document.write(new Date().getFullYear());</script> «Երկրատարածական տեխնոլոգիաների կենտրոն» ՍՊԸ
+    </div>
   </div>
-</div>
+
+<% end %>

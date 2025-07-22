@@ -50,6 +50,11 @@ OSM = {
     gyumri: ["2013", "2014", "2015", "2016", "2019", "2020", "2025"]
   },
 
+  region_locations: {
+    yerevan: {lat: 40.15114, lon: 44.40090, zoom: 15},
+    gyumri: {lat: 40.75137, lon: 43.85592, zoom: 15}
+  },
+
   apiUrl: function (object) {
     const apiType = object.type === "note" ? "notes" : object.type;
     let url = "/api/" + OSM.API_VERSION + "/" + apiType + "/" + object.id;
@@ -123,9 +128,10 @@ OSM = {
     } else if (OSM.location) {
       mapParams.bounds = bboxToLatLngBounds(OSM.location);
     } else {
-      mapParams.lon = -0.1;
-      mapParams.lat = 51.5;
-      mapParams.zoom = params.get("zoom") || 5;
+      const currentRegionLocInfo = OSM.region_locations[Cookies.get("_region")]
+      mapParams.lon = currentRegionLocInfo.lon;
+      mapParams.lat = currentRegionLocInfo.lat;
+      mapParams.zoom = currentRegionLocInfo.zoom;
     }
 
     if (typeof mapParams.lat === "string") mapParams.lat = parseFloat(mapParams.lat);

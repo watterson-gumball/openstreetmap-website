@@ -1,4 +1,17 @@
 module BrowseHelper
+  def mismatch_mapping
+    {
+      "01-007-0571-0001-030" => "01-007-0571-0001-137",
+      "01-007-0571-0001-028" => "01-007-0571-0001-138",
+      "01-007-0571-0001-031" => "01-007-0571-0001-140",
+      "01-007-0571-0001-033" => "01-007-0571-0001-141",
+      "01-007-0571-0001-027" => "01-007-0571-0001-142",
+      "01-007-0571-0001-149" => "01-007-0571-0001-144",
+      "01-007-0571-0001-101" => "01-007-0571-0001-145",
+      "01-007-0571-0001-042" => "01-007-0571-0001-146"
+    }
+  end
+
   def element_icon(type, object)
     selected_icon_data = { :filename => "#{type}.svg", :priority => 1 }
 
@@ -109,9 +122,16 @@ module BrowseHelper
   def filtered_way_tags(tags)
     whitelist = %w(code from_date ownership use_type area_m2 length_m)
 
-    tags.select do |k, _v|
+    child_code = nil
+
+    res = tags.select do |k, v|
+      child_code = mismatch_mapping[v] if k.downcase == "code"
       whitelist.include? k.downcase
     end
+
+    res["child_code"] = child_code if child_code
+
+    res
   end
 
   private
