@@ -2400,6 +2400,7 @@ en:
       title: Logout
     new:
       login_header: Login
+      company_name: Centre of Geospatial Technologies
       access_another_page: 'You arrived here while trying to access another page. If you want to access that page using your current account, click the button below:'
       already_logged_in_html: You are already logged in as %{user}. Logging in again will change your current account.
       auth failure: Sorry, could not log in with those details.
@@ -2467,7 +2468,7 @@ en:
       heading: Interactive Web Map of Zvartnots and Shirak Airports
       airport_name: Zvartnots
       about_1_html: |
-        The interactive web map developed by "Centere of Geospatial Technologies" LLC presents the spatial
+        The interactive web map developed by "Centre of Geospatial Technologies" LLC presents the spatial
         and legal development of Zvartnots and Shirak international airports during the period of 2003–2025.
       about_2_html: |
         The work was carried out in accordance with the technical assignment provided by “Armenia International
@@ -2481,7 +2482,7 @@ en:
         On the mapping platform, the data has been systematized and chronologically integrated in order to
         reproduce the spatial development and legal evolution of the area.
       about_5_html: |
-        "Centere of  Geospatial Technologies" LLC specializes in geodesy, cartography, laser scanning,
+        "Centre of  Geospatial Technologies" LLC specializes in geodesy, cartography, laser scanning,
         aerial photography, spatial data infrastructure development, and related fields.
       community_driven_1_html: |
         OpenStreetMap's community is diverse, passionate, and growing every day.
@@ -2592,7 +2593,7 @@ en:
     copyright:
       heading: Copyright
       copyright_1_html: |
-        The copyright of this interactive cartographic module belongs to the <strong>Centere of Geospatial Technologies</strong> LLC.
+        The copyright of this interactive cartographic module belongs to the <strong>Centre of Geospatial Technologies</strong> LLC.
       copyright_2_html: |
         The mapping platform includes property registration certificates, cadastral maps, orthophotos,
         archival documents, and other materials related to the <strong>Zvartnots</strong> and <strong>Gyumri</strong> international
@@ -2600,6 +2601,7 @@ en:
       copyright_3_html: |
         The structure of the map and the materials used constitute the intellectual property of  <strong>CGT LLC</strong>,
         and any full or partial distribution without prior written permission is strictly prohibited.
+      copyright_4_html: Centre of Geospatial Technologies LLC
       foreign:
         english_link: the English original
         html: In the event of a conflict between this translated page and %{english_original_link}, the English page shall take precedence
