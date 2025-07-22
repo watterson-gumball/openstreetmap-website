@@ -100,7 +100,8 @@ $(function () {
   });
 
   map.on("regionchange", function (e) {
-    e.region === "yerevan" ? map.setView([40.15114, 44.40090], 15) : map.setView([40.75137, 43.85592], 15);
+    const { yerevan, gyumri } = OSM.region_locations
+    e.region === "yerevan" ? map.setView([yerevan.lat, yerevan.lon], yerevan.zoom) : map.setView([gyumri.lat, gyumri.lon], gyumri.zoom);
   });
 
   const sidebar = L.OSM.sidebar("#map-ui")
