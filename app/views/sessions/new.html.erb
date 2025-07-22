@@ -33,7 +33,8 @@
       overflow: hidden;
     }
     .form-section {
-      flex: 3; padding: 40px;
+      flex: 3;
+      padding: 0 40px 40px 40px;
       display: flex; flex-direction: column; justify-content: center;
     }
     .form-section h2 {
@@ -153,7 +154,10 @@
 
 <div class="container">
   <div class="form-section">
-    <h2> <%= t(".login_header") %></h2>
+    <div class="login-form-heading">
+      <h2> <%= t(".login_header") %></h2>
+      <%= image_tag "logoZvartnots.png", :class => "login_logo" %>
+    </div>
 
     <%= bootstrap_form_tag(:action => "login", :html => { :id => "login_form" }) do |f| %>
       <%= hidden_field_tag("referer", h(params[:referer]), :autocomplete => "off") %>

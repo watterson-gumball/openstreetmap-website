@@ -55,6 +55,22 @@ time[title] {
   height: 60px;
 }
 
+.login-form-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 36px;
+
+  & h2 {
+    align-self: flex-end;
+    margin-bottom: 0 !important;
+  }
+
+  & .login_logo {
+    width: 30%;
+  }
+}
+
 svg:has(use[href="#icon-key"]) {
   width: 80% !important;
   margin-left: -6px;
