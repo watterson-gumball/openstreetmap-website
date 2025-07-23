@@ -110,10 +110,12 @@ L.OSM.layers = function (options) {
         });
 
         input.on("click", function () {
+          if (layer.options?.code === "M") return;
           if (map.hasLayer(layer)) {
             map.removeLayer(layer);
             return;
           }
+          map.options.groups[groupName].clearLayers();
 
           if (groupName) {
             return map.options.groups[groupName].addLayer(layer);
