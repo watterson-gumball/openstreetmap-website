@@ -22,8 +22,8 @@ services:
     depends_on:
       - db
     env_file:
-      - app.env
-      # - serv.env
+      # - app.env
+      - serv.env
 
   db:
     build:

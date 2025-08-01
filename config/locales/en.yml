@@ -340,7 +340,10 @@ en:
       members_count:
         one: "%{count} member"
         other: "%{count} members"
-      title_html: 'Relation: %{name}'
+      title_html: '%{name}'
+      documents_count:
+        one: "%{count} Document"
+        other: "%{count} Documents"
     relation_member:
       entry_html: "%{type} %{name}"
       entry_role_html: "%{type} %{name} as %{role}"
@@ -356,7 +359,7 @@ en:
     tag_details:
       colour_preview: Colour %{colour_value} preview
       email_link: Email %{email}
-      tags: Tags
+      tags: Object
       telephone_link: Call %{phone_number}
       wiki_link:
         key: The wiki description page for the %{key} tag
@@ -388,7 +391,7 @@ en:
       documents_count:
         one: "%{count} Document"
         other: "%{count} Documents"
-      title_html: 'Way: %{name}'
+      title_html: '%{name}'
   changeset_comments:
     feeds:
       comment:

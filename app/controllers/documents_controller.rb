@@ -19,7 +19,7 @@ class DocumentsController < ApplicationController
   end
 
   def by_type
-    @documents = Document.where(document_type: params[:type], region_name: cookies[:_region])
+    @documents = Document.order(date: :desc).where(document_type: params[:type], region_name: cookies[:_region])
     render partial: "documents/list", locals: { documents: @documents }
   end
 end

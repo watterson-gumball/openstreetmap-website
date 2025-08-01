@@ -22,6 +22,6 @@ $(function () {
   }
 
   function manualEdit() {
-    location = "/?edit_help=1";
+    location = "/app/?edit_help=1";
   }
 });

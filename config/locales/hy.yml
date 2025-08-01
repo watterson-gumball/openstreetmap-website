@@ -344,7 +344,11 @@ hy:
       members_count:
         one: "%{count} member"
         other: "%{count} members"
-      title_html: 'Relation: %{name}'
+      title_html: '%{name}'
+      documents: Վկայականներ
+      documents_count:
+        one: "%{count} Վկայական"
+        other: "%{count} Վկայականներ"
     relation_member:
       entry_html: "%{type} %{name}"
       entry_role_html: "%{type} %{name} as %{role}"
@@ -361,7 +365,7 @@ hy:
       child_code: Վկայականի ծածկագիր
       colour_preview: Colour %{colour_value} preview
       email_link: Email %{email}
-      tags: Տվյալներ
+      tags: Օբյեկտ
       telephone_link: Call %{phone_number}
       wiki_link:
         key: The wiki description page for the %{key} tag
@@ -371,10 +375,20 @@ hy:
       wikipedia_link: The %{page} article on Wikipedia
       ownership: Սեփականատեր
       use_type: Օգտագործման տեսակ
-      area_m2: "Մակերես (մ²)"
-      from_date: Ամսաթիվ
-      length_m: Երկարություն (մ)
-      code: Ծածկագիր
+      custom:area_m2: "Մակերես (մ²)"
+      custom:from_date: Ամսաթիվ
+      custom:perimeter_m: Պարագիծ (մ)
+      custom:code: Ծածկագիր
+      custom:building_type: Շինության Տեսակ
+      custom:registered_right_subject: Գրանցված իրավունքի առարկան
+      registered_right_subjects:
+        republic of armenia: Հայաստանի Հանրապետություն
+        "“armenia” international airports cjsc": "«Արմէնիա» միջազգային օդանավակայաններ ՓԲԸ"
+      custom:registered_right: Գրանցված իրավունք
+      registered_rights:
+        use: Օգտագործում
+        rent: Վարձակալություն
+        property: Սեփականություն
     timeout:
       sorry: Sorry, the data for the %{type} with the id %{id} took too long to retrieve.
       title: Timeout Error
@@ -400,7 +414,7 @@ hy:
       documents_count:
         one: "%{count} Վկայական"
         other: "%{count} Վկայականներ"
-      title_html: 'Ուղի: %{name}'
+      title_html: '%{name}'
   changeset_comments:
     feeds:
       comment:

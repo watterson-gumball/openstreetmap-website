@@ -233,11 +233,16 @@ L.OSM.layers = function (options) {
           }
 
           if (checked) {
+            console.log('data layer', layer)
             map.addLayer(layer);
             if (!layer.options.year) return;
+            const previousDataLayers = Cookies.get("_selected_data_layers")?.trim();
+            Cookies.set("_selected_data_layers", previousDataLayers?.length ? `${previousDataLayers}|${layer.options.year}` : layer.options.year, {path: "/app"});
             input.css("background-color", layer.options.styles[layer.options.year].way.color);
           } else {
             map.removeLayer(layer);
+            const previousDataLayers = Cookies.get("_selected_data_layers")?.trim();
+            Cookies.set("_selected_data_layers", previousDataLayers?.split("|").filter(d => d !== layer?.options?.year).join("|"), {path: "/app"});
             input.css("background-color", "transparent");
             $(`#layers-${name}-loading`).remove();
           }

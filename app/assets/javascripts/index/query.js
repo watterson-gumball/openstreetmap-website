@@ -205,7 +205,7 @@ OSM.Query = function (map) {
 
           const $li = $("<li>")
             .addClass("list-group-item list-group-item-action")
-            .text(featurePrefix(element) + " ")
+            // .text(featurePrefix(element) + " ")
             .appendTo($ul);
 
           $("<a>")
@@ -274,6 +274,10 @@ OSM.Query = function (map) {
    * for each object.
    */
   function queryOverpass(lat, lng) {
+    const selected_data_layers = Cookies.get("_selected_data_layers")?.trim();
+
+    // if (!selected_data_layers) return;
+
     const latlng = L.latLng(lat, lng).wrap(),
           bounds = map.getBounds().wrap(),
           zoom = map.getZoom(),
@@ -284,23 +288,25 @@ OSM.Query = function (map) {
           radius = 10 * Math.pow(1.5, 19 - zoom),
           around = "(around:" + radius + "," + lat + "," + lng + ")",
           nodes = "node" + around,
-          ways = "way" + around,
-          relations = "relation" + around,
+          ways = `way["from_date"~"${selected_data_layers}"]` + around,
+          relations = `relation["from_date"~"${selected_data_layers}"]` + around,
           nearby = "(" + nodes + ";" + ways + ";);out tags " + geombbox + relations + ";out " + geombbox,
-          isin = "is_in(" + lat + "," + lng + ")->.a;way(pivot.a);out tags bb;out ids " + geombbox + "relation(pivot.a);out tags bb;";
+          // isin = "is_in(" + lat + "," + lng + ")->.a;way(pivot.a);out tags bb;out ids " + geombbox + "relation(pivot.a);out tags bb;";
+          isin = `is_in(${lat},${lng})->.a;out tags bb;out ids ${geombbox} relation(pivot.a)["custom:from_date"~"${selected_data_layers}"];out tags bb;`;
 
     $("#sidebar_content .query-intro")
       .hide();
 
-    if (marker) map.removeLayer(marker);
-    marker = L.circle(latlng, {
-      radius: radius,
-      className: "query-marker",
-      ...featureStyle
-    }).addTo(map);
+    // if (marker) map.removeLayer(marker);
+    // marker = L.circle(latlng, {
+    //   radius: radius,
+    //   className: "query-marker",
+    //   ...featureStyle
+    // }).addTo(map);
 
-    runQuery(latlng, radius, nearby, $("#query-nearby"), false);
+    // runQuery(latlng, radius, nearby, $("#query-nearby"), false);
     // runQuery(latlng, radius, isin, $("#query-isin"), true, compareSize);
+    runQuery(latlng, 0, isin, $("#query-nearby"), true, compareSize);
   }
 
   function clickHandler(e) {

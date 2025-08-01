@@ -136,6 +136,12 @@ class Relation < ApplicationRecord
     @tags ||= relation_tags.to_h { |t| [t.k, t.v] }
   end
 
+  def documents
+    code = tags.find { |k, _v| k.downcase == "custom:code" }&.last
+    # Code.includes(:document).where(value: code)
+    Document.includes(:codes).where({codes: { value: code }})
+  end
+
   attr_writer :members, :tags
 
   def add_member(type, id, role)

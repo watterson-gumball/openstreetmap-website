@@ -32,6 +32,11 @@
   </nav>
   <nav class='secondary d-flex gap-2 flex-grow-1 align-items-center'>
     <div class="d-inline-flex btn-group" role="">
+      <%= link_to "#", :class => "btn back-btn" do %>
+          <%= image_tag "back.png", :width => 36, :height => 36, :class => "rounded-1 bg-body" %>
+      <% end %>
+    </div>
+    <div class="d-inline-flex btn-group" role="">
       <%= link_to t("layouts.about"), about_path, :class => header_nav_link_class(about_path) %>
       <%= link_to t("layouts.copyright"), copyright_path, :class => header_nav_link_class(copyright_path) %>
       <%#= link_to t("layouts.help"), help_path, :class => header_nav_link_class(help_path) %>
@@ -140,7 +145,4 @@
       </div>
     <% end %>
   </nav>
-  <% if current_page?(about_path) || current_page?(copyright_path) %>
-    <%= link_to "Վերադառնալ Գլխավոր էջ", root_path, :class => "btn btn-danger to-main-page" %>
-  <% end %>
 </header>

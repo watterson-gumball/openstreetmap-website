@@ -119,7 +119,7 @@ class Way < ApplicationRecord
   end
 
   def documents
-    code = tags.find { |k, _v| k.downcase == "code" }&.last
+    code = tags.find { |k, _v| k.downcase == "custom:code" }&.last
     # Code.includes(:document).where(value: code)
     Document.includes(:codes).where({codes: { value: code }})
   end

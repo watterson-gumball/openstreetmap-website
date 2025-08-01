@@ -851,7 +851,8 @@ CREATE TABLE public.documents (
     document_type character varying,
     region_name character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    date character varying
 );
 
 
@@ -4192,6 +4193,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('23'),
 ('22'),
 ('21'),
+('20250730134100'),
 ('20250717100001'),
 ('20250717010758'),
 ('20250706225734'),

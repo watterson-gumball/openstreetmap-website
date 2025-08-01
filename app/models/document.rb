@@ -8,6 +8,7 @@
 #  region_name   :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  date          :string
 #
 class Document < ApplicationRecord
   has_one_attached :file, :service => Settings.document_storage

@@ -25,9 +25,13 @@
   OSM.i18n.locale = application_data.locale;
 
   // '-' are replaced with '_' in https://github.com/eemeli/make-plural/tree/main/packages/plurals
-  const pluralizer = plurals[locale.replace(/\W+/g, "_")] || plurals[locale.split("-")[0]];
+  const pluralizer =
+    plurals[locale.replace(/\W+/g, "_")] || plurals[locale.split("-")[0]];
   if (pluralizer) {
-    OSM.i18n.pluralization.register(locale, (_, count) => [pluralizer(count), "other"]);
+    OSM.i18n.pluralization.register(locale, (_, count) => [
+      pluralizer(count),
+      "other",
+    ]);
   }
 
   OSM.preferred_editor = application_data.preferredEditor;
@@ -54,7 +58,7 @@ window.updateLinks = function (loc, zoom, layers, object) {
   $(".geolink").each(function (index, link) {
     let href = link.href.split(/[?#]/)[0];
     const queryArgs = new URLSearchParams(link.search),
-          editlink = $(link).hasClass("editlink");
+      editlink = $(link).hasClass("editlink");
 
     for (const arg of ["node", "way", "relation", "changeset", "note"]) {
       queryArgs.delete(arg);
@@ -70,7 +74,7 @@ window.updateLinks = function (loc, zoom, layers, object) {
     const hashArgs = {
       lat: loc.lat,
       lon: "lon" in loc ? loc.lon : loc.lng,
-      zoom: zoom
+      zoom: zoom,
     };
 
     if (layers && !editlink) {
@@ -99,13 +103,15 @@ $(function () {
   Turbo.session.drive = false;
 
   const $expandedSecondaryMenu = $("header nav.secondary > ul"),
-        $collapsedSecondaryMenu = $("#compact-secondary-nav > ul"),
-        secondaryMenuItems = [],
-        breakpointWidth = 768;
+    $collapsedSecondaryMenu = $("#compact-secondary-nav > ul"),
+    secondaryMenuItems = [],
+    breakpointWidth = 768;
   let moreItemWidth = 0;
 
   OSM.csrf = {};
-  OSM.csrf[($("meta[name=csrf-param]").attr("content"))] = $("meta[name=csrf-token]").attr("content");
+  OSM.csrf[$("meta[name=csrf-param]").attr("content")] = $(
+    "meta[name=csrf-token]",
+  ).attr("content");
 
   function updateHeader() {
     const windowWidth = $(window).width();
@@ -120,8 +126,8 @@ $(function () {
         $(item[0]).remove();
       });
       let runningWidth = 0,
-          i = 0,
-          requiredWidth;
+        i = 0,
+        requiredWidth;
       for (; i < secondaryMenuItems.length; i++) {
         runningWidth += secondaryMenuItems[i][1];
         if (i < secondaryMenuItems.length - 1) {
@@ -147,18 +153,22 @@ $(function () {
   }
 
   function expandSecondaryMenuItem($item) {
-    $item.children("a")
+    $item
+      .children("a")
       .removeClass("dropdown-item")
       .addClass("nav-link")
       .addClass(function () {
-        return $(this).hasClass("active") ? "text-secondary-emphasis" : "text-secondary";
+        return $(this).hasClass("active")
+          ? "text-secondary-emphasis"
+          : "text-secondary";
       });
     $item.addClass("nav-item").insertBefore("#compact-secondary-nav");
     toggleCompactSecondaryNav();
   }
 
   function collapseSecondaryMenuItem($item) {
-    $item.children("a")
+    $item
+      .children("a")
       .addClass("dropdown-item")
       .removeClass("nav-link text-secondary text-secondary-emphasis");
     $item.removeClass("nav-item").appendTo($collapsedSecondaryMenu);
@@ -167,7 +177,7 @@ $(function () {
 
   function toggleCompactSecondaryNav() {
     $("#compact-secondary-nav").toggle(
-      $collapsedSecondaryMenu.find("li").length > 0
+      $collapsedSecondaryMenu.find("li").length > 0,
     );
   }
 
@@ -178,9 +188,11 @@ $(function () {
    * to defer the measurement slightly as a workaround.
    */
   setTimeout(function () {
-    $expandedSecondaryMenu.find("li:not(#compact-secondary-nav)").each(function () {
-      secondaryMenuItems.push([this, $(this).width()]);
-    });
+    $expandedSecondaryMenu
+      .find("li:not(#compact-secondary-nav)")
+      .each(function () {
+        secondaryMenuItems.push([this, $(this).width()]);
+      });
     moreItemWidth = $("#compact-secondary-nav").width();
 
     updateHeader();
@@ -188,6 +200,16 @@ $(function () {
     $(window).resize(updateHeader);
     $(document).on("turbo:render", updateHeader);
   }, 0);
+
+  if (!document.referrer || !document.referrer.includes(window.location.host)) {
+    $(".back-btn").prop("disabled", true).addClass("disabled");
+  }
+
+  $(".back-btn").on("click", function (e) {
+    if (!$(this).prop("disabled")) {
+      window.history.back();
+    }
+  });
 
   const localeSwitchers = $(".locale-switcher");
   localeSwitchers.on("click", function (e) {
@@ -201,7 +223,7 @@ $(function () {
       return;
     }
 
-    Cookies.set("_locale", currentLocale, {path: "/app"});
+    Cookies.set("_locale", currentLocale, { path: "/app" });
     // map.fire("regionchange", { region: currentRegion });
 
     // regionSwitchers.removeClass("active");
@@ -219,6 +241,8 @@ $(function () {
     $("header").toggleClass("closed");
   });
 
-  $("#edit_tab")
-    .attr("title", OSM.i18n.t("javascripts.site.edit_disabled_tooltip"));
+  $("#edit_tab").attr(
+    "title",
+    OSM.i18n.t("javascripts.site.edit_disabled_tooltip"),
+  );
 });

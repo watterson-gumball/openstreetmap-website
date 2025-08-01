@@ -77,6 +77,7 @@ module BrowseHelper
       end
     end
 
+    name = object.tags["name#{I18n.locale.to_s == 'hy' ? ':hy' : ''}"]
     name
   end
 
@@ -119,8 +120,22 @@ module BrowseHelper
     end
   end
 
-  def filtered_way_tags(tags)
-    whitelist = %w(code from_date ownership use_type area_m2 length_m)
+  def filtered_tags(tags)
+    whitelist = %W(
+      name
+      name:hy
+      custom:code
+      custom:from_date
+      custom:area_m2
+      custom:perimeter_m
+      custom:bld_cc
+      custom:blk_cc
+      custom:cmm_cc
+      custom:prc_cc
+      custom:building_type:#{I18n.locale}
+      custom:registered_right:#{I18n.locale}
+      custom:registered_right_subject:#{I18n.locale}
+    )
 
     child_code = nil
 
