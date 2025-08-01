@@ -154,4 +154,11 @@ module BrowseHelper
   def name_locales(object)
     object.tags.keys.map { |k| Regexp.last_match(1) if k =~ /^name:(.*)$/ }.flatten
   end
+
+  def highlight_year(title)
+    # Match pattern like: digits + 4-digit year + dash
+    title.sub(/(\d{2})(\d{4})(-\d{2}-\d{4}\.pdf)/) do
+      "#{$1}<strong>#{$2}</strong>#{$3}"
+    end.html_safe
+  end
 end

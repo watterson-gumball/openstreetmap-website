@@ -139,7 +139,7 @@ class Relation < ApplicationRecord
   def documents
     code = tags.find { |k, _v| k.downcase == "custom:code" }&.last
     # Code.includes(:document).where(value: code)
-    Document.includes(:codes).where({codes: { value: code }})
+    Document.order(date: :desc).includes(:codes).where({codes: { value: code }})
   end
 
   attr_writer :members, :tags

@@ -2,7 +2,7 @@
   <% documents.each do |document| %>
     <%= tag.tr do %>
       <td>
-        <%= link_to document.title, url_for(document.file), target: "_blank", rel: "noopener" %>
+        <%= link_to highlight_year(document.title), url_for(document.file), target: "_blank", rel: "noopener" %>
       </td>
     <% end %>
   <% end %>
