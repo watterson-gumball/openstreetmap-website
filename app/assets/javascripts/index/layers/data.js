@@ -64,7 +64,7 @@ OSM.initializeDataLayer = function (map) {
 
   function getData() {
     const bounds = map.getBounds();
-    const url = "/app/api/" + OSM.API_VERSION + "/map.json?bbox=" + bounds.toBBoxString();
+    const url = "/aero/api/" + OSM.API_VERSION + "/map.json?bbox=" + bounds.toBBoxString();
 
     /*
      * Modern browsers are quite happy showing far more than 100 features in
@@ -135,7 +135,7 @@ OSM.initializeDataLayer = function (map) {
   }
 
   function onSelect(layer) {
-    console.log("/app/" + layer.feature.type + "/" + layer.feature.id)
-    OSM.router.route("/app/" + layer.feature.type + "/" + layer.feature.id);
+    console.log("/aero/" + layer.feature.type + "/" + layer.feature.id)
+    OSM.router.route("/aero/" + layer.feature.type + "/" + layer.feature.id);
   }
 };

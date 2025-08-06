@@ -7,7 +7,7 @@ services:
     environment:
       PIDFILE: /tmp/pids/server.pid
     volumes:
-      - .:/app:z
+      - .:/app
       # Prevent these directories from mounting so they're not shared between host OS and Docker
       - /app/node_modules/
       # Mount a tmp directory that will persist between runs
@@ -22,8 +22,8 @@ services:
     depends_on:
       - db
     env_file:
-      # - app.env
-      - serv.env
+      - app.env
+      # - serv.env
 
   db:
     build:

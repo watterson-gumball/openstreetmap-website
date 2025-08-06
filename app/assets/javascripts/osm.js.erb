@@ -57,7 +57,7 @@ OSM = {
 
   apiUrl: function (object) {
     const apiType = object.type === "note" ? "notes" : object.type;
-    let url = "/app/api/" + OSM.API_VERSION + "/" + apiType + "/" + object.id;
+    let url = "/aero/api/" + OSM.API_VERSION + "/" + apiType + "/" + object.id;
 
     if (object.type === "way" || object.type === "relation") {
       url += "/full";

@@ -2,7 +2,7 @@
 
 require_relative "config/environment"
 
-map '/app' do
+map '/aero' do
   run Rails.application
 end
 

@@ -210,7 +210,7 @@ OSM.Query = function (map) {
 
           $("<a>")
             .addClass("stretched-link")
-            .attr("href", "/app/" + element.type + "/" + element.id)
+            .attr("href", "/aero/" + element.type + "/" + element.id)
             .data("geometry", featureGeometry(element))
             .text(featureName(element))
             .appendTo($li);
@@ -312,7 +312,7 @@ OSM.Query = function (map) {
   function clickHandler(e) {
     const [lat, lon] = OSM.cropLocation(e.latlng, map.getZoom());
 
-    OSM.router.route("/app/query?" + new URLSearchParams({ lat, lon }));
+    OSM.router.route("/aero/query?" + new URLSearchParams({ lat, lon }));
   }
 
   function enableQueryMode() {

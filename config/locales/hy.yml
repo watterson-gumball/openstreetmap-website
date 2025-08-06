@@ -379,12 +379,12 @@ hy:
       custom:from_date: Ամսաթիվ
       custom:perimeter_m: Պարագիծ (մ)
       custom:code: Ծածկագիր
-      custom:building_type: Շինության Տեսակ
-      custom:registered_right_subject: Գրանցված իրավունքի առարկան
+      "custom:building_type:hy": Շինության Տեսակ
+      "custom:registered_right_subject:hy": Գրանցված իրավունքի առարկան
       registered_right_subjects:
         republic of armenia: Հայաստանի Հանրապետություն
         "“armenia” international airports cjsc": "«Արմէնիա» միջազգային օդանավակայաններ ՓԲԸ"
-      custom:registered_right: Գրանցված իրավունք
+      "custom:registered_right:hy": Գրանցված իրավունք
       registered_rights:
         use: Օգտագործում
         rent: Վարձակալություն

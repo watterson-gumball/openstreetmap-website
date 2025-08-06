@@ -94,7 +94,7 @@ OSM.Router = function (map, rts) {
   };
 
   function normalizePath(path) {
-    return path.replace(/^\/app/, "").replace(/(.)\/$/, "$1");
+    return path.replace(/^\/aero/, "").replace(/(.)\/$/, "$1");
   }
 
   let currentPath = normalizePath(location.pathname) + location.search,

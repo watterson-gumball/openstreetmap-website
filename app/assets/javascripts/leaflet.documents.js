@@ -12,7 +12,7 @@ L.OSM.documents = function (options) {
     $ui.on("show", shown);
 
     function shown() {
-      fetch("/app/documents")
+      fetch("/aero/documents")
         .then((r) => r.text())
         .then((html) => {
           $section.html(html);
@@ -22,7 +22,7 @@ L.OSM.documents = function (options) {
               const docList = this.querySelector(".doc-list");
               if (this.open && docList.dataset.loaded === "false") {
                 const type = this.dataset.type;
-                fetch(`/app/documents/by_type?type=${type}`)
+                fetch(`/aero/documents/by_type?type=${type}`)
                   .then((response) => response.text())
                   .then((html) => {
                     docList.innerHTML = html;

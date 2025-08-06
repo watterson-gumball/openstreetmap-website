@@ -56,7 +56,7 @@ $(function () {
     $("#sidebar_content")
       .empty();
 
-    fetch(`/app${content_path}`, { headers: { "accept": "text/html", "x-requested-with": "XMLHttpRequest" } })
+    fetch(`/aero${content_path}`, { headers: { "accept": "text/html", "x-requested-with": "XMLHttpRequest" } })
       .then(response => {
         $("#flash").empty();
         $("#sidebar_loader").removeClass("delayed-fade-in").prop("hidden", true);
@@ -205,7 +205,7 @@ $(function () {
       map.getLayersCode(),
       map._object);
 
-    Cookies.set("_osm_location", OSM.locationCookie(map), { secure: true, expires: expiry, path: "/app", samesite: "lax" });
+    Cookies.set("_osm_location", OSM.locationCookie(map), { secure: true, expires: expiry, path: "/aero", samesite: "lax" });
   });
 
   if (Cookies.get("_osm_welcome") !== "hide") {
@@ -443,6 +443,6 @@ $(function () {
   });
 
   $(document).on("click", "#sidebar .sidebar-close-controls button", function () {
-    OSM.router.route("/app/" + OSM.formatHash(map));
+    OSM.router.route("/aero/" + OSM.formatHash(map));
   });
 });

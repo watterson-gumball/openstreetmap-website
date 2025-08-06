@@ -223,7 +223,7 @@ $(function () {
       return;
     }
 
-    Cookies.set("_locale", currentLocale, { path: "/app" });
+    Cookies.set("_locale", currentLocale, { path: "/aero" });
     // map.fire("regionchange", { region: currentRegion });
 
     // regionSwitchers.removeClass("active");
