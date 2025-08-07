@@ -18,7 +18,7 @@
       <div class="documents-inner-container">
         <% ["mortgage", "property", "use", "rent"].each do |doc_type| %>
           <details data-type="<%= doc_type %>">
-            <summary><%= t(".#{doc_type}") %></summary>
+            <summary><%= t("browse.document.type.#{doc_type}") %></summary>
             <ul class="list-unstyled browse-element-list">
               <% way.documents.select { |doc| doc.document_type == doc_type }.each do |document| %>
                 <li>

@@ -338,6 +338,12 @@ hy:
         node: node
         relation: relation
         way: way
+    document:
+      type:
+        mortgage: Գրավ
+        property: Սեփականություն
+        use: Օգտագործում
+        rent: Վարձակալություն
     redacted_version: Redacted Version
     relation:
       members: Members
