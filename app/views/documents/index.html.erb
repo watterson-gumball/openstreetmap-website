@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "documents" do %>
-  <% ["mortage", "property", "use", "rent"].each do |doc_type| %>
+  <% ["mortgage", "property", "use", "rent"].each do |doc_type| %>
     <details data-type="<%= doc_type %>" class="doc-section">
       <summary><%= t(".#{doc_type}") %></summary>
       <div class="doc-list" data-loaded="false">

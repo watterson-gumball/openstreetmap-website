@@ -14,7 +14,7 @@
     <details <%= "open" if relation.documents.count < 10 %>>
       <summary><%= t ".documents_count", :count => relation.documents.count %></summary>
       <div class="documents-inner-container">
-        <% ["mortage", "property", "use", "rent"].each do |doc_type| %>
+        <% ["mortgage", "property", "use", "rent"].each do |doc_type| %>
           <details data-type="<%= doc_type %>">
             <summary><%= t(".#{doc_type}") %></summary>
             <ul class="list-unstyled browse-element-list">
