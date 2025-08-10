@@ -28,7 +28,7 @@ L.OSM.Map = L.Map.extend({
       { credit, nameId, leafletOsmId, leafletOsmDarkId, ...layerOptions }
     ) => {
       // if (credit) layerOptions.attribution = makeAttribution(credit);
-      if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : "");
+      if (nameId) layerOptions.name = OSM.i18n.t(`javascripts.map.base.${nameId}`) + (layerOptions.year ? ` ${layerOptions.year}` : ""); // HACK: change to use translation params
       const layerConstructor =
         (OSM.isDarkMap() && L.OSM[leafletOsmDarkId]) ||
         L.OSM[leafletOsmId] ||
@@ -90,10 +90,11 @@ L.OSM.Map = L.Map.extend({
     // this.dataLayer = new L.OSM.DataLayer(null);
     // this.dataLayer.options.code = "D";
 
+    const codes = ["Z", "Y", "X", "W", "V", "U", "T"];
     Object.entries(OSM.availableDataYears).forEach(([region, years]) => {
-      years.forEach(year => {
+      years.forEach((year, i) => {
         this[`dataLayer${year}${region}`] = new L.OSM.DataLayer(null);
-        this[`dataLayer${year}${region}`].options.code = "Z";
+        this[`dataLayer${year}${region}`].options.code = codes[i];
         this[`dataLayer${year}${region}`].options.year = year;
         this[`dataLayer${year}${region}`].options.region = region;
       })

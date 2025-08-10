@@ -276,7 +276,7 @@ OSM.Query = function (map) {
   function queryOverpass(lat, lng) {
     const selected_data_layers = Cookies.get("_selected_data_layers")?.trim();
 
-    // if (!selected_data_layers) return;
+    if (!selected_data_layers) return;
 
     const latlng = L.latLng(lat, lng).wrap(),
           bounds = map.getBounds().wrap(),

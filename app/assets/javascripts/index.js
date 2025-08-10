@@ -37,6 +37,7 @@ $(function () {
   map.createPane("timelinePane");
 
   const region = Cookies.get("_region");
+  Cookies.set("_selected_data_layers", "", { path: "/aero" });
 
   OSM.loadSidebarContent = function (path, callback) {
     let content_path = path;
@@ -214,7 +215,7 @@ $(function () {
 
   $(".welcome .btn-close").on("click", function () {
     $(".welcome").hide();
-    Cookies.set("_osm_welcome", "hide", { secure: true, expires: expiry, path: "/", samesite: "lax" });
+    Cookies.set("_osm_welcome", "hide", { secure: true, expires: expiry, path: "/aero", samesite: "lax" });
   });
 
   const regionSwitchers = $(".region-switcher");
