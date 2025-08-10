@@ -53,7 +53,7 @@ OSM.initializeNotesLayer = function (map) {
     const size = bounds.getSize();
 
     if (size <= OSM.MAX_NOTE_REQUEST_AREA) {
-      const url = "/app/api/" + OSM.API_VERSION + "/notes.json?bbox=" + bounds.toBBoxString();
+      const url = "/aero/api/" + OSM.API_VERSION + "/notes.json?bbox=" + bounds.toBBoxString();
 
       if (noteLoader) noteLoader.abort();
 

@@ -229,7 +229,7 @@ $(function () {
       return;
     }
 
-    Cookies.set("_region", currentRegion, {path: "/"});
+    Cookies.set("_region", currentRegion, {path: "/aero"});
     map.fire("regionchange", { region: currentRegion });
 
     regionSwitchers.removeClass("active");
