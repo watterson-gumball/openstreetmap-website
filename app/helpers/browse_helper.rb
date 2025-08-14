@@ -150,9 +150,8 @@ module BrowseHelper
   end
 
   def highlight_year(title)
-    # Match pattern like: digits + 4-digit year + dash
-    title.sub(/(\d{2})(\d{4})(-\d{2}-\d{4}\.pdf)/) do
-      "#{$1}<strong>#{$2}</strong>#{$3}"
+    title.sub(/(\d{2})(\d{2})(\d{4})(?=\D|\z)/) do
+      "#{$1}#{$2}<strong>#{$3}</strong>"
     end.html_safe
   end
 end
