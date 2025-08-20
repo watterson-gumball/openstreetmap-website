@@ -121,7 +121,12 @@ class Way < ApplicationRecord
   def documents
     code = tags.find { |k, _v| k.downcase == "custom:code" }&.last
     # Code.includes(:document).where(value: code)
-    Document.order(date: :desc).includes(:codes).where({codes: { value: code }})
+    Document.order(date: :desc).includes(:codes).where({codes: { value: code }}).where(document_type: ["mortgage", "property", "use", "rent"])
+  end
+
+  def floor_plans
+    code = tags.find { |k, _v| k.downcase == "custom:code" }&.last
+    Document.order(date: :desc).includes(:codes).where({codes: { value: code }}).where(document_type: "plan")
   end
 
 

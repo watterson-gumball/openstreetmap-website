@@ -12,7 +12,7 @@
 
     <h4><%= t ".documents" %></h4>
 
-    <details <%= "open" if way.documents.count < 10 %>>
+    <details open>
       <summary><%= t ".documents_count", :count => way.documents.count %></summary>
 
       <div class="documents-inner-container">
@@ -30,5 +30,24 @@
         <% end %>
       </div>
     </details>
+
+    <% if way.floor_plans.count > 0 %>
+
+      <h4><%= t ".floor_plans" %></h4>
+
+      <details>
+        <summary><%= t ".documents_count", :count => way.floor_plans.count %></summary>
+
+        <div class="documents-inner-container">
+          <ul class="list-unstyled browse-element-list">
+            <% way.floor_plans.each do |plan| %>
+              <li>
+                <%= link_to highlight_year(plan.title), url_for(plan.file), target: "_blank", rel: "noopener" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </details>
+    <% end %>
   <% end %>
 <% end %>

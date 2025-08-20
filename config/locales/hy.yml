@@ -416,6 +416,7 @@ hy:
       nodes_count:
         one: "%{count} կետ"
         other: "%{count} կետեր"
+      floor_plans: Հարկերի հատակագծեր
       documents: Վկայականներ
       documents_count:
         one: "%{count} Վկայական"
