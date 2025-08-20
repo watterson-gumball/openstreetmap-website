@@ -142,6 +142,11 @@ class Relation < ApplicationRecord
     Document.order(date: :desc).includes(:codes).where({codes: { value: code }})
   end
 
+  def floor_plans
+    code = tags.find { |k, _v| k.downcase == "custom:code" }&.last
+    Document.order(:title).includes(:codes).where({codes: { value: code }}).where(document_type: "plan")
+  end
+
   attr_writer :members, :tags
 
   def add_member(type, id, role)
