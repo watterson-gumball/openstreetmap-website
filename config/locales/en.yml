@@ -388,6 +388,7 @@ en:
       nodes_count:
         one: "%{count} node"
         other: "%{count} nodes"
+      building_photos: Photos
       floor_plans: Floor plans
       floor_plans_count:
         one: "%{count} Plan"

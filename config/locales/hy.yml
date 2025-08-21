@@ -416,6 +416,7 @@ hy:
       nodes_count:
         one: "%{count} կետ"
         other: "%{count} կետեր"
+      building_photos: Լուսանկարներ
       floor_plans: Հարկերի հատակագծեր
       floor_plans_count:
         one: "%{count} Հատակագիծ"

@@ -10,6 +10,20 @@
   <%= tag.div :class => ["browse-section", "browse-way", { "text-body-secondary" => way.redacted? }] do %>
     <%= render :partial => "browse/common_details", :object => way %>
 
+    <% if way.building_photos.count > 0 %>
+
+      <h4><%= t ".building_photos" %></h4>
+
+      <%= link_to url_for(way.building_photos.first.file),
+        onclick: "window.open(this.href, 'Image', 'width=600,height=400'); return false;" do %>
+        <%= image_tag(
+              way.building_photos.first.file.variant(resize_to_limit: [360, 360]),
+              style: "width: 100%; height: auto;"
+            ) %>
+      <% end %>
+
+    <% end %>
+
     <h4><%= t ".documents" %></h4>
 
     <details open>

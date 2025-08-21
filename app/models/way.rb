@@ -129,6 +129,11 @@ class Way < ApplicationRecord
     Document.order(title: :desc).includes(:codes).where({codes: { value: code }}).where(document_type: "plan")
   end
 
+  def building_photos
+    code = tags.find { |k, _v| k.downcase == "custom:code" }&.last
+    Document.order(title: :desc).includes(:codes).where({codes: { value: code }}).where(document_type: "photo")
+  end
+
 
   attr_writer :nds, :tags
 
