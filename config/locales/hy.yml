@@ -351,6 +351,11 @@ hy:
         one: "%{count} member"
         other: "%{count} members"
       title_html: '%{name}'
+      building_photos: Լուսանկարներ
+      floor_plans: Հարկերի հատակագծեր
+      floor_plans_count:
+        one: "%{count} Հատակագիծ"
+        other: "%{count} Հատակագծեր"
       documents: Վկայականներ
       documents_count:
         one: "%{count} Վկայական"

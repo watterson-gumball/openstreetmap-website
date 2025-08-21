@@ -341,6 +341,11 @@ en:
         one: "%{count} member"
         other: "%{count} members"
       title_html: '%{name}'
+      building_photos: Photos
+      floor_plans: Floor plans
+      floor_plans_count:
+        one: "%{count} Plan"
+        other: "%{count} Plans"
       documents_count:
         one: "%{count} Document"
         other: "%{count} Documents"
