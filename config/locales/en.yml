@@ -389,6 +389,9 @@ en:
         one: "%{count} node"
         other: "%{count} nodes"
       floor_plans: Floor plans
+      floor_plans_count:
+        one: "%{count} Plan"
+        other: "%{count} Plans"
       documents: Documents
       documents_count:
         one: "%{count} Document"
