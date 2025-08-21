@@ -23,21 +23,39 @@
   <% end %>
 
   <h4><%= t ".documents" %></h4>
-    <details <%= "open" if relation.documents.count < 10 %>>
-      <summary><%= t ".documents_count", :count => relation.documents.count %></summary>
+  <details <%= "open" if relation.documents.count < 10 %>>
+    <summary><%= t ".documents_count", :count => relation.documents.count %></summary>
+    <div class="documents-inner-container">
+      <% ["mortgage", "property", "use", "rent"].each do |doc_type| %>
+        <details data-type="<%= doc_type %>">
+          <summary><%= t("browse.document.type.#{doc_type}") %></summary>
+          <ul class="list-unstyled browse-element-list">
+            <% relation.documents.select { |doc| doc.document_type == doc_type }.each do |document| %>
+              <li>
+                <%= link_to highlight_year(document.title), url_for(document.file), target: "_blank", rel: "noopener" %>
+              </li>
+            <% end %>
+          </ul>
+        </details>
+      <% end %>
+    </div>
+  </details>
+
+  <% if relation.floor_plans.count > 0 %>
+    <h4><%= t ".floor_plans" %></h4>
+
+    <details>
+      <summary><%= t ".floor_plans_count", :count => relation.floor_plans.count %></summary>
+
       <div class="documents-inner-container">
-        <% ["mortgage", "property", "use", "rent"].each do |doc_type| %>
-          <details data-type="<%= doc_type %>">
-            <summary><%= t("browse.document.type.#{doc_type}") %></summary>
-            <ul class="list-unstyled browse-element-list">
-              <% relation.documents.select { |doc| doc.document_type == doc_type }.each do |document| %>
-                <li>
-                  <%= link_to highlight_year(document.title), url_for(document.file), target: "_blank", rel: "noopener" %>
-                </li>
-              <% end %>
-            </ul>
-          </details>
-        <% end %>
+        <ul class="list-unstyled browse-element-list">
+          <% relation.floor_plans.each do |plan| %>
+            <li>
+              <%= link_to highlight_year(plan.title), url_for(plan.file), target: "_blank", rel: "noopener" %>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </details>
+  <% end %>
 <% end %>
