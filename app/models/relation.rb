@@ -138,6 +138,7 @@ class Relation < ApplicationRecord
 
   def documents
     code = tags.find { |k, _v| k.downcase == "custom:code" }&.last
+    return [] if code.blank?
     # Code.includes(:document).where(value: code)
     Document.order(date: :desc).includes(:codes).where({codes: { value: code }})
   end

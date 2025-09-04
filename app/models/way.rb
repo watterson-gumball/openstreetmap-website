@@ -120,6 +120,7 @@ class Way < ApplicationRecord
 
   def documents
     code = tags.find { |k, _v| k.downcase == "custom:code" }&.last
+    return [] if code.blank?
     # Code.includes(:document).where(value: code)
     Document.order(date: :desc).includes(:codes).where({codes: { value: code }}).where(document_type: ["mortgage", "property", "use", "rent"])
   end
