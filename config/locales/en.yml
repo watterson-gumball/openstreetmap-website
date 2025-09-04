@@ -1805,6 +1805,7 @@ en:
       hotosm_name: Humanitarian OpenStreetMap Team
       layers:
         data: Map Data
+        missing: Missing buildings
         gps: Public GPS Traces
         header: Map Layers
         notes: Map Notes

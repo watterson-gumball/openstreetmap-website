@@ -14,6 +14,7 @@
 //= require index/contextmenu
 //= require index/search
 //= require index/layers/data
+//= require index/layers/missingBuildingsData
 //= require index/layers/historyData
 //= require index/export
 //= require index/layers/notes
@@ -183,6 +184,8 @@ $(function () {
     Object.entries(OSM.availableDataYears).forEach(([region, years]) => {
       years.forEach( year => OSM.initializeHistoryDataLayer(map, `dataLayer${year}${region}`) );
     });
+
+    OSM.initializeMissingBuildingsDataLayer(map);
 
     // OSM.initializeDataLayer(map);
     // if (params.layers.indexOf(map.dataLayer.options.code) >= 0) {

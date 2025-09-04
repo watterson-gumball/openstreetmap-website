@@ -67,6 +67,8 @@ class Node < ApplicationRecord
   scope :visible, -> { where(:visible => true) }
   scope :invisible, -> { where(:visible => false) }
 
+  scope :with_missing_status, -> { where(timeline_date: nil) }
+
   # Sanity check the latitude and longitude and add an error if it's broken
   def validate_position
     errors.add(:base, "Node is not in the world") unless in_world?

@@ -1978,6 +1978,7 @@ hy:
       hotosm_name: Humanitarian OpenStreetMap Team
       layers:
         data: Քարտեզ
+        missing: Բացակայող շինություններ
         gps: Հանրային GPS հետքեր
         header: Շերտեր
         notes: Նշումներ

@@ -90,6 +90,9 @@ L.OSM.Map = L.Map.extend({
     // this.dataLayer = new L.OSM.DataLayer(null);
     // this.dataLayer.options.code = "D";
 
+    this.missingBuildingsDataLayer = new L.OSM.DataLayer(null);
+    this.missingBuildingsDataLayer.options.code = "J";
+
     const codes = ["Z", "Y", "X", "W", "V", "U", "T"];
     Object.entries(OSM.availableDataYears).forEach(([region, years]) => {
       years.forEach((year, i) => {

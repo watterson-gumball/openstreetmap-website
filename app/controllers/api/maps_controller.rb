@@ -28,7 +28,8 @@ module Api
         return
       end
 
-      nodes = Node.bbox(@bounds).where("timeline_date LIKE ?", "#{params[:year]}%").where(:visible => true).includes(:node_tags, :changeset).limit(Settings.max_number_of_nodes + 1)
+      nodes = Node.bbox(@bounds).with_missing_status.where(:visible => true).includes(:node_tags, :changeset).limit(Settings.max_number_of_nodes + 1) if params[:status] == "missing"
+      nodes = Node.bbox(@bounds).where("timeline_date LIKE ?", "#{params[:year]}%").where(:visible => true).includes(:node_tags, :changeset).limit(Settings.max_number_of_nodes + 1) if params[:year]
 
       node_ids = nodes.collect(&:id)
       if node_ids.length > Settings.max_number_of_nodes

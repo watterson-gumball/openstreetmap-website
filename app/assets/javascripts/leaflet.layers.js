@@ -236,13 +236,13 @@ L.OSM.layers = function (options) {
             map.addLayer(layer);
             if (!layer.options.year) return;
             const previousDataLayers = Cookies.get("_selected_data_layers")?.trim();
-            Cookies.set("_selected_data_layers", previousDataLayers?.length ? `${previousDataLayers}|${layer.options.year}` : layer.options.year, {path: "/aero"});
-            input.css("background-color", layer.options.styles[layer.options.year].way.color);
+            layer.options.styles[layer.options.year] && Cookies.set("_selected_data_layers", previousDataLayers?.length ? `${previousDataLayers}|${layer.options.year}` : layer.options.year, {path: "/aero"});
+            layer.options.styles[layer.options.year] && input.css("background-color", layer.options.styles[layer.options.year].way.color);
           } else {
             map.removeLayer(layer);
             const previousDataLayers = Cookies.get("_selected_data_layers")?.trim();
-            Cookies.set("_selected_data_layers", previousDataLayers?.split("|").filter(d => d !== layer?.options?.year).join("|"), {path: "/aero"});
-            input.css("background-color", "transparent");
+            layer.options.styles[layer.options.year] && Cookies.set("_selected_data_layers", previousDataLayers?.split("|").filter(d => d !== layer?.options?.year).join("|"), {path: "/aero"});
+            layer.options.styles[layer.options.year] && input.css("background-color", "transparent");
             $(`#layers-${name}-loading`).remove();
           }
         });
@@ -281,12 +281,12 @@ L.OSM.layers = function (options) {
 
         addOverlay(map.noteLayer, "notes", OSM.MAX_NOTE_REQUEST_AREA);
         OSM.availableDataYears[e.region].forEach(year => addOverlay(map[`dataLayer${year}${e.region}`], `historydata${year}${e.region}`, OSM.MAX_REQUEST_AREA));
+        addOverlay(map.missingBuildingsDataLayer, "missing", OSM.MAX_REQUEST_AREA);
       });
 
       addOverlay(map.noteLayer, "notes", OSM.MAX_NOTE_REQUEST_AREA);
-      // addOverlay(map.dataLayer, "data", OSM.MAX_REQUEST_AREA);
-      // addOverlay(map.gpsLayer, "gps", Number.POSITIVE_INFINITY);
       OSM.availableDataYears[options.region].forEach(year => addOverlay(map[`dataLayer${year}${options.region}`], `historydata${year}${options.region}`, OSM.MAX_REQUEST_AREA));
+      addOverlay(map.missingBuildingsDataLayer, "missing", OSM.MAX_REQUEST_AREA);
     }
   };
 
