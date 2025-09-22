@@ -1960,6 +1960,10 @@ hy:
       title: Պայմանական նշաններ
       tooltip: Պայմանական նշաններ
       tooltip_disabled: Այս շերտի համար պայմանական նշանները հասանելի չէ
+    measure:
+      title: Չափման գործիք
+      tooltip: Չափման գործիք
+      tooltip_disabled: Գործիքը հասանելի չէ
     map:
       andy_allan: Էնդի Ալան
       base:
@@ -2047,6 +2051,8 @@ hy:
       map_notes_zoom_in_tooltip: Մեծացրեք՝ քարտեզի նշումները տեսնելու համար
       queryfeature_disabled_tooltip: Մեծացրեք՝ մանրամասներ հարցնելու համար
       queryfeature_tooltip: Մանրամասներ
+      measure_disabled_tooltip: Գործիքը անհասանելի է
+      measure_tooltip: Չափման գործիք
     documents:
       title: Վկայականներ
       header: Վկայականներ

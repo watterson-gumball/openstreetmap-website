@@ -5,6 +5,9 @@
 @import "@simonwep/pickr/dist/themes/classic.min.css";
 @import "@simonwep/pickr/dist/themes/nano.min.css";
 @import "@simonwep/pickr/dist/themes/monolith.min.css";
+@import "leaflet-measure/dist/leaflet-measure.css";
+@import "leaflet-ruler/src/leaflet-ruler.css";
+
 
 /* Styles common to large and small screens */
 
@@ -183,9 +186,6 @@ nav.primary {
   }
 }
 
-.disabled {
-}
-
 nav.secondary {
   .nav-link {
     padding: 0 0.3rem;
@@ -338,6 +338,16 @@ body.small-nav {
   }
 }
 
+.leaflet-control-measure-interaction {
+  padding: 10px;
+}
+
+.leaflet-center .leaflet-control .control-button {
+  &-first {
+    border-radius: 0 0 4px 4px;
+  }
+}
+
 .leaflet-control.active .control-button {
   background-color: $vibrant-green;
 }
@@ -380,6 +390,7 @@ body.small-nav {
     }
 
     .sidebar-close-controls,
+    .topbar-close-controls,
     #sidebar_loader,
     #sidebar_content {
       display: none;
@@ -439,14 +450,17 @@ body.small-nav {
     overflow: auto;
   }
 
-  #sub-map-ui {
+  #toolbox-ui {
     display: none;
     position: absolute;
     width: 250px;
-    height: 50%;
+    top: 20px;
+    left: 50%;
     overflow: auto;
-    right: 250px;
-    bottom: 0;
+    cursor: grab;
+  }
+  #toolbox-ui:active {
+    cursor: grabbing;
   }
 }
 
@@ -461,6 +475,12 @@ body.small-nav {
     }
 
     #map-ui {
+      width: 100%;
+      height: 50%;
+      overflow-y: scroll;
+    }
+
+    #toolbox-ui {
       width: 100%;
       height: 50%;
       overflow-y: scroll;
@@ -1161,4 +1181,22 @@ img.trace_image {
 
 .tooltip.wide {
   --bs-tooltip-max-width: none;
+}
+
+.leaflet-top.leaflet-center {
+  // position: fixed;
+  top: 0 !important;
+}
+
+.leaflet-center {
+	left: 50vw;
+	right: 50vw;
+}
+
+.leaflet-center .leaflet-control {
+	float: right;
+}
+
+.leaflet-center .leaflet-control {
+	margin-right: 10px;
 }

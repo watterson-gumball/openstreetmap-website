@@ -9,6 +9,8 @@
     "js-cookie": "^3.0.0",
     "leaflet": "^1.8.0",
     "leaflet.locatecontrol": "^0.84.1",
+    "leaflet-ruler": "1.0.0",
+    "leaflet-measure": "3.1.0",
     "make-plural": "^7.4.0",
     "osm-community-index": "^5.2.0"
   },

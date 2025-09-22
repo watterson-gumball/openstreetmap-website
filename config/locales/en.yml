@@ -1786,6 +1786,10 @@ en:
       title: Map Key
       tooltip: Map Key
       tooltip_disabled: Map Key not available for this layer
+    measure:
+      title: Measure tool
+      tooltip: Measure tool
+      tooltip_disabled: Tool is not available
     map:
       andy_allan: Andy Allan
       base:

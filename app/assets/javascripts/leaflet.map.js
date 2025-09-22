@@ -9,6 +9,40 @@ L.extend(L.LatLngBounds.prototype, {
   }
 });
 
+const originalInitControlPos = L.Map.prototype._initControlPos;
+L.Map.include({
+  _initControlPos: function () {
+    originalInitControlPos.call(this);
+
+    const corners = this._controlCorners;
+		const l = 'leaflet-';
+		const container = this._controlContainer;
+
+		function createCorner(vSide, hSide) {
+			var className = l + vSide + ' ' + l + hSide;
+
+			corners[vSide + hSide] = L.DomUtil.create('div', className, container);
+		}
+
+		createCorner('top', 'center');
+  },
+});
+
+L.Control.Measure.include({
+	// set icon on the capture marker
+	_setCaptureMarkerIcon: function () {
+		// disable autopan
+		this._captureMarker.options.autoPanOnFocus = false;
+
+		// default function
+		this._captureMarker.setIcon(
+			L.divIcon({
+				iconSize: this._map.getSize().multiplyBy(2)
+			})
+		);
+	},
+});
+
 L.OSM.Map = L.Map.extend({
   initialize: function (id, options) {
     const defaultGroups = {

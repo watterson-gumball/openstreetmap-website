@@ -1,7 +1,8 @@
 //= require_self
 //= require leaflet.sidebar
 //= require leaflet.sidebar-pane
-//= require leaflet.sub-sidebar-pane
+//= require leaflet.topbar
+//= require leaflet.topbar-pane
 //= require leaflet.locate
 //= require leaflet.layers
 //= require leaflet.key
@@ -10,6 +11,7 @@
 //= require leaflet.share
 //= require leaflet.polyline
 //= require leaflet.query
+//= require leaflet.measure
 //= require leaflet.contextmenu
 //= require index/contextmenu
 //= require index/search
@@ -32,7 +34,8 @@ $(function () {
     zoomControl: false,
     layerControl: false,
     contextmenu: true,
-    worldCopyJump: true
+    worldCopyJump: true,
+    measureControl: false
   });
 
   map.createPane("timelinePane");
@@ -109,8 +112,8 @@ $(function () {
   const sidebar = L.OSM.sidebar("#map-ui")
     .addTo(map);
 
-  // const subSidebar = L.OSM.subSidebar("#sub-map-ui")
-  //   .addTo(map);
+  const topbar = L.OSM.topbar("#toolbox-ui")
+    .addTo(map);
 
   const position = $("html").attr("dir") === "rtl" ? "topleft" : "topright";
 
@@ -127,6 +130,10 @@ $(function () {
   }
 
   addControlGroup([
+    L.OSM.measure({ position: "topcenter", topbar })
+  ]);
+
+  addControlGroup([
     L.OSM.zoom({ position }),
     L.OSM.locate({ position })
   ]);
@@ -136,7 +143,6 @@ $(function () {
       position,
       region,
       sidebar,
-      // subSidebar,
       layers: {
         default: map.baseLayers,
         yerevan: map.baseYerevanLayers,
@@ -161,12 +167,6 @@ $(function () {
   ]);
 
   addControlGroup([
-    // L.OSM.timelineLayers({
-    //   position,
-    //   sidebar,
-    //   subSidebar,
-    //   layers: map.baseTimelineLayers
-    // }),
     L.OSM.documents({ position, sidebar })
   ]);
 

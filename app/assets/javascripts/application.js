@@ -7,6 +7,8 @@
 //= require osm
 //= require leaflet/dist/leaflet-src
 //= require leaflet.osm
+//= require leaflet-measure/dist/leaflet-measure
+//= require leaflet-ruler/src/leaflet-ruler
 //= require leaflet.map
 //= require leaflet.zoom
 //= require leaflet.locationfilter

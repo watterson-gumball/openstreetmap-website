@@ -51,7 +51,7 @@
   </div>
 
   <svg class="d-none"><defs><%= render :partial => "layouts/control_icons",
-                                       :locals => { :icons => %w[zoomin zoomout geolocate layers key share note query documents] } %></defs></svg>
+                                       :locals => { :icons => %w[zoomin zoomout geolocate layers key share note query documents measure] } %></defs></svg>
 
   <noscript>
     <div class="mt-5 p-3">
@@ -60,12 +60,13 @@
     </div>
   </noscript>
 
+  <div id="toolbox-ui" class="bg-body z-2">
+    <%= render :partial => "layouts/topbar_close" %>
+  </div>
+
   <div id="map-ui" class="bg-body z-2">
     <%= render :partial => "layouts/sidebar_close" %>
   </div>
-  <%# <div id="sub-map-ui" class="bg-body z-2">
-    <%= render :partial => "layouts/sub_sidebar_close" %>
-  <%# </div> %>
 
   <div id="map" tabindex="2" class="bg-body-secondary z-0">
   </div>
