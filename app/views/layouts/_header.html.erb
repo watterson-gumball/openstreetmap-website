@@ -52,13 +52,13 @@
       </div>
     <% end %>
     <ul id='secondary-nav-menu' class='nav flex-grow-1' data-turbo-permanent>
-      <% if Settings.status != "database_offline" && can?(:index, Issue) %>
-        <li class="nav-item">
+      <%# if Settings.status != "database_offline" && can?(:index, Issue) %>
+        <%#<li class="nav-item">
           <%= link_to issues_path(:status => "open"), :class => header_nav_link_class(issues_path) do %>
-            <%= t("layouts.issues") %>
-            <%= open_issues_count %>
-          <% end -%>
-        </li>
+            <%#<%= t("layouts.issues") %>
+            <%#<%= open_issues_count %>
+          <%#<% end -%>
+        <%#</li>
       <% end %>
       <%# <li class="nav-item">
         <%= link_to t("layouts.about"), about_path, :class => "nav-link btn btn-outline-secondary" %>
